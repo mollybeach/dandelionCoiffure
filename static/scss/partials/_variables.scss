@@ -1,0 +1,56 @@
+//Font Variables
+$font-family: 'Roboto', sans-serif;
+$font-family-sans-serif: "Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+$font-family-monospace: "Quicksand",Georgia,"Times New Roman",Times,serif;
+
+
+//Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+/**********************MOCKUP COLUMN VARIABLES*******************************/
+
+//mockup column outside
+$mockup-column-outside-mobile: 5.0vw;  //16px 
+$mockup-column-outside-tablet: 3.1vw; //24px
+$mockup-column-outside-desktop: 6.3vw; //80px
+
+//mockup column small
+$mockup-column-small-mobile: 7.5vw; //24px
+$mockup-column-small-tablet: 3.1vw; //24px
+$mockup-column-small-desktop: 1.9vw; //24px
+
+
+//mockup column large
+$mockup-column-large-mobile: 16.9vw;  //54px 16.9vw
+$mockup-column-large-tablet: 13.0vw; //100px 13.0vw 
+$mockup-column-large-desktop: 5.3vw; //68px  5.3vw
+
+//colors
+
+$blue: #1e9ff2;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #ff4961;
+$orange: #ff9149;
+$yellow: #ffc107;
+$green: #28d094;
+$teal: #20c997;
+$cyan: #666ee8;
+$white: #fff;
+$gray: #6b6f82;
+$gray-dark: #464855;
+$primary: #666ee8;
+$secondary: #6b6f82;
+$success: #28d094;
+$info: #1e9ff2;
+$warning: #ff9149;
+$danger: #ff4961;
+$light: #babfc7;
+$dark: #464855;
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
