@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'sass_processor',
     'salonapp',
-    "compressor",
-    'bootstrap3'
+    #compressor",
+   # 'bootstrap3'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+            ], 'libraries': { # Adding this section should work around the issue.
+            'staticfiles' : 'django.templatetags.static',
+        },
         },
     },
 ]
@@ -79,7 +82,12 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        #'ENGINE': 'django.db.backends.postgresql',
         'NAME': BASE_DIR / 'db.sqlite3',
+        #'NAME': 'madeleinesalon_db',
+        'USER' : 'admin',
+        'PASSWORD' : 'password',
+        'HOST' : 'localhost'
     }
 }
 
@@ -122,18 +130,25 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+#SASS_PROCESSOR_ROOT = STATIC_ROOT
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
-    'compressor.finders.CompressorFinder',
+   # 'django_scss.finders.SCSSFinder',
 )
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
+#SASS_PROCESSOR_INCLUDE_DIRS = [
+ #   os.path.join(PROJECT_PATH, 'extra-styles/scss'),
+ #   os.path.join(PROJECT_PATH, 'node_modules'),
+#]
+#COMPRESS_PRECOMPILERS = (
+ #   ('text/x-scss', 'django_libsass.SassCompiler'),
+#)
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#terminal.integrated.inheritEnv"

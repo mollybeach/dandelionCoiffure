@@ -1,0 +1,98 @@
+/*********RESETS********/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    background-color: #FBFBFB;
+    color:black;
+    padding-top: 1%;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+   
+}
+
+ol, ul {
+    list-style: none;
+    color:black;
+    justify-content: space-between;
+}
+
+input {
+    -webkit-appearance: none;
+}
+/***************CONTENT*******/
+.header{
+
+justify-content: space-between;
+color:black;
+} 
+
+.header__nav{
+
+
+}
+.header_logo{
+    margin-left: 10%;
+    justify-content: space-between;
+ 
+}
+.header__img{
+    display:flex;
+    margin-left: 2%;
+    padding-top: 1%;
+
+}
+.nav__sidenav{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 0%;
+    margin-bottom: 1%;
+    color: black;
+
+}
+.post-card{
+    margin-top: 3%;
+}
+.hero__img{
+    width: 5%;
+}
+.sidebar_img{
+    padding-left: 10%;
+}
+.container{
+    padding-left:10%;
+    padding-right:5%;
+}
+.header__link{
+    align-self: flex-end;
+}
+.nav a,
+.fa-bars,
+.soc-media a {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background .35s;
+}
+/*Page Wrapper*/
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: url(http://www.gratisography.com/pictures/119.jpg) no-repeat;
+    background-size: cover;
+}
