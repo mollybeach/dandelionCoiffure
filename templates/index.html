@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+<!-- Template Main CSS File -->
+
+  <link href=" {% static "/styles.css" %}"  rel="stylesheet"  >
+
+<head/>
+<body class="container">
+    <header class="header">
+      <nav class="header__nav">
+        <ul class="nav__sidenav nav--right">
+          <li><a href="/" class="header__logo">  
+      <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" />
+          
+</a></li>
+          <div class="header__links">
+          <li class="header__link"><a href="#about" >About</a></li>
+          <li class="header__link"><a href="clients" >Clients</a></li>
+          <li class="header__link"><a href="form" >Book an Appointment</a></li>
+          <li class="header__link"><a href="#" >Contact Us</a></li>
+            {% if user.is_authenticated%}
+          <li class="header__link"><a href="profile" >My Profile</a></li>
+          <li><a href="logout" >Logout</a></li>
+          {% else%}
+          <li class="header__link"><a href="register" >Create Account</a></li>
+          <li><a href="login" class="header__link">Login</a></li>
+          {% endif %}
+          <li class="header__link"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+        <div/>
+             <p class="header__welcome">Bonjour! and Welcome to Madeleine Salon de Coiffure</p>
+        </ul>
+    
+      </nav>
+
+    </header>
+
+    <main class="main">
+
+      <section class="home-page-featured stamp">
+        <!-- First Article -->
+        <article class="post post-featured">
+          <div class="post-card">
+            <a href="#" class="post__top-image">
+                <img class="hero__image"src="https://data.whicdn.com/images/322920296/original.jpg" width="360" height="240" alt="" />
+
+      <img class="hero__image" src="{% static "assets/bluecrest.svg" %}" width="256" height="256" alt="" />
+
+            </a>
+            <h6 class="post-date">07.15.21</h6>
+            <div class="post__text">
+              <h3 class="post-category">Madeleine salon de coiffure</h3>
+              <h1 class="post-title">
+                <a href="#">Salon and Spa propose une tarification à plusieurs niveaux pour s'adapter à un large éventail de goûts et de styles.</a>
+              </h1>
+              <p class="excerpt">notre engagement a été de vous aider à découvrir et à maintenir votre beauté naturelle en intégrant vos goûts personnels et votre style de vie. Nous écoutons vos besoins et vous fournissons de beaux résultats fonctionnels pour vos cheveux, votre peau et vos ongles. Nous proposons une multitude de services de salon de coiffure et de spa de luxe, notamment des massages professionnels, des soins du visage au spa, des soins du corps, des traitements de lissage à la kératine, des colorations et des mèches, des extensions de cheveux, des manucures et pédicures de spa et plus encore..</p>
+              <p class="post-link-more"><a href="#">MORE</a></p>
+            </div>
+          </div>
+        </article>
+        <div class="home-page-featured-column">
+          <article class="post">
+            <div class="post-card">
+              <a href="#" class="post__top-image">
+                <figure>
+                  <img src="https://data.whicdn.com/images/329557278/original.jpg" alt="In a New Show, Todd Wolf Takes the Unexpected in a New Direction" width='360'/>
+                </figure>
+              </a>
+              <h6 class="post-date">07.15.21</h6>
+              <div class="post__text">
+                <h3 class="post-category">SIGHTED</h3>
+                <h1 class="post-title">
+                  <a href="#">Le sauna facial ultime</a>
+                </h1>
+                <p class="excerpt">J'aime apprendre les différentes gammes et systèmes de couleurs, et travailler en tant que spécialiste de la couleur est devenu ma passion ! Le flamboyage et le balayage sont deux de mes techniques d'application préférées ; J'aime aussi faire des couleurs à la mode, des corrections de couleurs et donner à mes clients un tout nouveau look avec des coupes de cheveux transformatrices.</p>
+                <p class="post-link-more"><a href="#">MORE</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post-card">
+              <a href="#" class="post__top-image">
+                <figure>
+                  <img src="https://i.pinimg.com/280x280_RS/07/30/dd/0730ddd87b1406eef15f331ed869d123.jpg" alt="In a New Show, Todd Wolf Takes the Unexpected in a New Direction" />
+                </figure>
+              </a>
+              <h6 class="post-date">07.15.21</h6>
+              <div class="post__text">
+                <h3 class="post-category">UP AND COMING</h3>
+                <h1 class="post-title">
+                  <a href="#">Quel est le bon look</a>
+                </h1>
+                <p class="excerpt">Lorsqu'il s'agit de choisir une crème contour des yeux anti-âge, les possibilités sont infinies. Les choix vont des marques de grands magasins haut de gamme aux marques abordables et peuvent être trouvés dans toutes les formes, tailles et formes. Vous pouvez donc imaginer cela. Le est rendu.</p>
+                <p class="post-link-more"><a href="#">MORE</a></p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+      <aside class="home-side-col stamp">
+          <ul class="sidebar-list">
+            <li class="sidebar-list__item">
+              <h4 class="sidebar-list__label">Lashes</h4>
+              <a href="#">
+               <img class="sidebar-list__image" src="{% static "assets/lashes.png" %}"width="256" height="256" alt="" /> 
+                  <img class="sidebar-list__image" src="{% static "assets/skeletoncrest.svg" %}"width="256" height="256" alt="" />
+              </a>
+            </li>
+            <li class="sidebar-list__item">
+              <h4 class="sidebar-list__label">Styles</h4>
+              <a href="#">
+                <img class="sidebar-list__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGs16aRuj890EgqKDRJIs0nh822IZHf2vV2DWGYOvbOCId7_bOY60GTuzzI1Zy6yBH3yE&usqp=CAU" width="256" height="256" alt="" />
+
+                <span></span>
+              </a>
+            </li>
+            <li class="sidebar-list__item">
+              <h4 class="sidebar-list__label">Testimonals</h4>
+              <a href="#">
+                <img class="sidebar-list__image" src="https://i.pinimg.com/originals/7e/3b/55/7e3b55f459ca7f356b0e4c582805a05d.jpg" width="256" height="256" alt="" />
+                <span></span>
+
+              </a>
+            </li>
+            <li class="sidebar-list__item">
+              <h4 class="sidebar-list__label"Bags</h4>
+              <a href="#">
+                <img class="sidebar-list__image" src="https://i.pinimg.com/originals/5b/89/ea/5b89ea41bcc31841ff580806fbfc9e8a.png" width="256" height="256" alt="" />
+                <span></span>
+
+              </a>
+            </li>
+            <li class="sidebar-list__item"></li>
+            <h4 class="sidebar-list__label"></h4>
+            <li class="sidebar-list__item"></li>
+          </ul>
+      </aside>
+
+
+    </main>
+
+
+    <div class="home-more-button">
+      <button class="button-main">View More</button>
+    </div>
+
+    <div class="slider">
+          <h2 class="slider__title">Our Products</h2>
+          <div class="shop-list">
+            <div class="shop">
+              <button class="slider__button"type="button" name="button"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/arrow_left_h5ibyg.svg" alt=""/></button>
+              <div class="shop-list__item">
+                <a href="#">
+                  <img  src="{% static "assets/victorian.svg" %}" alt="" />
+
+                </a>
+              </div>
+              <div class="shop-list__item hide-1">
+                <a href="#">
+                  <img src="https://joannarahier.com/wp-content/uploads/2019/12/9975D03D-7737-4028-9DD8-868A2A479608.jpeg" width="290" height="256" alt="">
+                </a>
+              </div>
+            <div class="shop-list__item hide-2">
+                <a href="#">
+                  <img src="https://i.pinimg.com/originals/a6/60/de/a660de8214bd7792233656f75751463c.jpg" width="290" height="256" alt="">
+                </a>
+              </div>
+              <button class="slider__button" type="button" name="button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScbtKQ2MnHD6XaqJWceGQtQ_NfvPWNWWrlP40x77ucfpEp4JZrhtCPVTXcua7SMWPNMCM&usqp=CAU" alt=""/></button>
+            </div>
+          </div>
+      </div>
+
+
+      <footer class="footer">
+        <div class="site-footer">
+          <div class="site-footer__links">
+            <div id="menu-footer-links" class="menu-footer-links h4">
+              <div class="menu-footer-links__column">
+                <a href="#">À propos de nous </a>
+                <a href="#">Politique de confidentialité</a>
+              </div>
+
+              <div class="menu-footer-links__column">
+                <a href="#">Termes et conditions </a>
+                <a href="#">Contactez-nous
+Expédition des soumissions</a>
+              </div>
+
+
+              <div class="menu-footer-links__column hide-1">
+                <a href="#">Submissions</a>
+                <a href="#">Shipping</a>
+              </div>
+            </div>
+          </div>
+          <div class="site-footer__social">
+            <a class="" href="#"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/facebook_eknuzn.svg" alt="facebook" /></a>
+            <a class="" href="#"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/twitter_nfohqw.svg" alt="twitter" /></a>
+            <a class="" href="#"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/instagram_u4wt1i.svg" alt="instagram" /></a>
+            <a class="" href="#"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/pinterest_vtom0c.svg" alt="pinterest" /></a>
+          </div>
+        </div>
+
+ <img   class='footer__logo' src="{% static "assets/skeletoncrest.svg" %}" alt="" />
+      </footer>
+
+  </body>
+
+
+
+
+</html>
