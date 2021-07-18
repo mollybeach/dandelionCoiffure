@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-#import dj_database_url
-import django_heroku
-import psycopg2
+import dj_database_url
+#import django_heroku
+#import psycopg2
 from pathlib import Path
 
 
@@ -30,7 +30,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'django-insecure-$(8+_2x(nyg_g_9exjv)xa!3qiy+1++x3zsgntzu$bkjy!!rfx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -102,7 +102,7 @@ DATABASES = {
         'HOST' : 'localhost'
     }
 }
-#db_from_env = dj_database_url.config(conn_max_age=600)
+db_from_env = dj_database_url.config(conn_max_age=600)
 #DATABASES['default'].update(db_from_env)
 DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
 
@@ -174,7 +174,8 @@ STATICFILES_FINDERS = (
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #terminal.integrated.inheritEnv"
