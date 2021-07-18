@@ -89,7 +89,7 @@ def form(request):
             messages.info(request, 'Passwords do not match')
             return redirect('register')
     else: 
-        return render(request, 'register.html')
+        return render(request, 'form.html')
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
