@@ -132,8 +132,20 @@ ul.nav__sidenav.nav--right {
 }
 .hero__image{
   width: 50%;
-  padding-right: 5%;
+  padding: 1%;
+  margin-right: 5%;
   height: 50%;
+  border: solid rgba(21, 14, 21, 0.1) 5px;
+
+
+}
+.hero__image2{
+  width: 50%;
+  padding: 1%;
+  margin-right: 2%;
+  height: 50%;
+
+
 
 }
 
