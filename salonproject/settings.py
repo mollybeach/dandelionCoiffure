@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-
+#import django_heroku
 from pathlib import Path
 import dj_database_url
 
@@ -58,8 +58,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 
 ROOT_URLCONF = 'salonproject.urls'
 
@@ -100,6 +101,7 @@ DATABASES = {
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
+DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','madeleinecoiffure.herokuapp.com']
 
@@ -145,22 +147,22 @@ USE_TZ = True
 #STATIC_URL = '/static/'
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+
 STATIC_URL = '/static/'
-#VENV_PATH = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATIC_ROOT = os.path.join(BASE_DIR,"deploy_to_server")
+
+#if not DEBUG:
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "images"),
+]
 
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-
-#SASS_PROCESSOR_ROOT = STATIC_ROOT
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
-   # 'django_scss.finders.SCSSFinder',
+    # 'django_scss.finders.SCSSFinder',
 )
 #SASS_PROCESSOR_INCLUDE_DIRS = [
  #   os.path.join(PROJECT_PATH, 'extra-styles/scss'),
@@ -177,3 +179,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #terminal.integrated.inheritEnv"
+#django_heroku.settings(locals())
+'''
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR,"deploy_to_server")
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+STATIC_URL = '/static/'
+#VENV_PATH = os.path.dirname(BASE_DIR)
+'''

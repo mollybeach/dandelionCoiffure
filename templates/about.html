@@ -40,13 +40,12 @@
         <div/>
              {% if user.is_authenticated%}
              <p class="header__welcome">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
-          {% else%}
-           <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
-          {% endif %}
-       
+        {% else%}
+        <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+        {% endif %}
         </ul>
     
-      </nav>
+    </nav>
 
     </header>
 
