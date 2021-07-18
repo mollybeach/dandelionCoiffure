@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        #'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        #'NAME': 'madeleinesalon_db',
-        'USER' : 'admin',
-        'PASSWORD' : 'password',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'salon_db',
+        'USER' : 'postgres',
+        'PASSWORD' : 'jeannette487547',
         'HOST' : 'localhost'
     }
 }
