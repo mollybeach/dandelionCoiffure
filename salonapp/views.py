@@ -42,7 +42,7 @@ def login(request):
 
         if user is not None: #check if user None that means is not register
             auth.login(request, user)
-            return redirect('register')
+            return redirect('/')
         else:
             messages.info(request, 'Creditionals Invalid')
             return render(request, 'login.html')
@@ -90,21 +90,7 @@ def form(request):
             return redirect('register')
     else: 
         return render(request, 'form.html')
-def login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
 
-        user = auth.authenticate(username=username, password=password)
-
-        if user is not None: #check if user None that means is not register
-            auth.login(request, user)
-            return redirect('register')
-        else:
-            messages.info(request, 'Creditionals Invalid')
-            return render(request, 'login.html')
-    else:
-        return render(request, 'login.html', )
 
         
 
