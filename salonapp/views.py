@@ -44,8 +44,8 @@ def login(request):
             auth.login(request, user)
             return redirect('/')
         else:
-            messages.info(request, 'Creditionals Invalid')
-            return render(request, 'login.html')
+            messages.info(request, 'User does not exist please create an account')
+            return redirect('register')
     else:
         return render(request, 'login.html', )
 
@@ -63,6 +63,18 @@ def post(request, pk):
 def profile(request):
     userprofile = {'user': request.user}
     return render(request, 'profile.html', userprofile)
+
+def clients(request):
+    clients = {'user': request.user}
+    return render(request, 'clients.html', clients)
+
+def contact(request):
+    contact = {'user': request.user}
+    return render(request, 'contact.html', contact)
+def about(request):
+    about = {'user': request.user}
+    return render(request, 'about.html', about)
+
 def hello_world(request):
     form = NameForm()
     return render(request, 'hello_world.html', {'form': form})

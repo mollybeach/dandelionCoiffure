@@ -11,5 +11,8 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('post/<str:pk>', views.post, name='post') ,
     path('form', views.form, name='form'), 
-    path('profile', views.profile, name='profile') 
+    path('profile', views.profile, name='profile'),
+    path('clients', views.clients, name='clients'),
+    path('contact', views.contact, name='contact'),
+    path('about', views.about, name='about') 
 ] 
