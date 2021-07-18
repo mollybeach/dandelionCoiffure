@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Feature, NameForm
 
 
+    
 def index(request):
     features = Feature.objects.all()
     return render(request, 'index.html',{'features': features})
