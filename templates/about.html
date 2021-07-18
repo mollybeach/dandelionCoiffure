@@ -24,8 +24,8 @@
       <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" />
           
 </a></li>
-          <div class="header__links">
-          <li class="header__link"><a href="#about" >About</a></li>
+        <div class="header__links">
+        <li class="header__link"><a href="#about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
           <li class="header__link"><a href="form" >Book an Appointment</a></li>
           <li class="header__link"><a href="#" >Contact Us</a></li>
@@ -40,13 +40,12 @@
         <div/>
              {% if user.is_authenticated%}
              <p class="header__welcome">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
-          {% else%}
-           <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
-          {% endif %}
-       
+        {% else%}
+        <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+        {% endif %}
         </ul>
     
-      </nav>
+    </nav>
 
     </header>
 
