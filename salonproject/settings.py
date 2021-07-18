@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-import dj_database_url
+#import dj_database_url
 import django_heroku
 import psycopg2
 from pathlib import Path
@@ -102,8 +102,8 @@ DATABASES = {
         'HOST' : 'localhost'
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config(conn_max_age=600)
+#DATABASES['default'].update(db_from_env)
 DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','madeleinecoiffure.herokuapp.com']
@@ -173,8 +173,8 @@ STATICFILES_FINDERS = (
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #terminal.integrated.inheritEnv"
@@ -207,8 +207,4 @@ LOGGING = {
              'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
         },
     },
-
 }
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
