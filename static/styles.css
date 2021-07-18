@@ -130,6 +130,12 @@ ul.nav__sidenav.nav--right {
 .nav__sidenav a:hover {
   opacity: .5;
 }
+.hero__image{
+  width: 50%;
+  padding-right: 5%;
+  height: 50%;
+
+}
 
 @media (min-width: 840px) {
   a#nav-bag {
@@ -194,7 +200,8 @@ ul.nav__sidenav.nav--right {
 .site-footer__social {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
+ 
 }
 
 .site-footer__social a:not(:first-child) {
@@ -304,6 +311,7 @@ img:hover {
 
 p.post-link-more {
   margin: 40px 0 50px 0;
+  text-decoration: none;
 }
 
 .sidebar-list {
