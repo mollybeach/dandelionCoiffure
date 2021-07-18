@@ -160,7 +160,6 @@ STATICFILES_DIRS = [
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
     # 'django_scss.finders.SCSSFinder',
 )
 #SASS_PROCESSOR_INCLUDE_DIRS = [
