@@ -95,7 +95,7 @@ figure {
 }
 .header__link:hover{
   transition: 0.3s;
-  background-color: rgb(236, 225, 237);
+  /*background-color: rgb(242, 240, 242);*/
   color:rgba(0, 0, 0, 0.85)
 
 }
@@ -130,16 +130,15 @@ ul.nav__sidenav.nav--right {
 .nav__sidenav a:hover {
   opacity: .5;
 }
-@media (min-width: 550px) {
+
 .hero__image{
-  width: 50%;
   padding: 1%;
   margin-right: 5%;
   height: 50%;
   border: solid rgba(21, 14, 21, 0.1) 5px;
   
 }
-}
+
 
 .hero__image2{
   width: 50%;
@@ -147,10 +146,12 @@ ul.nav__sidenav.nav--right {
   margin-right: 2%;
   height: 50%;
 
-
-
 }
-
+@media(max-width:550px) {
+  .post__top-image .hero__image .hero__image2{
+    display: none;
+  }
+}
 @media (min-width: 840px) {
   a#nav-bag {
     padding-right: 0;
@@ -281,6 +282,8 @@ h5 {
   width: 100%;
   height: auto;
 }
+
+
 
 .post-featured {
   border-bottom: 5px solid #000;
