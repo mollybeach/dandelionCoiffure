@@ -1,54 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
-
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-
-<!-- Template Main CSS File -->
-
-  <link href=" {% static "/styles.css" %}"  rel="stylesheet"  >
-
-<head/>
+  <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <!-- Template Main CSS File -->
+      <link href=" {% static "/styles.css" %}"  rel="stylesheet"  >
+</head>
 <body class="container">
-    <header class="header">
+      <header class="header">
       <nav class="header__nav">
-        <ul class="nav__sidenav nav--right">
-          <li><a href="/" class="header__logo">  
-      <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" />
-          
-</a></li>
+            <ul class="nav__sidenav nav--right">
+              <li><a href="/" class="header__logo"> <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" /></a></li>
           <div class="header__links">
           <li class="header__link"><a href="#about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
           <li class="header__link"><a href="form" >Book an Appointment</a></li>
-          <li class="header__link"><a href="#" >Contact Us</a></li>
-            {% if user.is_authenticated%}
+          <li class="header__link"><a href="contact" >Contact Us</a></li>
+{% if user.is_authenticated%}
           <li class="header__link"><a href="profile" >My Profile</a></li>
           <li class="header__link"><a href="logout" >Logout</a></li>
-          {% else%}
+{% else%}
           <li class="header__link"><a href="register" >Create Account</a></li>
           <li><a href="login" class="header__link">Login</a></li>
-          {% endif %}
+{% endif %}
           <li class="header__link"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
-        <div/>
-             {% if user.is_authenticated%}
-             <p class="header__welcome">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
-          {% else%}
-           <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
-          {% endif %}
-       
+        </div>
+{% if user.is_authenticated%}
+        <p class="header__welcome">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
+{% else%}
+        <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+{% endif %}
         </ul>
-    
       </nav>
-
     </header>
-
-</body>
+    <main></main>
+  </body>
 </html>
