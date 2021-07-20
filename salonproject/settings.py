@@ -106,8 +106,8 @@ db_from_env = dj_database_url.config(conn_max_age=600)
 #DATABASES['default'].update(db_from_env)
 DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','madeleinecoiffure.herokuapp.com']
-
+ALLOWED_HOSTS = ['madeleinecoiffure.herokuapp.com']
+#ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','madeleinecoiffure.herokuapp.com']
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
