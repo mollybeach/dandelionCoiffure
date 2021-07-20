@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 import dj_database_url
-#import django_heroku
-#import psycopg2
+import django_heroku
+import psycopg2
 from pathlib import Path
 
 
@@ -150,11 +150,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+#STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "images"),
-]
+#STATICFILES_DIRS = [
+ #   os.path.join(BASE_DIR, "images"),
+#]
 
 
 STATICFILES_FINDERS = (
@@ -178,7 +178,7 @@ STATICFILES_FINDERS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #terminal.integrated.inheritEnv"
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 '''
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #STATIC_ROOT = os.path.join(BASE_DIR,"deploy_to_server")
