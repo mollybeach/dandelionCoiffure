@@ -120,15 +120,28 @@
             <form method="POST" action="">
 {% csrf_token %}
                 <table border="1"> 
+                    <!-- FIRST NAME -->
                     <tr>
-                        <td>Employee Id</td>
-                        <td> <input type="text" placeholder=" First Name " required autocomplete='off' name="first_name" /></td>
+                    <td>First Name</td><td> <input type="text" placeholder=" First Name " required autocomplete='off' name="first_name" /></td>
                     </tr>
+                    <!-- LAST NAME -->
                     <tr>  
-                    <td>Employee Date</td>
-                        <td> <input type="date" placeholder=" Appointment Date " required autocomplete='off' name="last_name"/></td>
+                    <td>Last Name</td><td> <input type="date" placeholder=" Last Name " required autocomplete='off' name="appointment_date"/></td>
                     </tr>
+                    <!-- EMAIL -->
                     <tr>
+                    <td>Email</td><td> <input type="email" placeholder=" Email " required autocomplete='off' name="email"/></td>
+                    </tr>
+                    <!-- TELEPHONE -->
+                    <tr>
+                    <td>Telephone</td><td> <input type="tel" placeholder=" Telephone " required autocomplete='off' name="telephone"/></td>
+                    </tr>
+                    <!-- APPOINTMENT DATE -->
+                    <tr>
+                    <td>Appointment Date</td><td> <input type="date" placeholder=" Appointment Date " required autocomplete='off' name="appointment_date"/></td>
+                    </tr>
+                    
+
                 </table>
                 <input type="submit" value="Insert" />
 {% if messages %}
