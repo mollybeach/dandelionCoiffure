@@ -13,6 +13,7 @@ import django_heroku
 import psycopg2
 from pathlib import Path
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'salonapp',
-    'django_send_email'
 ]
 
 MIDDLEWARE = [
