@@ -126,7 +126,7 @@ def calendar(request):
 #calendar user can delete events from a caldenar
 #calendar can see all the events in a calendarrr
 #schedule a meetingf
-#schedule appointment
+#schedule appointmentt
 
 
 
