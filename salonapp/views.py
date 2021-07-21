@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.db import connection
-from .models import Feature, client
+from salonapp.models import Feature, schedule
 import calendar
 from  calendar import HTMLCalendar
 #from datatime import datetime
@@ -104,17 +104,18 @@ def form(request):
     else: 
         return render(request, 'form.html')
 
+
 def calendar(request):
     if request.method=="POST":
         if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('email') and request.POST.get('telephone') and request.POST.get('appointment_date'):
-            saveobj = client()
+            saveobj = schedule()
             saveobj.first_name=request.POST.get('first_name')
             saveobj.last_name=request.POST.get('last_name')
             saveobj.email=request.POST.get('email')
             saveobj.telephone=request.POST.get('telephone')
             saveobj.appointment_date=request.POST.get('appointment_date')
             cursor=connection.cursor()
-            cursor.execute("insert into client(first_name, last_name, email, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
+            cursor.execute("Insert into adgenda(first_name, last_name, email, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
             messages.success(request, "Client name  "+saveobj.first_name+ " "+saveobj.last_name+ "has successfully scheduled appointment on "+ saveobj.appointment_date)
             return render(request, 'calendar.html')
     else:

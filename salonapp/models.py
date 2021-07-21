@@ -6,15 +6,15 @@ class Feature(models.Model):
     name = models.CharField(max_length=100)
     details = models.CharField(max_length=500)
 
-#class NameForm(forms.Form):
- #   your_name = forms.CharField(max_length=100)
 
-class client(models.Model):
+class schedule(models.Model):
     first_name=models.CharField(max_length=150)
     last_name=models.CharField(max_length=150)
     email=models.CharField(max_length=150)
+    service=models.CharField(max_length=150)
     telephone=models.CharField(max_length=150)
     appointment_date=models.DateTimeField()
+
 
 
 
