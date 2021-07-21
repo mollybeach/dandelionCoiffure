@@ -1,5 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
+<!--HTML-->
 <html lang="en">
   <head>
       <meta charset="utf-8">
@@ -9,8 +10,9 @@
       <!--CSS FILE-->
       <link href=" {% static "/styles.css" %}"  rel="stylesheet"  >
 </head>
+    <!--BODY-->
   <body class="container">
-    <!-- NAV BAR -->
+    <!-- HEADER NAV -->
     <header class="header">
       <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
@@ -27,7 +29,7 @@
           <li class="header__link"><a href="register" >Create Account</a></li>
           <li><a href="login" class="header__link">Login</a></li>
 {% endif %}
-          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+          <li class="header__link hide-3"><a href="calendar" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
         </div>
 {% if user.is_authenticated%}
         <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
@@ -82,9 +84,10 @@
               </article>
             </div>
         </section>
-              <!-- HAIRCUT -->
+        <!-- ASIDE -->
         <aside class="home-side-col emblem">
             <ul class="sidebar-list"> <br>
+            <!-- HAIRCUT -->
               <li class="sidebar-list__item">
                   <h4 class="sidebar-list__label">HAIRCUT</h4>
                   <a href="#"><img class="sidebar-list__image" src= "https://i.pinimg.com/280x280_RS/07/30/dd/0730ddd87b1406eef15f331ed869d123.jpg" width="256" height="256" alt="" /> </a>
@@ -120,7 +123,6 @@
               <li class="sidebar-list__item"></li>
             </ul>
         </aside>
-      </main>
       <!--SLIDER-->
       <div class="home-more-button"><button class="button-main">Voir plus</button></div>
       <div class="slider">
@@ -141,6 +143,7 @@
             </div>
         </div>
       </div>
+      </main>
       <!--FOOTER-->
       <footer class="footer">
             <ul class="footer__text">

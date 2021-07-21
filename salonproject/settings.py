@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 import dj_database_url
-#import django_heroku
-#import psycopg2
+import django_heroku
+import psycopg2
 from pathlib import Path
 
 
@@ -88,8 +88,10 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+DATABASES = {'default': dj_database_url.config(default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")}
+'''
 DATABASES = {
-    'default': {
+ 'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
         #'NAME': BASE_DIR / 'db.sqlite3',
@@ -98,13 +100,14 @@ DATABASES = {
         'PASSWORD' : 'jeannette487547',
         'HOST' : 'localhost'
     }
-}
+    
+    '''
 db_from_env = dj_database_url.config(conn_max_age=600)
 #DATABASES['default'].update(db_from_env)
 DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','madeleinecoiffure.herokuapp.com']
-
+ALLOWED_HOSTS = ['madeleinecoiffure.herokuapp.com']
+#ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','madeleinecoiffure.herokuapp.com']
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
@@ -175,7 +178,7 @@ STATICFILES_FINDERS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #terminal.integrated.inheritEnv"
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 '''
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #STATIC_ROOT = os.path.join(BASE_DIR,"deploy_to_server")

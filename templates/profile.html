@@ -1,23 +1,26 @@
 {% load static %}
 <!DOCTYPE html>
+<!--HTML-->
 <html lang="en">
   <head>
       <meta charset="utf-8">
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
       <meta content="" name="description">
       <meta content="" name="keywords">
-      <!-- CSS File -->
+      <!--CSS FILE-->
       <link href=" {% static "/styles.css" %}"  rel="stylesheet"  >
 </head>
-<body class="container">
-      <header class="header">
+    <!--BODY-->
+  <body class="container">
+    <!-- HEADER NAV -->
+    <header class="header">
       <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
-              <li><a href="/" class="header__logo"> <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" /></a></li>
-          <div class="header__links">
+          <li><a href="/" class="header__logo"> <img   class='header__img' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></li>
+            <div class="header__links">
           <li class="header__link"><a href="#about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="form" >Book an Appointment</a></li>
+          <li class="header__link"><a href="form" >Book</a></li>
           <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
           <li class="header__link"><a href="profile" >My Profile</a></li>
@@ -26,16 +29,46 @@
           <li class="header__link"><a href="register" >Create Account</a></li>
           <li><a href="login" class="header__link">Login</a></li>
 {% endif %}
-          <li class="header__link"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
         </div>
 {% if user.is_authenticated%}
-        <p class="header__welcome">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
+        <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
 {% else%}
-        <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
 {% endif %}
         </ul>
       </nav>
-    </header>
-    <main></main>
+  </header>
+  <!--MAIN-->
+      <main class="main">
+    <h1 class="header__welcome">{{user.username}} </h1>
+    </main>
+          <!--FOOTER-->
+      <footer class="footer">
+            <ul class="footer__text">
+                  <div class="footer__column">
+                    <li class='footer__text       '> <a href="#" class="footer__link">À propos de nous </a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">Politique de confidentialité</a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">Termes et conditions </a></li>
+                  </div>
+                  <div class="footer__column ">
+                    <li class='footer__text top   '><a href="#"  class="footer__link"> Madeleine Dupont</a></li>
+                    <li class='footer__text center'> <a href="#" class="footer__link">madeleinesalondecoiffure@gmail.com</a></li>
+                    <li class='footer__text center'> <a href="#" class="footer__link"> © 2021, Madeleine Salon de Coiffure</a></li>
+                  </div>
+                  <div class="footer__column">
+                    <li class='footer__text top  '> <a href="#"  class="footer__link"> Contactez-nous</a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">2206 N Alder St </a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">Tacoma WA 98406</a></li>
+                  </div>
+            </ul>
+            <div class='footer__imgcontainer'> <a class="" href="#"><img class='footer__logo' src="https://www.dropbox.com/s/8m1yd3e958c9ic2/skeletoncrest.svg?raw=1" alt="" /></a></div>
+        <div class="footer__social">
+            <a class="" href="https://www.facebook.com/madeleine.beach.3"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/facebook_eknuzn.svg" alt="facebook" /></a>
+            <a class="" href="https://twitter.com/madecoiffure"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/twitter_nfohqw.svg" alt="twitter" /></a>
+            <a class="" href="https://www.instagram.com/madeleinebeachh/"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/instagram_u4wt1i.svg" alt="instagram" /></a>
+            <a class="" href="https://pin.it/5qgAohs"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/pinterest_vtom0c.svg" alt="pinterest" /></a>
+        </div>
+      </footer>
   </body>
 </html>
