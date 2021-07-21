@@ -125,8 +125,8 @@ def calendar(request):
             cursor.execute("INSERT INTO schedule(first_name, last_name, email, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
             messages.success(request, "Thank you! "+saveobj.first_name+ " "+saveobj.last_name+ "has successfully scheduled appointment on "+ saveobj.appointment_date)
             try:
-                send_mail(subjectforclient, messageforclient, saveobj.email, saveobj.email)
-                send_mail(subjectforhairdresser, messageforhairdresser, saveobj.email, ['madeleinesalondecoiffure@gmail.com'])
+                send_mail(subjectforclient, messageforclient, saveobj.email, [saveobj.email])
+  
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return render(request, 'calendar.html')
@@ -136,6 +136,7 @@ def calendar(request):
 
 
 #['madeleinesalondecoiffure@gmail.com']
+#              send_mail(subjectforhairdresser, messageforhairdresser, saveobj.email, ['madeleinesalondecoiffure@gmail.com'])
 
 
 
