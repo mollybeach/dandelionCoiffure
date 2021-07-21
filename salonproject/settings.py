@@ -73,9 +73,10 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 #HEROKU DATABASE 
+#HEROKU_POSTGRESQL_MAROON_URL
 DATABASES = {
 'default': dj_database_url.config(
-default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")
+default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
 }
 
 #HEROKU DATABASE 
@@ -108,7 +109,6 @@ DATABASES = {
 '''
 db_from_env = dj_database_url.config(conn_max_age=600)
 
-#DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
