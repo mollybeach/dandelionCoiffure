@@ -72,18 +72,19 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")}
-'''
+#DATABASES = {'default': dj_database_url.config(default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")}
+
 DATABASES = {
  'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'salon_db',
         'USER' : 'postgres',
         'PASSWORD' : 'jeannette487547',
-        'HOST' : 'localhost'
+        'HOST' : 'localhost',
+        'PORT' : '5432'
     }
 }
- '''   
+  
 db_from_env = dj_database_url.config(conn_max_age=600)
 
 #DATABASE_URL='postgres://kslmuwaiouqmwl:cf7bb7c24672c2db9f4faa7dd7df69d3a1a111c443fa1cbe3be9455e41713255@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dbj8n955cmglca'
@@ -127,6 +128,7 @@ STATICFILES_FINDERS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
 
