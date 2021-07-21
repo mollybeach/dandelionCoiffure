@@ -115,7 +115,7 @@ def calendar(request):
             saveobj.first_name=request.POST.get('first_name')
             saveobj.last_name=request.POST.get('last_name')
             saveobj.email=request.POST.get('email')
-            saveobj.email=request.POST.get('service')
+            saveobj.service=request.POST.get('service')
             saveobj.telephone=request.POST.get('telephone')
             saveobj.appointment_date=request.POST.get('appointment_date')
             subjectforclient="Appointment with MadeleineSalonDeCoiffure on  '" + saveobj.appointment_date+ "'  for  '" + saveobj.service+ "'"
@@ -128,7 +128,6 @@ def calendar(request):
             try:
                 send_mail(subjectforclient, messageforclient, saveobj.email, [saveobj.email])
                 send_mail(subjectforhairdresser, messageforhairdresser, saveobj.email, ['madeleinesalondecoiffure@gmail.com'])
-  
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return render(request, 'calendar.html')
