@@ -14,7 +14,7 @@ class client(models.Model):
     last_name=models.CharField(max_length=150)
     email=models.CharField(max_length=150)
     telephone=models.CharField(max_length=150)
-    appointment__date=models.DateTimeField()
+    appointment_date=models.DateTimeField()
 
 
 
