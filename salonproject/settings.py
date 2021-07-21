@@ -72,12 +72,14 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#   'default': dj_database_url.config(
-#     default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")}
+#HEROKU DATABASE 
+DATABASES = {
+'default': dj_database_url.config(
+default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")
+}
 
 #HEROKU DATABASE 
-
+''''
 DATABASES = {
 'default': {
         'HOST' : 'ec2-23-23-164-251.compute-1.amazonaws.com',
@@ -89,9 +91,9 @@ DATABASES = {
         'HEROKU CLI' : "heroku pg:psql postgresql-concave-19053 --app madeleinecoiffure"   
     }
 }
+'''
 
-
-#local postgres psql database 
+#LOCAL POSTGRES PSQL DATABASE 
 '''
 DATABASES = {
 'default': {
@@ -128,7 +130,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# STATIC FILES (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -145,6 +147,7 @@ STATICFILES_FINDERS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
