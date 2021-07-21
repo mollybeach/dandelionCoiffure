@@ -72,10 +72,29 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")}
+#DATABASES = {
+#   'default': dj_database_url.config(
+#     default="postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45")}
+
+#HEROKU DATABASE 
+
+DATABASES = {
+'default': {
+        'HOST' : 'ec2-23-23-164-251.compute-1.amazonaws.com',
+        'DATABASE': 'd86t6orj06q45',
+        'USER' : 'gpfievfblyjmsx',
+        'PORT' : '5432',
+        'PASSWORD' : '51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af',
+        'URI' : "postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45",
+        'HEROKU CLI' : "heroku pg:psql postgresql-concave-19053 --app madeleinecoiffure"   
+    }
+}
+
+
+#local postgres psql database 
 '''
 DATABASES = {
- 'default': {
+'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'salon_db',
         'USER' : 'postgres',
