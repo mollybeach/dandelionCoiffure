@@ -114,7 +114,7 @@ def calendar(request):
             saveobj.telephone=request.POST.get('telephone')
             saveobj.appointment_date=request.POST.get('appointment_date')
             cursor=connection.cursor()
-            cursor.execute("insert into client(first_name, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
+            cursor.execute("insert into client(first_name, last_name, email, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
             messages.success(request, "Client name  "+saveobj.first_name+ " "+saveobj.last_name+ "has successfully scheduled appointment on "+ saveobj.appointment_date)
             return render(request, 'calendar.html')
     else:
