@@ -17,9 +17,9 @@
             <nav class="header__nav">
                 <ul class="nav__sidenav nav--right"><img src="{% static "assets/verticalheadcrest.svg" %}" alt="" /></a></li>
                     <div class="header__links">
-                    <li class="header__link"><a href="#about" >About</a></li>
+                    <li class="header__link"><a href="about" >About</a></li>
                     <li class="header__link"><a href="clients" >Clients</a></li>
-                    <li class="header__link"><a href="form" >Book an Appointment</a></li>
+                    <li class="header__link"><a href="calendar" >Book</a></li>
                     <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
                     <li class="header__link"><a href="profile" >My Profile</a></li>
@@ -45,7 +45,7 @@
             <section id="book-appointment">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Book An Appointment</h2>
+                        <h2 class="card-title">Book</h2>
                     </div>
                     <div class="card-body">
                         <form>

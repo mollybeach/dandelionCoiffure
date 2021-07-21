@@ -16,9 +16,9 @@
         <ul class="nav__sidenav nav--right">
           <li><a href="/" class="header__logo">  <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" /> </a></li>
           <div class="header__links">
-          <li class="header__link"><a href="#about" >About</a></li>
+          <li class="header__link"><a href="about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="form" >Book an Appointment</a></li>
+          <li class="header__link"><a href="calendar" >Book</a></li>
           <li class="header__link"><a href="#" >Contact Us</a></li>
 {% if user.is_authenticated%}
           <li class="header__link"><a href="profile" >My Profile</a></li>
@@ -42,7 +42,7 @@
 {% for message in messages %} 
         <h3> {{message}}</h3>
 {% endfor %}
-        <form method='POST' action="register">
+        <form method='POST' action="register" class='signupform'>
 {% csrf_token %}
           <p> Username: </p>
           <input type='text' name='username'></input>
