@@ -106,12 +106,12 @@ def form(request):
 
 def calendar(request):
     if request.method=="POST":
-        if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('appointment_date'):
+        if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('email') and request.POST.get('telephone') and request.POST.get('appointment_date'):
             saveobj = client()
             saveobj.first_name=request.POST.get('first_name')
-            saveobj.first_name=request.POST.get('last_name')
-            saveobj.appointment_date=request.POST.get('email')
-            saveobj.appointment_date=request.POST.get('telephone')
+            saveobj.last_name=request.POST.get('last_name')
+            saveobj.email=request.POST.get('email')
+            saveobj.telephone=request.POST.get('telephone')
             saveobj.appointment_date=request.POST.get('appointment_date')
             cursor=connection.cursor()
             cursor.execute("insert into client(first_name, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
