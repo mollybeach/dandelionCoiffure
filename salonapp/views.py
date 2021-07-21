@@ -3,11 +3,12 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.db import connection
-from .models import client
-from .models import Feature, NameForm
+from .models import Feature, client
+import calendar
+from  calendar import HTMLCalendar
+#from datatime import datetime
 
 
-    
 def index(request):
     features = Feature.objects.all()
     return render(request, 'index.html',{'features': features})
@@ -78,9 +79,6 @@ def about(request):
     about = {'user': request.user}
     return render(request, 'about.html', about)
 
-def hello_world(request):
-    form = NameForm()
-    return render(request, 'hello_world.html', {'form': form})
 
 def form(request):
     if request.method == 'POST':
@@ -105,6 +103,7 @@ def form(request):
             return redirect('register')
     else: 
         return render(request, 'form.html')
+
 def calendar(request):
     if request.method=="POST":
         if request.POST.get('first_name') and request.POST.get('appointment_date'):
@@ -126,7 +125,5 @@ def calendar(request):
 #schedule a meeting
 #schedule appointment
 
-def calendar(request):
-    return render(request, 'calender.html')
 
 

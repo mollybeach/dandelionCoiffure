@@ -3,6 +3,7 @@ asgiref==3.4.1
 certifi==2021.5.30
 charset-normalizer==2.0.3
 click==8.0.1
+DateTime==4.3
 distlib==0.3.2
 dj-database-url==0.5.0
 Django==3.2.5
@@ -38,3 +39,4 @@ virtualenvwrapper-win==1.2.6
 Werkzeug==2.0.1
 White-Noise==0.1.0
 whitenoise==5.3.0
+zope.interface==5.4.0
