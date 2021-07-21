@@ -110,20 +110,21 @@ def form(request):
 
 def calendar(request):
     if request.method=="POST":
-        if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('email') and request.POST.get('telephone') and request.POST.get('appointment_date'):
+        if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('email')  and request.POST.get('service') and request.POST.get('telephone') and request.POST.get('appointment_date'):
             saveobj = schedule()
             saveobj.first_name=request.POST.get('first_name')
             saveobj.last_name=request.POST.get('last_name')
             saveobj.email=request.POST.get('email')
+            saveobj.email=request.POST.get('service')
             saveobj.telephone=request.POST.get('telephone')
             saveobj.appointment_date=request.POST.get('appointment_date')
-            subjectforclient='Appointment with MadeleineSalonDeCoiffure'
-            subjectforhairdresser="Appointment with {saveobj.firstname} {saveobj.lastname} on {saveobj.appointment_date} on  {saveobj.appointment_date}"
-            messageforclient='Thank you for scheduling an appointment with Madeleine for this date {saveobj.appointment_date}'
-            messageforhairdresser='You are scheduled to for an appointment with {saveobj.first_name} {saveobj.last_name} on {saveobj.appointment_date} make sure to follow up with them at {saveobj.telephone}'
+            subjectforclient="Appointment with MadeleineSalonDeCoiffure on  '" + saveobj.appointment_date+ "'  for  '" + saveobj.service+ "'"
+            subjectforhairdresser="Client Appointment with ' "+saveobj.first_name+ "' ' "+saveobj.last_name+ "' on  '" + saveobj.appointment_date+ "'  for  '" + saveobj.service+ "'"
+            messageforclient="Thank you for scheduling an appointment with Madeleine for this date  '" + saveobj.appointment_date+ "' "
+            messageforhairdresser="You are scheduled with' "+saveobj.first_name+ "' ' "+saveobj.last_name+ "'  for  '" + saveobj.appointment_date+ "' please make sure to follow up with your client at either' "+saveobj.email+ "' or  ' "+saveobj.telephone+ "',"
             cursor=connection.cursor()
-            cursor.execute("INSERT INTO schedule(first_name, last_name, email, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
-            messages.success(request, "Thank you! "+saveobj.first_name+ " "+saveobj.last_name+ " has successfully scheduled appointment on "+ saveobj.appointment_date)
+            cursor.execute("INSERT INTO schedule(first_name, last_name, email, service, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "', '" + saveobj.service+ "'" +", '"+saveobj.telephone+"', '"+saveobj.appointment_date+"')")
+            messages.success(request, "Thank you! "+saveobj.first_name+ " "+saveobj.last_name+ " has successfully scheduled appointment on "+ saveobj.appointment_date+" for '"+saveobj.service+"'")
             try:
                 send_mail(subjectforclient, messageforclient, saveobj.email, [saveobj.email])
                 send_mail(subjectforhairdresser, messageforhairdresser, saveobj.email, ['madeleinesalondecoiffure@gmail.com'])
