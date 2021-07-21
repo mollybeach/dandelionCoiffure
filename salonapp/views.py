@@ -118,14 +118,15 @@ def calendar(request):
             saveobj.telephone=request.POST.get('telephone')
             saveobj.appointment_date=request.POST.get('appointment_date')
             subjectforclient='Appointment with MadeleineSalonDeCoiffure'
-            subjectforhairdresser='Appointment with {saveobj.firstname} {saveobj.lastname} on {saveobj.appointmentdate} on  {saveobj.appointmentdate}'
-            messageforclient='Thank you for scheduling an appointment with Madeleine for this date {saveobj.appointmentdate}'
-            messageforhairdresser='You are scheduled to for an appointment with {saveobj.firstname} {saveobj.lastname} on {saveobj.appointmentdate} make sure to follow up with them at {saveobj.telephone}'
+            subjectforhairdresser='Appointment with {saveobj.firstname} {saveobj.lastname} on {saveobj.appointment_date} on  {saveobj.appointment_date}'
+            messageforclient='Thank you for scheduling an appointment with Madeleine for this date {saveobj.appointment_date}'
+            messageforhairdresser='You are scheduled to for an appointment with {saveobj.first_name} {saveobj.last_name} on {saveobj.appointment_date} make sure to follow up with them at {saveobj.telephone}'
             cursor=connection.cursor()
             cursor.execute("INSERT INTO schedule(first_name, last_name, email, telephone, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
             messages.success(request, "Thank you! "+saveobj.first_name+ " "+saveobj.last_name+ "has successfully scheduled appointment on "+ saveobj.appointment_date)
             try:
                 send_mail(subjectforclient, messageforclient, saveobj.email, [saveobj.email])
+                send_mail(subjectforhairdresser, messageforhairdresser, saveobj.email, ['madeleinesalondecoiffure@gmail.com'])
   
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
