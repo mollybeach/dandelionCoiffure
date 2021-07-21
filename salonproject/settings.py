@@ -79,20 +79,6 @@ DATABASES = {
 default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
 }
 
-#HEROKU DATABASE 
-''''
-DATABASES = {
-'default': {
-        'HOST' : 'ec2-23-23-164-251.compute-1.amazonaws.com',
-        'DATABASE': 'd86t6orj06q45',
-        'USER' : 'gpfievfblyjmsx',
-        'PORT' : '5432',
-        'PASSWORD' : '51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af',
-        'URI' : "postgres://gpfievfblyjmsx:51b1bd6faf3885d393a19a4d7163e8e1447775e5ad39a8f3f735c940af6413af@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d86t6orj06q45",
-        'HEROKU CLI' : "heroku pg:psql postgresql-concave-19053 --app madeleinecoiffure"   
-    }
-}
-'''
 
 #LOCAL POSTGRES PSQL DATABASE 
 '''
@@ -108,7 +94,6 @@ DATABASES = {
 }
 '''
 db_from_env = dj_database_url.config(conn_max_age=600)
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
