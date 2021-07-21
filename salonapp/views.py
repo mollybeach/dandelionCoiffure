@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.db import connection
+from .models import client
 from .models import Feature, NameForm
 
 
@@ -103,137 +105,28 @@ def form(request):
             return redirect('register')
     else: 
         return render(request, 'form.html')
-
-
-        
-
-'''
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from accounts.forms import (
-    RegistrationForm,
-    EditProfileForm
-)
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import (
-    UserChangeForm,
-    PasswordChangeForm
-)
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.decorators import login_required
-def view_profile(request):
-    view_profile = {'user': request.user}
-    #same here..
-    return render(request, 'accounts/view_profile.html', args)
-def edit_profile(request):
-    if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=request.user)
-
-        if form.is_valid:
-            form.save()
-            return redirect('accounts:view_profile')
+def calendar(request):
+    if request.method=="POST":
+        if request.POST.get('first_name') and request.POST.get('appointment_date'):
+            saveobj = client()
+            saveobj.first_name=request.POST.get('first_name')
+            saveobj.appointment_date=request.POST.get('appointment_date')
+            cursor=connection.cursor()
+            cursor.execute("insert into client(first_name, appointment_date) values(' "+saveobj.first_name+ "', '" + saveobj.appointment_date+ "')")
+            messages.success(request, "Client name  "+saveobj.first_name+ " has successfully scheduled appointment on "+ saveobj.appointment_date)
+            return render(request, 'calendar.html')
     else:
-        form = EditProfileForm(instance=request.user)
-    args = {'form': form}
-    return render(request, 'accounts/edit_profile.html', args)
-
-def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(data=request.POST, user=request.user)
-
-        if form.is_valid():
-            form.save()
-            update_session_auth_hash(request, form.user)
-            return redirect('accounts:view_profile')
-        else:
-            return redirect('accounts:change_password')
-    else:
-        form = PasswordChangeForm(user=request.user)
-    args = {'form': form}
-    #same thing here too
-    return render(request, 'accounts/change_password.html', args)
+        return render(request, 'calendar.html')
 
 
-'''
+#make a calendar feature that we can put in our app
+#calendar user can add events to a calender and see all events in a calender
+#calendar user can delete events from a caldenar
+#calendar can see all the events in a calendar
+#schedule a meeting
+#schedule appointment
+
+def calendar(request):
+    return render(request, 'calender.html')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-    #def count(request):
-# words = request.POST['words']
-    #amount_of_words = len(words.split())
-    #return render(request, 'counter.html', {'amount' : amount_of_words})
-    feature1 = Feature()
-    feature1.id = 0
-    feature1.name = 'Fast'
-    feature1.is_true = True
-    feature1.details = 'Our Service is Very Quick '
-
-    feature2 = Feature()
-    feature2.id = 1
-    feature2.name = 'Reliable'
-    feature2.is_true = True
-    feature2.details = 'Our Service is Very Reliable '
-
-    feature3 = Feature()
-    feature3.id = 2
-    feature3.name = 'Easy to Use'
-    feature3.is_true = True
-    feature3.details = 'Our Service is Very Easy to use '
-
-    feature4 = Feature()
-    feature4.id = 4
-    feature4.name = 'Affordable'
-    feature4.is_true = False
-    feature4.details = 'Our Service is Very affordable  '
-
-    feature5 = Feature()
-    feature5.id = 5
-    feature5.name = 'Trustworthy'
-    feature5.is_true = True
-    feature5.details = 'Our Service is Very trusting  '
-    
-    features = [feature1, feature2, feature3, feature4, feature5]
-    return render(request, 'index.html', {'features' : features}
-    ) 
-    #return render(request, 'index.html', context) 
-
-
-
-#text = 'hey how ar ewe doing 
-#print(len(text.splt())) count each word 
-
-'''
-'''    
-    context = {
-        'name' : 'Patrick',
-        'age' : 23,
-        'nationality' : 'British'
-    }
-    return HttpResponse('<h1> hey, Welcome </h1>')
-    name = 'Patrick'
-    return render(request, 'index.html', {'name': name})  #this , curly brace after index html 
-    #is like a dictionary send variable to html file 
-    #in html file change <p>Welcome , John/p>
-    #to <p>Welcome , {{name}}/p>
-    can also have user.name='Patrick'
-''' 
