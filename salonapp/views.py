@@ -122,12 +122,7 @@ def calendar(request):
         return render(request, 'calendar.html')
 
 
-#make a calendar feature that we can put in our app
-#calendar user can add events to a calender and see all events in a calender
-#calendar user can delete events from a caldenar
-#calendar can see all the events in a calendarrr
-#schedule a meetingf
-#schedule appointmentt
+
 
 
 
