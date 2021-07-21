@@ -125,7 +125,7 @@ def calendar(request):
 #calendar user can add events to a calender and see all events in a calender
 #calendar user can delete events from a caldenar
 #calendar can see all the events in a calendar
-#schedule a meeting
+#schedule a meetingf
 #schedule appointment
 
 
