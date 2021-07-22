@@ -7,9 +7,9 @@
         <script src="{% static 'calendar.js' %}"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
+                let calendarEl = document.getElementById('calendar');
             
-                var calendar = new FullCalendar.Calendar(calendarEl, {
+                let calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -20,7 +20,7 @@
                 selectable: true,
                 selectMirror: true,
                 select: function(arg) {
-                    var title = prompt('Event Title:');
+                    let title = prompt('Service requested:');
                         if (title) {
                             calendar.addEvent({
                             title: title,
@@ -360,13 +360,6 @@
                                                                                 <div class="calendar-daygrid-event-dot"></div>
                                                                                 <div class="calendar-event-time">2:30p</div>
                                                                                 <div class="calendar-event-title">Meeting</div>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="calendar-daygrid-event-harness calendar-daygrid-event-harness-abs" style="visibility: hidden; top: 0px; left: 0px; right: 0px;">
-                                                                            <a class="calendar-daygrid-event calendar-daygrid-dot-event calendar-event calendar-event-draggable calendar-event-resizable calendar-event-start calendar-event-end calendar-event-past">
-                                                                                <div class="calendar-daygrid-event-dot"></div>
-                                                                                <div class="calendar-event-time">5:30p</div>
-                                                                                <div class="calendar-event-title">Happy Hour</div>
                                                                             </a>
                                                                         </div>
                                                                         <div class="calendar-daygrid-event-harness calendar-daygrid-event-harness-abs" style="visibility: hidden; top: 0px; left: 0px; right: 0px;">
