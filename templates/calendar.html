@@ -73,9 +73,10 @@
         <center> 
             <h1>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
-            <form  id='psql_form 'method="POST" action="">
+            <form  id='psql_form ' class='apptform ' method="POST" action="">
 {% csrf_token %}
-                <table border="1"> 
+                <table  class='appttable ' border="1"> 
+                <tbody class='apptbody'>
                     <!-- FIRST NAME -->
                     <tr>
                     <td>First Name</td><td> <input  class='username' type="text" placeholder=" First Name " required autocomplete='off' name="first_name" /></td>
@@ -100,7 +101,7 @@
                     <td>Appointment Date</td><td> <input id='appointment 'class='username'  type="date" placeholder=" Appointment Date " required autocomplete='off' name="appointment_date"/></td>
                     </tr>
            
-   
+                    <tbody>
 
                 </table>
                 <input class="btn"type="submit" value="Insert" />
@@ -116,7 +117,7 @@
             <div class="calendar-header-toolbar calendar-toolbar calendar-toolbar-ltr">
                 <div class="calendar-toolbar-chunk">
                     <div class="calendar-button-group"><button class="calendar-prev-button calendar-button calendar-button-primary" type="button" aria-label="prev"><span class="calendar-icon calendar-icon-chevron-left"></span></button><button class="calendar-next-button calendar-button calendar-button-primary" type="button" aria-label="next"><span class="calendar-icon calendar-icon-chevron-right"></span></button></div>
-                    <button class="calendar-today-button calendar-button calendar-button-primary" type="button">today</button>
+                    <button class="calendar-today-button calendar-button calendar-button-primary btn" type="button">today</button>
                 </div>
                 <div class="calendar-toolbar-chunk">
                     <h2 class="calendar-toolbar-title">September 2020</h2>

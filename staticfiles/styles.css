@@ -172,7 +172,7 @@ flex-direction: column;
 display: flex;
 flex-direction: column;
 justify-content: space-evenly;
-border-top: 5px solid #000;
+border-top: 5px solid #748194;
 width: 100%;
 flex-wrap: wrap;
 
@@ -288,7 +288,7 @@ height: auto;
 }
 
 .sector-featured {
-border-bottom: 5px solid #000;
+border-bottom: 5px solid #748194;
 }
 
 .sector__text {
@@ -376,7 +376,7 @@ transition-duration: 800ms;
 }
 
 .button-main:hover {
-border-color: #000;
+border-color: #748194;
 transition-duration: 400ms;
 }
 
@@ -433,29 +433,9 @@ height: auto;
 }
 
 /*=====================================END STYLES============================================*/
-.username{
-  font-weight: bold;
-  width: 200px;
-  margin: 0 35px 20px ;
-  height: 35px;
-  padding: 6px 15px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  background: #F6F7F9;
-  color: #748194;
-  font-size: 14px;
+.apptbody{
+  padding: 25px;
 }
-.btn{
-  font-weight: bold;
-  width: 230px;
-  margin: 0 35px 20px ;
-  height: 45px;
-  padding: 6px 15px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  background: #EE9BA3;
-  color: white;
-  font-size: 14px;
+input.username{
+  padding-top: 5px;
 }

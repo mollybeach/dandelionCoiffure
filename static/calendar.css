@@ -203,26 +203,26 @@ When it's NOT activated, the calendar-button classes won't even be in the DOM.
 .calendar .calendar-button-primary {
     color: #fff;
     color: var(--calendar-button-text-color, #fff);
-    background-color: #2C3E50;
-    background-color: var(--calendar-button-bg-color, #2C3E50);
-    border-color: #2C3E50;
-    border-color: var(--calendar-button-border-color, #2C3E50);
+    background-color: #EE9BA3;
+    background-color: var(--calendar-button-bg-color, #EE9BA3);
+    border-color: #EE9BA3;
+    border-color: var(--calendar-button-border-color, #EE9BA3);
   }
 .calendar .calendar-button-primary:hover {
     color: #fff;
     color: var(--calendar-button-text-color, #fff);
     background-color: #1e2b37;
     background-color: var(--calendar-button-hover-bg-color, #1e2b37);
-    border-color: #1a252f;
-    border-color: var(--calendar-button-hover-border-color, #1a252f);
+    border-color: #EE9BA3;
+    border-color: var(--calendar-button-hover-border-color, #EE9BA3);
   }
 .calendar .calendar-button-primary:disabled { /* not DRY */
     color: #fff;
     color: var(--calendar-button-text-color, #fff);
-    background-color: #2C3E50;
-    background-color: var(--calendar-button-bg-color, #2C3E50);
-    border-color: #2C3E50;
-    border-color: var(--calendar-button-border-color, #2C3E50); /* overrides :hover */
+    background-color: #EE9BA3;
+    background-color: var(--calendar-button-bg-color, #EE9BA3);
+    border-color: #EE9BA3;
+    border-color: var(--calendar-button-border-color, #EE9BA3); /* overrides :hover */
   }
 .calendar .calendar-button-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
@@ -231,8 +231,8 @@ When it's NOT activated, the calendar-button classes won't even be in the DOM.
   .calendar .calendar-button-primary:not(:disabled).calendar-button-active {
     color: #fff;
     color: var(--calendar-button-text-color, #fff);
-    background-color: #1a252f;
-    background-color: var(--calendar-button-active-bg-color, #1a252f);
+    background-color: #EE9BA3;
+    background-color: var(--calendar-button-active-bg-color, #EE9BA3);
     border-color: #151e27;
     border-color: var(--calendar-button-active-border-color, #151e27);
   }
@@ -1458,3 +1458,39 @@ A VERTICAL event
     color: inherit; /* natural color for navlinks */
   }
 
+  .username{
+    font-family: "DM Sans";
+    font-weight: bold;
+    width: 200px;
+    margin: 0 35px 20px ;
+    height: 35px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #F6F7F9;
+    color: #748194;
+    font-size: 14px;
+  }
+  .btn{
+    font-weight: bold;
+    width: 230px;
+    margin: 20px 35px 20px ;
+    height: 45px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #EE9BA3;
+    color: white;
+    font-size: 14px;
+  }
+  h1 {
+    color:#748194
+  }
+  h2 {
+    color:#748194
+  }
+  a{
+    color: #748194
+  }
