@@ -20,7 +20,7 @@
                 selectable: true,
                 selectMirror: true,
                 select: function(arg) {
-                    let title = prompt('Event Title:' +arg.allDay);
+                    let title = prompt('Event Title:' +arg.start);
                         if (title) {
                             calendar.addEvent({
                             title: title,
