@@ -20,13 +20,13 @@
                 selectable: true,
                 selectMirror: true,
                 select: function(arg) {
-                    let title = prompt('Event Title:' +arg.start.format('MMMM D, YYYY'));
-                        if (title) {
+                    let dateinput= document.getElementById('appointment');
+                        if (confirm('Does an appointment at' +arg.start + 'work for you?')) {
+                            date.input.value = arg.start;
                             calendar.addEvent({
-                            title: title,
-                        start: arg.start,
-                        end: arg.end,
-                        allDay: arg.allDay
+                                start: arg.start,
+                                end: arg.end,
+                                allDay: arg.allDay
                     })
                     }
                     calendar.unselect()

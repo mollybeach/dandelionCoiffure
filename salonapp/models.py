@@ -13,7 +13,7 @@ class schedule(models.Model):
     email=models.CharField(max_length=150)
     service=models.CharField(max_length=150)
     telephone=models.CharField(max_length=150)
-    appointment_date=models.DateTimeField()
+    appointment_date=models.DateTimeField() 
 
 
 
