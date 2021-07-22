@@ -78,31 +78,31 @@
                 <table border="1"> 
                     <!-- FIRST NAME -->
                     <tr>
-                    <td>First Name</td><td> <input type="text" placeholder=" First Name " required autocomplete='off' name="first_name" /></td>
+                    <td>First Name</td><td> <input  class='username' type="text" placeholder=" First Name " required autocomplete='off' name="first_name" /></td>
                     </tr>
                     <!-- LAST NAME -->
                     <tr>  
-                    <td>Last Name</td><td> <input type="text" placeholder=" Last Name " required autocomplete='off' name="last_name"/></td>
+                    <td>Last Name</td><td> <input class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="last_name"/></td>
                     </tr>
                     <tr>  
-                    <td>Service Requested</td><td> <input type="text" placeholder=" Service " required autocomplete='off' name="service"/></td>
+                    <td>Service Requested</td><td> <input class='username'  type="text" placeholder=" Service " required autocomplete='off' name="service"/></td>
                     </tr>
                     <!-- EMAIL -->
                     <tr>
-                    <td>Email</td><td> <input type="email" placeholder=" Email " required autocomplete='off' name="email"/></td>
+                    <td>Email</td><td> <input class='username'  type="email" placeholder=" Email " required autocomplete='off' name="email"/></td>
                     </tr>
                     <!-- TELEPHONE -->
                     <tr>
-                    <td>Telephone</td><td> <input type="tel" placeholder=" Telephone " required autocomplete='off' name="telephone"/></td>
+                    <td>Telephone</td><td> <input class='username'  type="tel" placeholder=" Telephone " required autocomplete='off' name="telephone"/></td>
                     </tr>
                     <!-- APPOINTMENT DATE -->
                     <tr>
-                    <td>Appointment Date</td><td> <input type="date" placeholder=" Appointment Date " required autocomplete='off' name="appointment_date"/></td>
+                    <td>Appointment Date</td><td> <input class='username'  type="date" placeholder=" Appointment Date " required autocomplete='off' name="appointment_date"/></td>
                     </tr>
                     
 
                 </table>
-                <input type="submit" value="Insert" />
+                <input class="btn" type="submit" value="Insert" />
 {% if messages %}
 {% for result in messages %} <h2 style="color:green">{{ result }}</h2>
 {% endfor %}

@@ -431,5 +431,31 @@ height: auto;
   display: none;
 }
 }
-/*=====================================END STYLES============================================*/
 
+/*=====================================END STYLES============================================*/
+.username{
+  font-weight: bold;
+  width: 200px;
+  margin: 0 35px 20px ;
+  height: 35px;
+  padding: 6px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #F6F7F9;
+  color: #748194;
+  font-size: 14px;
+}
+.btn{
+  font-weight: bold;
+  width: 230px;
+  margin: 0 35px 20px ;
+  height: 45px;
+  padding: 6px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #EE9BA3;
+  color: white;
+  font-size: 14px;
+}
