@@ -20,19 +20,19 @@
                 selectable: true,
                 selectMirror: true,
                 select: function(arg) {
-                    let title = prompt('Service requested:');
+                    let title = prompt('Event Title:' +arg);
                         if (title) {
                             calendar.addEvent({
                             title: title,
-                            start: arg.start,
-                            end: arg.end,
-                            allDay: arg.allDay
+                        start: arg.start,
+                        end: arg.end,
+                        allDay: arg.allDay
                     })
                     }
                     calendar.unselect()
                 },
                 eventClick: function(arg) {
-                    if (confirm('Sorry this date is not available')) {
+                    if (confirm('Are you sure you want to delete this event?')) {
                     arg.event.remove()
                 }
                 },
@@ -73,7 +73,7 @@
         <center> 
             <h1>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
-            <form method="POST" action="">
+            <form  id='psql_form 'method="POST" action="">
 {% csrf_token %}
                 <table border="1"> 
                     <!-- FIRST NAME -->
@@ -97,12 +97,13 @@
                     </tr>
                     <!-- APPOINTMENT DATE -->
                     <tr>
-                    <td>Appointment Date</td><td> <input class='username'  type="date" placeholder=" Appointment Date " required autocomplete='off' name="appointment_date"/></td>
+                    <td>Appointment Date</td><td> <input id='appointment 'class='username'  type="date" placeholder=" Appointment Date " required autocomplete='off' name="appointment_date"/></td>
                     </tr>
-                    
+           
+   
 
                 </table>
-                <input class="btn" type="submit" value="Insert" />
+                <input class="btn"type="submit" value="Insert" />
 {% if messages %}
 {% for result in messages %} <h2 style="color:green">{{ result }}</h2>
 {% endfor %}
