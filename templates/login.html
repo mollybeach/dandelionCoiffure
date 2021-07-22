@@ -40,19 +40,22 @@
       </nav>
   </header>
   <!--MAIN-->
+    <center> 
     <main class="main">
+    
       <h1>Login Now</h1> <style>/h3{color: red}</style>
 {% for messsages in messages%}
       <h3>{{messages}}}</h3>
 {% endfor%}
-      <form method='POST' action="login">
+      <form  class="goodform2"method='POST' action="login">
 {% csrf_token %}
-        <p> Username: </p>
-        <input type='text' name='username'></input>
-        <p> Password: </p>
-        <input type='password' name='password'></input><br>
-        <input type='submit'></input>
+        <p class="username2" > Username: </p>
+        <input class="username2"  type='text' name='username'></input>
+        <p class="username2" > Password: </p>
+        <input class="username2" type='password' name='password'></input><br>
+        <input class="btn2" type='submit'></input>
       </form>
+    </main>
     </main>
           <!--FOOTER-->
       <footer class="footer">
