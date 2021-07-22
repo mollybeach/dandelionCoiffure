@@ -137,7 +137,7 @@ MEDIA_ROOT = os.path.join(
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    #'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 MEDIA_URL = 'deployment/media/'
