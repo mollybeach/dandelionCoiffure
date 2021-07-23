@@ -81,6 +81,7 @@ default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f957694
 }
 
 
+
 #LOCAL POSTGRES PSQL DATABASE 
 '''
 DATABASES = {
@@ -95,6 +96,9 @@ DATABASES = {
 }
 '''
 db_from_env = dj_database_url.config(conn_max_age=600)
+
+#get data from heroku
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

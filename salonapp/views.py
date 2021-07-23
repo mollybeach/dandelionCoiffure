@@ -1,4 +1,4 @@
-from django.http.response import BadHeaderError
+from django.http.response import BadHeaderError, JsonResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, BadHeaderError
 from django.contrib.auth.models import User, auth
@@ -10,6 +10,10 @@ from  calendar import HTMLCalendar
 from django.core.mail import send_mail
 from django.conf import settings
 #from datatime import datetime
+#import JSONresponse
+#from django.http import JsonResponse
+#from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.http import require_POST
 
 
 def index(request):
@@ -134,11 +138,15 @@ def calendar(request):
     else:
         return render(request, 'calendar.html')
 
+#send python data from database to javascript file
+#send python data from database to javascript file
 
+def getdata(request):
+    cursor=connection.cursor()
+    cursor.execute("SELECT * FROM schedule")
+    data = cursor.fetchall()
+    return JsonResponse(data, safe=False)
 
-#['madeleinesalondecoiffure@gmail.com']
-#              send_mail(subjectforhairdresser, messageforhairdresser, saveobj.email, ['madeleinesalondecoiffure@gmail.com'])
-
-
+        
 
 
