@@ -71,7 +71,7 @@
                     $("#fromDate").datepicker("option", "maxDate", dateText);
                 }
             });
-            $(".fc-center").append('<input type="text" id="datepicker"></input>');
+            $(".fc-center").append('<input type="text" class="headerdate" id="datepicker"></input>');
             $(function() {
             $("#datepicker").datepicker({
                 showOn: "both",
@@ -173,9 +173,80 @@
         a {            
                 color: #748194
         }
+        .fc .fc-button-primary:not(:disabled).fc-button-active {
+            color: #fff;
+            color: var(--fc-button-text-color, #fff);
+            background-color: #EE9BA3;
+            background-color: var(--fc-button-active-bg-color, #EE9BA3);
+            border-color: #151e27;
+            border-color: var(--fc-button-active-border-color, #151e27);
+        }
+        .fc .fc-button-primary:disabled { /* not DRY */
+            color: #fff;
+            color: var(--fc-button-text-color, #fff);
+            background-color: #EE9BA3;
+            background-color: var(--fc-button-bg-color, #EE9BA3);
+            border-color: #EE9BA3;
+            border-color: var(--fc-button-border-color, #EE9BA3); /* overrides :hover */
+        }
+        .fc .fc-button-primary {
+            color: #fff;
+            color: var(--fc-button-text-color, #fff);
+            background-color: #EE9BA3;
+            background-color: var(--fc-button-bg-color, #EE9BA3);
+            border-color: #EE9BA3;
+            border-color: var(--fc-button-border-color, #EE9BA3);
+        }
+        .fc .fc-button-primary:not(:disabled):active,
+        .fc .fc-button-primary:not(:disabled).fc-button-active {
+            color: #fff;
+            color: var(--fc-button-text-color, #fff);
+            background-color: #EE9BA3;
+            background-color: var(--fc-button-active-bg-color, #EE9BA3);
+            border-color: #151e27;
+            border-color: var(--fc-button-active-border-color, #151e27);
+        }
         .fc-event{position:relative;display:block;font-size:.85em;line-height:1.3;border-radius:3px;border:1px solid #3a87ad;background-color:#EE9BA3;font-weight:400}      
         .fc-today{background:#ffd9d9}
         .fc-state-default{background-color#EE9BA3}
+        .fc .fc-non-business {
+    background: #e1c0f0;
+    background: var(--fc-non-business-color, rgba(159, 134, 190, 0.33));
+        }
+        .fc .fc-bg-event {
+            background: #e1c0f0;
+            background: var(--fc-bg-event-color,  rbb(179, 150, 236));
+            opacity: 0.3;
+            opacity: var(--fc-bg-event-opacity, 0.3)
+        }
+        .fc .fc-bg-event .fc-event-title {
+            margin: .5em;
+            font-size: .85em;
+            font-size: var(--fc-small-font-size, .85em);
+            font-style: italic;
+        }
+        .fc .fc-highlight {
+            background: #e1c0f0;
+            background: var(--fc-highlight-color, #e1c0f0);
+        }
+        fc .fc-cell-shaded,
+         .fc .fc-day-disabled {
+            background: #e1c0f0;
+            background: var(--fc-neutral-bg-color, #e1c0f0);
+        }
+         .fc .fc-timegrid-col.fc-day-today {
+            background-color: #e1c0f0;
+            background-color: var(--fc-today-bg-color, #e1c0f0 );
+    }
+        .headerdate{
+            font-size: 24px;
+            font-weight: bold;
+            color: #748194;
+            text-align: center;
+            width: 200px;
+            border:none;
+        
+        }
         </style>
     </head>
     <body>
