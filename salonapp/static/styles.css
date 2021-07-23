@@ -439,3 +439,34 @@ height: auto;
 input.username{
   padding-top: 5px;
 }
+.instagram-embed{
+  width: 90%;
+  height: auto;
+}
+.username2{
+  font-family: "DM Sans";
+  font-weight: bold;
+  width: 200px;
+  margin: 0 35px 20px ;
+  height: 35px;
+  padding: 6px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #F6F7F9;
+  color: #748194;
+  font-size: 14px;
+}
+.btn2{
+  font-weight: bold;
+  width: 230px;
+  margin: 20px 35px 20px ;
+  height: 45px;
+  padding: 6px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #EE9BA3;
+  color: white;
+  font-size: 14px;
+}
