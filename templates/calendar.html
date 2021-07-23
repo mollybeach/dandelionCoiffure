@@ -95,7 +95,7 @@
             $("#datepicker").datepicker( "setDate" , "+0d" );
             });
         });
-            </script>
+        </script>
         <style>
         body {
                 margin: 40px 10px;
@@ -113,7 +113,7 @@
                 margin: 30px 55px;
                 cursor: pointer;
         }               
-            html{       
+        html{       
                 color: #748194;
                     }
         .username{
@@ -142,23 +142,40 @@
                 background: #EE9BA3;
                 color: white;
                 font-size: 14px;
-        }         
+        }        
         h1 {
-                color:#748194
+                color:#EE9BA3;
         }         
         h2 {
                 color:#748194
         }         
         a {            
                 color: #748194
-        }         
+        }   
+        .fc-toolbar button {
+            background: #F6F7F9;
+
+        } 
+        .div.fc-content{
+            background: #F6F7F9;
+
+        }
+        .fc-event{
+            background: #F6F7F9;
+
+        }
+        .fc-state-highlight{
+            background: #F6F7F9;
+
+        }      
         </style>
     </head>
     <body>
         <center> 
             <h1>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
-            <form  id='psql_form ' class='apptform ' method="POST" action="">
+            <!--<form  id='psql_form ' class='apptform ' method="POST" action=""> -->
+            <form >
 {% csrf_token %}
                 <table  class='appttable ' border="1"> 
                 <tbody class='apptbody'>
@@ -185,7 +202,7 @@
                     </tr>
                     <!-- FROM APPOINTMENT DATE -->
                     <tr>
-                    <td  class='username'>To Appointmen Date</td><td> <input  class='username' type="text" id="fromDate" name="fromDate" placeholder="From Date"></td>
+                    <td  class='username'>From Appointment Date</td><td> <input  class='username' type="text" id="fromDate" name="fromDate" placeholder="From Date"></td>
                     </tr>
                     <!-- TO APPOINTMENT DATE -->
                     <tr>
@@ -200,6 +217,7 @@
 {% endfor %}
 {% endif %}
             </form>
+            <h1> July 2021</h1>
         </center>
         <div id="calendar"></div>
     </body>
