@@ -1,15 +1,10 @@
-from flask import Flask, render_template
-from datetime import datetime
-app = Flask(__name__)
+from django.apps import AppConfig
 
-@app.route('/booklist')
-def homepage():
-    #books=db.execute("SELECT * FROM booklist order by bookid")
-    books='books'
-    return render_template("BookList.html", books=books)
+
+class PostsConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'salonapp'
 
 
 
 
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)

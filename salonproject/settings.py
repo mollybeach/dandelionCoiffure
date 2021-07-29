@@ -75,15 +75,15 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 
 #HEROKU DATABASE 
 #HEROKU_POSTGRESQL_MAROON_URL
-DATABASES = {
-'default': dj_database_url.config(
-default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
-}
+#DATABASES = {
+#'default': dj_database_url.config(
+#default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
+#}
 
 
 
 #LOCAL POSTGRES PSQL DATABASE 
-'''
+
 DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -94,7 +94,7 @@ DATABASES = {
         'PORT' : '5432'
     }
 }
-'''
+
 db_from_env = dj_database_url.config(conn_max_age=600)
 
 #get data from heroku

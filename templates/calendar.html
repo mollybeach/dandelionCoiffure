@@ -1,82 +1,156 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-        <meta charset='utf-8' />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Madeleine Salon de Coiffure Schedule Calender  </title>
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.css" />
             <link href=" {% static "./jquery-ui.min.css" %}"  rel="stylesheet"  >
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src=" {% static "./jquerydatepicker.js" %}"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
-        
-            <script>
-    //get data from the getdata(request) function  in views.py  and assign it to an events variable
-            //var events = getdata(request);
-    //create a fullcalendar object
-    //get data from python models and render it in the calendar
+        <script>
+/******************GET *********************/
+        function getUsers(response) {
+            let Json = JSON.parse(response)
+            textlist = ""
+            for (let i = 0; i < Json.length; i++) {
+                textlist += "<input type='radio'  name='user' id=" + Json[i].pk + ">" + Json[i].fields['firstname'] + " " + Json[i].fields['lastname'] + "<br>"
+            }
+            $('#firstname').val("firstname")
+            $('#lastname').val("lastname")
+            $('#email').val("email")
+            $('#service').val("service")
+            $('telephone').val("telephone")
+            $('#appointmentdate').val("appointmentdate")
+            if (textlist == "")
+                $("#userlist").html("No users available, add one below please")
+            else
+                $("#userlist").html(textlist)
+            }    
+            $("#userlist").ready(function() {
+            $.ajax({
+                url: 'users/',
+                type: 'GET',
+                success: getUsers,
+            });
+        });
+/*************EVENTS LIST*********************/
+        let resultStr = JSON.parse("{{result|escapejs}}");
+        let resultObj = JSON.parse(resultStr);
+        let events = [];  
+        for (let i = 0; i < resultObj.length; i++) {
+            let event = resultObj[i];
+            let obj = {
+                "id": event.pk,
+                "title": event.fields["firstname"] + " " + event.fields["lastname"] + " " + event.fields["service"],
+                "start": event.fields["telephone"] ,
+                "end": event.fields["appointmentdate"] 
+               // "allDay": false,
+            }
+            events.push(obj);
+        }
+
+    console.log(events);
+/********** CURRENT TIME************/
+        let currentDate = new Date();
+        let month = currentDate.getMonth() + 1;
+        let year = currentDate.getFullYear();
+        let day = currentDate.getDate();
+        let hours = currentDate.getHours();
+        let minutes = currentDate.getMinutes();
+        let seconds = currentDate.getSeconds();
+        let ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        let strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+        $('#currentTime').html(strTime);
+/***************CALENDAR*************/
         $(document).ready(function() {
-            var events = [
-                {
-                id: "1",
-                title: "Test Event",
-                start: "2021-07-21T10:30:00",
-                end: "2021-07-23T11:30:00"
-                },
-                {
-                id: "2",
-                title: "Test Event2",
-                start: "2021-07-18T06:30:00",
-                end: "2021-07-19T07:30:00"
-                }
-            ]
             $("#calendar").fullCalendar({
+/************DELETE EVENT******************/
+            eventClick: function(calEvent, jsEvent, view) {
+            if (confirm("Are you sure you want to delete the event: ?"+calEvent.title)){
+            // your deletion code
+            $.ajax({
+                    type: 'DELETE',
+                    url: '/userremoved/',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        'pk':  calEvent.id
+                    }),
+                    success: getUsers
+                });
+            }
+            return false;
+            },
+/*********CALENDAR HEADERS*********/
             header: {
-                left: "prev,next today datepickerButton",
-                center: "",
-                right: "basicWeek,basicDay"
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
             },
                 editable: true,
                 navLinks: true,
                 selectable: true,
                 eventLimit: true,
                 selectMirror: true,
-                events: events,
+                events: events
+            
             });
-
-        $("#calendar").on('click', '.fc-eventye', function() {
-            $("#eventModal").modal('show');
-            $("#eventModal").find('.modal-body').html($(this).text());
-            $("#eventModal").find('.modal-body').append('<p>'+$(this).data('start')+'</p>');
-            $("#eventModal").find('.modal-body').append('<p>'+$(this).data('end')+'</p>');
-        });
-            $("#addEvent").on("click", function () {
+/***************ADD *********************/
+            $("#add").on("click", function () {
+            let firstname = $('input[name=firstname]').val()
+            let lastname = $("input[name=lastname]").val()
+            let email = $("input[name=email]").val()
+            let service = $("input[name=service]").val()
+            let telephone = $("input[name=telephone]").val()
+            let appointmentdate = $("input[name=appointmentdate]").val()
+            
+            $.ajax({
+                type: "POST",
+                url: '/useradded/',
+                dataType: 'json',
+                data: JSON.stringify({
+                    'firstname': firstname,
+                    'lastname': lastname,
+                    'email': email,
+                    'service': service,
+                    'telephone': telephone,
+                    'appointmentdate': appointmentdate
+                }),
+                success: getUsers
+            });
             events.push({
-                title: $("#eventName").val(),
-                start: $("#fromDate").val(),
-                end: $("#toDate").val()
+                title: service,
+                start: telephone,
+                end: appointmentdate
                 });
                 $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
             });
-            $("#fromDate").datepicker({
+            $("#telephone").datepicker({
                 dateFormat: "yy-mm-dd",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "c-10:c+10",
                 onSelect: function(dateText, inst) {
-                    $("#toDate").datepicker("option", "minDate", dateText);
+                    $("#appointmentdate").datepicker("option", "minDate", dateText);
                 }
             });
-            $("#toDate").datepicker({
+            $("#appointmentdate").datepicker({
                 dateFormat: "yy-mm-dd",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "c-10:c+10",
                 onSelect: function(dateText, inst) {
-                    $("#fromDate").datepicker("option", "maxDate", dateText);
+                    $("telephone").datepicker("option", "maxDate", dateText);
                 }
             });
-            $(".fc-center").append('<input type="text" class="headerdate" id="datepicker"></input>');
+           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker"></input>');
             $(function() {
             $("#datepicker").datepicker({
                 showOn: "both",
@@ -100,14 +174,159 @@
             $("#datepicker").datepicker( "setDate" , "+0d" );
             });
         });
-        </script>
-        <style>
-        body {
+</script>
+<style>
+/*=====================================HEADER NAV START ============================================*/
+body {
                 margin: 40px 10px;
                 padding: 0;
                 font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
                 font-size: 14px;
         }
+/*=====================================HEADER NAV============================================*/
+
+.header {
+width: 100%;
+margin-bottom: 2.2rem;
+/*display: flex;*/
+justify-content: space-evenly;
+/*flex-grow: 1;*/
+flex-direction: row;
+flex-wrap: wrap;
+}
+a.header__logo {
+/*margin: 10px auto;*/
+padding-top: 20px;
+display:flex;
+flex-grow: 1;
+}
+.header__nav {
+margin: 0px;
+}
+.header__links{
+padding-top: 3%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+width: 60%;
+flex-grow: 1;
+height: 40px;
+}
+.header__link{
+height: 40px;
+/*border: black 1px solid;*/
+border-radius: 10px;
+/*box-shadow: 0 2px #999;*/
+font-weight: bold;
+padding: 5px;
+}
+.header__link:hover{
+transition: 0.3s;
+/*background-color: rgb(242, 240, 242);*/
+color:rgba(0, 0, 0, 0.85)
+
+}
+.header__welcome{
+font-family: Snell Roundhand, cursive;
+font-size: 2.2rem;
+padding-left: 1rem;
+}
+.header__img{
+width: 100%;
+height:auto;
+display:flex;
+flex-grow: 1;
+}
+.nav__sidenav {
+/*Flex*/
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+/* justify-content: center;*/
+}
+
+ul.nav__sidenav.nav--right {
+justify-content: space-evenly;
+padding-left: 0;
+}
+
+.nav__sidenav a {
+margin: 0;
+text-decoration: none;
+text-align: center;
+
+display: block;
+/*padding: 1em; */
+/*flex*/
+flex-grow: 1;
+}
+.nav__sidenav a:hover {
+opacity: .5;
+}
+/*=====================================END HEADER NAV============================================*/
+/*=====================================FOOTER START============================================*/
+.footer {
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+border-top: 5px solid #748194;
+width: 100%;
+flex-wrap: wrap;
+
+}
+.footer__column{
+display: flex;
+width: 50%;
+height: auto;
+flex-wrap: wrap;
+flex-direction: column;
+flex:2;
+}
+.footer__text{
+display: flex;
+flex-wrap: wrap;
+font-size: 1em;
+}
+.footer__link{
+width: 70%;
+text-decoration: none;
+color:black;
+}
+.footer__social {
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+margin-bottom: 6.1%;
+}
+
+.footer__social a:not(:first-child) {
+padding-left: 2em;
+}
+.footer__icon{
+width: 55%;
+height: auto;
+}
+@media (max-width: 705px) {
+.footer__social {
+margin: 2em auto;
+}
+}
+.footer__imgcontainer{
+display:flex;
+justify-content: center;
+}
+.footer__logo{
+width: 90%;
+height:auto;
+padding-top: 3%;
+font-size: 16px;
+justify-content: center;
+}
+.center{
+font-size: 0.7rem;
+}
+/*=====================================FOOTER END ============================================*/
+/*===================================CALENDAR MODS START ===============================*/
         #calendar {
                 max-width: 900px;
                 margin: 0 auto;
@@ -216,7 +435,7 @@
             font-size:.85em;
             line-height:1.3;
             border-radius:3px;border:
-            1px solid #3a87ad;
+            1px solid #EE9BA3;
             background-color:#EE9BA3;
             font-weight:400
             }      
@@ -261,57 +480,247 @@
             width: 200px;
             border:none;
         }
+        .fc-event{
+            position:relative;
+            display:block;
+            font-size:.85em;
+            line-height:1.3;
+            border-radius:3px;border:
+            1px solid #EE9BA3;
+            background-color:#EE9BA3;
+            font-weight:400
+        } 
+
+/*=====================================CALENDAR MODS END ============================================*/
+/*=====================================*OTHER STYLES START ============================================*/
+.apptbody{
+    padding: 25px;
+}
+input.username{
+    padding-top: 5px;
+}
+.instagram-embed{
+    width: 90%;
+    height: auto;
+}
+.username2{
+    font-family: "DM Sans";
+    font-weight: bold;
+    width: 200px;
+    margin: 0 35px 20px ;
+    height: 35px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #F6F7F9;
+    color: #748194;
+    font-size: 14px;
+}
+.btn2{
+    font-weight: bold;
+    width: 230px;
+    margin: 20px 35px 20px ;
+    height: 45px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #EE9BA3;
+    color: white;
+    font-size: 14px;
+}
+
+/*=====================================STYLES END ============================================*/
         </style>
     </head>
     <body>
+        <!-- HEADER NAV -->
+    <header class="header">
+        <nav class="header__nav">
+            <ul class="nav__sidenav nav--right">
+            <li><a href="/" class="header__logo"> <img   class='header__img' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></li>
+            <div class="header__links">
+            <li class="header__link"><a href="about" >About</a></li>
+            <li class="header__link"><a href="clients" >Clients</a></li>
+            <li class="header__link"><a href="calendar" >Book</a></li>
+            <li class="header__link"><a href="contact" >Contact Us</a></li>
+{% if user.is_authenticated%}
+            <li class="header__link"><a href="profile" >My Profile</a></li>
+            <li class="header__link"><a href="logout" >Logout</a></li>
+{% else%}
+            <li class="header__link"><a href="register" >Create Account</a></li>
+            <li><a href="login" class="header__link">Login</a></li>
+{% endif %}
+            <li class="header__link hide-3"><a href="calendar" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+            </div>
+{% if user.is_authenticated%}
+        <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
+{% else%}
+        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+{% endif %}
+            </ul>
+        </nav>
+    </header>
+        <!-- MAIN-->
+        <main >
         <center> 
             <h1>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
-            <!--<form  id='psql_form ' class='apptform ' method="POST" action=""> -->
-            <form >
+            </div>
+
+<!--APPOINTMENT FORM-->
+        <form >
 {% csrf_token %}
                 <table  class='appttable ' border="1"> 
                 <tbody class='apptbody'>
+                <!---  <div id='userlist' class='apptform '> </div>-->
                     <!-- FIRST NAME -->
                     <tr>
-                    <td  class='username'>First Name</td><td> <input  class='username' type="text" placeholder=" First Name " required autocomplete='off' name="first_name" /></td>
+                    <td  class='username2'>First Name</td><td> <input  id='firstname'class='username' type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
                     </tr>
                     <!-- LAST NAME -->
                     <tr>  
-                    <td  class='username'>Last Name</td><td> <input class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="last_name"/></td>
+                    <td  class='username2'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
                     </tr>
                     <tr>  
                     <!-- SERVICE NAME -->
                     <tr>  
-                    <td  class='username'>Service Requested</td><td> <input class='username' type="text" id="eventName" name="eventName" placeholder="Service" required autocomplete='off'></td>
+                    <td  class='username2'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"></td>
                     </tr>
                     <!-- EMAIL -->
                     <tr>
-                    <td  class='username'>Email</td><td> <input class='username'  type="email" placeholder=" Email "  name="email"/></td>
+                    <td  class='username2'>Email</td><td> <input id='email' class='username'  type="email" placeholder=" email "  name="email"/></td>
                     </tr>
                     <!-- TELEPHONE -->
                     <tr>
-                    <td  class='username'>Telephone</td><td> <input class='username'  type="tel" placeholder=" Telephone " required autocomplete='off' name="telephone"/></td>
+                    <td  class='username2'>Telephone</td><td> <input id='telephone' class='username'  type="tel" placeholder=" telephone " required autocomplete='off' name="telephone"/></td>
                     </tr>
-                    <!-- FROM APPOINTMENT DATE -->
+                    <!-- APPOINTMENT DATE -->
                     <tr>
-                    <td  class='username'>From Appointment Date</td><td> <input  class='username' type="text" id="fromDate" name="fromDate" placeholder="From Date" required autocomplete='off'></td>
-                    </tr>
-                    <!-- TO APPOINTMENT DATE -->
-                    <tr>
-                    <td  class='username'>To Appointmen Date</td><td> <input class='username' type="text" id="toDate" name="toDate" placeholder="To Date" required autocomplete='off'></td>
+                    <td  class='username2'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" id="appointmentdate" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'></td>
                     </tr>
                     <tbody>
                 </table>
-                <!-- <input class="btn"type="submit" value="Insert" id="addEvent"/>-->
-                <input class="btn"type="button" value="Insert" id="addEvent"/>
-{% if messages %}
-{% for result in messages %} <h2 style="color:green">{{ result }}</h2>
-{% endfor %}
-{% endif %}
-            </form>
-            <h1> July 2021</h1>
+                <br>
+                <input type="button" name="add" id='add' value="Add Appointment" class="btn2"></input>
+                <br>
+            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn2">-->
+            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn2"> -->
+                <br>
+            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn2">-->
+        </form>
+        <div id="calendar"> </div> 
+        <br>
+        <br>
+        <br>
+    <script>
+/******************DETAILS****************/
+            $("#details").click(function(e) {
+                let id = $("input[name=user]:checked").attr('id');
+                $.ajax({
+                    type: "GET",
+                    url: 'users/',
+                    dataType: 'json',
+                    success: function(response) {
+                        let Json = JSON.parse(response)
+                        for (let i = Json.length - 1; i >= 0; i--) {
+                            if (id == Json[i].pk) {
+                                $('#firstname').val(Json[i].fields['firstname'])
+                                $('#lastname').val(Json[i].fields['lastname'])
+                                $('#email').val(Json[i].fields['email'])
+                                $('#service').val(Json[i].fields['service'])
+                                $('#telephone').val(Json[i].fields['telephone'])
+                                $('#appointmentdate').val(Json[i].fields['appointmentdate'])
+                                break;
+                            }
+                        }
+                    },
+                });
+
+            });
+
+/******************DELETE***************
+            $("#delete").click(function(e) {
+                //let id = $("input[name=user]:checked").attr('id');
+                id=e,
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/userremoved/',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        'pk': id
+                    }),
+                    success: getUsers
+                });
+            
+            });
+/**************UPDATE****************/    
+            $("#update").click(function() {
+                let id = $("input[name=user]:checked").attr('id');
+                let firstname = $('input[name=firstname]').val()
+                let lastname = $("input[name=lastname]").val()
+                let email = $("input[name=email]").val()
+                let service = $("input[name=service]").val()
+                let telephone = $("input[name=telephone]").val()
+                let appointmentdate = $("input[name=appointmentdate]").val()
+            
+                $.ajax({
+                url: 'userupdated/',
+                type: 'PUT',
+                dataType: 'json',
+                data: JSON.stringify({
+                    'pk': id,
+                    'firstname': firstname,
+                    'lastname': lastname,
+                    'email': email,
+                    'service': service,
+                    'telephone': telephone,
+                    'appointmentdate': appointmentdate
+                }),
+                success: getUsers,
+            });
+        });
+
+    </script>   
+    </main>
+    <footer class="footer">
+
+        <div class="footer__copyright">
+
+</script>
+                    </div>
+                </div>
+            </div>
         </center>
-        <div id="calendar"></div>
+    </main>
+    <!---  <script src=" {% static "js/scripts.js" %}"  ></script>-->
+    <!--FOOTER-->
+    <footer class="footer">
+            <ul class="footer__text">
+                <div class="footer__column">
+                    <li class='footer__text       '> <a href="#" class="footer__link">À propos de nous </a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">Politique de confidentialité</a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">Termes et conditions </a></li>
+                </div>
+                <div class="footer__column ">
+                    <li class='footer__text top   '><a href="#"  class="footer__link"> Madeleine Dupont</a></li>
+                    <li class='footer__text center'> <a href="#" class="footer__link">madeleinesalondecoiffure@gmail.com</a></li>
+                    <li class='footer__text center'> <a href="#" class="footer__link"> © 2021, Madeleine Salon de Coiffure</a></li>
+                </div>
+                <div class="footer__column">
+                    <li class='footer__text top  '> <a href="#"  class="footer__link"> Contactez-nous</a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">2206 N Alder St </a></li>
+                    <li class='footer__text       '> <a href="#" class="footer__link">Tacoma WA 98406</a></li>
+                </div>
+            </ul>
+            <div class='footer__imgcontainer'> <a class="" href="#"><img class='footer__logo' src="https://www.dropbox.com/s/8m1yd3e958c9ic2/skeletoncrest.svg?raw=1" alt="" /></a></div>
+        <div class="footer__social">
+            <a class="footer_icon" href="https://www.facebook.com/madeleine.beach.3"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/facebook_eknuzn.svg" alt="facebook" /></a>
+            <a class="footer_icon" href="https://twitter.com/madecoiffure"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/twitter_nfohqw.svg" alt="twitter" /></a>
+            <a class="footer_icon" href="https://www.instagram.com/madeleinebeachh/"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/instagram_u4wt1i.svg" alt="instagram" /></a>
+            <a class="footer_icon" href="https://pin.it/5qgAohs"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/pinterest_vtom0c.svg" alt="pinterest" /></a>
+        </div>
+    </footer>
     </body>
 </html>
