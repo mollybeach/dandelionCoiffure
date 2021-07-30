@@ -5,8 +5,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Madeleine Salon de Coiffure Schedule Calender  </title>
+            <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
-            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627609856/calender_eweuk5.css" />
+            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615862/calender_wcwibq.css" />
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
@@ -186,6 +187,72 @@
         document.querySelector(href).scrollIntoView({
             behavior: "smooth"
         });
+        /******************DETAILS****************/
+            $("#details").click(function(e) {
+                let id = $("input[name=user]:checked").attr('id');
+                $.ajax({
+                    type: "GET",
+                    url: 'users/',
+                    dataType: 'json',
+                    success: function(response) {
+                        let Json = JSON.parse(response)
+                        for (let i = Json.length - 1; i >= 0; i--) {
+                            if (id == Json[i].pk) {
+                                $('#firstname').val(Json[i].fields['firstname'])
+                                $('#lastname').val(Json[i].fields['lastname'])
+                                $('#email').val(Json[i].fields['email'])
+                                $('#service').val(Json[i].fields['service'])
+                                $('#telephone').val(Json[i].fields['telephone'])
+                                $('#appointmentdate').val(Json[i].fields['appointmentdate'])
+                                break;
+                            }
+                        }
+                    },
+                });
+
+            });
+
+/******************DELETE***************
+            $("#delete").click(function(e) {
+                //let id = $("input[name=user]:checked").attr('id');
+                id=e,
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/userremoved/',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        'pk': id
+                    }),
+                    success: getUsers
+                });
+            
+            });
+/**************UPDATE****************/    
+            $("#update").click(function() {
+                let id = $("input[name=user]:checked").attr('id');
+                let firstname = $('input[name=firstname]').val()
+                let lastname = $("input[name=lastname]").val()
+                let email = $("input[name=email]").val()
+                let service = $("input[name=service]").val()
+                let telephone = $("input[name=telephone]").val()
+                let appointmentdate = $("input[name=appointmentdate]").val()
+            
+                $.ajax({
+                url: 'userupdated/',
+                type: 'PUT',
+                dataType: 'json',
+                data: JSON.stringify({
+                    'pk': id,
+                    'firstname': firstname,
+                    'lastname': lastname,
+                    'email': email,
+                    'service': service,
+                    'telephone': telephone,
+                    'appointmentdate': appointmentdate
+                }),
+                success: getUsers,
+            });
+        });
 }
 </script>
 
@@ -266,87 +333,10 @@
                 <br>
             <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn">-->
         </form>
-        <div id="calendar"> </div> 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    <script>
-/******************DETAILS****************/
-            $("#details").click(function(e) {
-                let id = $("input[name=user]:checked").attr('id');
-                $.ajax({
-                    type: "GET",
-                    url: 'users/',
-                    dataType: 'json',
-                    success: function(response) {
-                        let Json = JSON.parse(response)
-                        for (let i = Json.length - 1; i >= 0; i--) {
-                            if (id == Json[i].pk) {
-                                $('#firstname').val(Json[i].fields['firstname'])
-                                $('#lastname').val(Json[i].fields['lastname'])
-                                $('#email').val(Json[i].fields['email'])
-                                $('#service').val(Json[i].fields['service'])
-                                $('#telephone').val(Json[i].fields['telephone'])
-                                $('#appointmentdate').val(Json[i].fields['appointmentdate'])
-                                break;
-                            }
-                        }
-                    },
-                });
-
-            });
-
-/******************DELETE***************
-            $("#delete").click(function(e) {
-                //let id = $("input[name=user]:checked").attr('id');
-                id=e,
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/userremoved/',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        'pk': id
-                    }),
-                    success: getUsers
-                });
-            
-            });
-/**************UPDATE****************/    
-            $("#update").click(function() {
-                let id = $("input[name=user]:checked").attr('id');
-                let firstname = $('input[name=firstname]').val()
-                let lastname = $("input[name=lastname]").val()
-                let email = $("input[name=email]").val()
-                let service = $("input[name=service]").val()
-                let telephone = $("input[name=telephone]").val()
-                let appointmentdate = $("input[name=appointmentdate]").val()
-            
-                $.ajax({
-                url: 'userupdated/',
-                type: 'PUT',
-                dataType: 'json',
-                data: JSON.stringify({
-                    'pk': id,
-                    'firstname': firstname,
-                    'lastname': lastname,
-                    'email': email,
-                    'service': service,
-                    'telephone': telephone,
-                    'appointmentdate': appointmentdate
-                }),
-                success: getUsers,
-            });
-        });
-
-    </script>   
+        <div id="calendar"> </div> <br><br><br><br><br> 
     </main>
     <footer class="footer">
-
         <div class="footer__copyright">
-
-</script>
                     </div>
                 </div>
             </div>
@@ -372,7 +362,6 @@
                     <li class='footer__text       '> <a href="#" class="footer__link">Tacoma WA 98406</a></li>
                 </div>
             </ul>
-            
             <div class='footer__imgcontainer'> <a class="" href="#"><img class='footer__logo' src="https://www.dropbox.com/s/8m1yd3e958c9ic2/skeletoncrest.svg?raw=1" alt="" /></a></div>
         <div class="footer__social">
             <a class="footer_icon" href="https://www.facebook.com/madeleine.beach.3" width='30' height='30'><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/facebook_eknuzn.svg" alt="facebook" width='30'height='30' /></a>
