@@ -79,8 +79,6 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 #default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
 #}
 
-
-
 #LOCAL POSTGRES PSQL DATABASE 
 
 DATABASES = {

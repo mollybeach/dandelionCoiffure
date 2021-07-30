@@ -8,6 +8,18 @@
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
             <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615862/calender_wcwibq.css" />
+            <style>
+            td, th, table {
+                border:none;
+                padding: 2%;
+            }
+            .username{
+                margin:-top 2%;
+            }
+            .apptable{
+                border:none;
+            }
+}</style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
@@ -180,7 +192,6 @@
         for (const link of links) {
             link.addEventListener("click", clickHandler);
         }
-
         function clickHandler(e) {
             e.preventDefault();
             const href = this.getAttribute("href");

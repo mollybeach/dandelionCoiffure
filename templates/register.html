@@ -22,7 +22,7 @@
           <li class="header__link"><a href="about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
           <li class="header__link"><a href="calendar" >Book</a></li>
-          <li class="header__link"><a href="#" >Contact Us</a></li>
+          <li class="header__link"><a href="register" >Contact Us</a></li>
 {% if user.is_authenticated%}
           <li class="header__link"><a href="profile" >My Profile</a></li>
           <li class="header__link"><a href="logout" >Logout</a></li>
@@ -42,7 +42,6 @@
   </header>
   <center>
   <main>
-       
 
 {% for messsages in messages%}
       <h3>{{messages}}}</h3>
@@ -64,7 +63,7 @@
             <label for="password">Password:</label>
             <input name='password' type="password" id="password" class="form-input">
         </div>
-         <div class="input-block">
+        <div class="input-block">
             <label for="password2">Repeat Password:</label>
             <input name='password2' type="password" id="password2" class="form-input">
         </div>
@@ -74,8 +73,7 @@
 
         
       </main>
-      </center
-    
+      </cente>
             <!--FOOTER-->
               <br><br>
       <footer class="footer">
