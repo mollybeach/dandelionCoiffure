@@ -54,8 +54,46 @@
           <br>
           <p> Repeat Password: </p>
           <input type='password' name='password2'></input><br><br>
-          <input type='submit'></input>
+          <input type='submit' class='btn2' ></input>
         </form>
+<!--APPOINTMENT FORM
+        <form >
+{% for message in messages %} 
+        <h3> {{message}}</h3>
+{% endfor %}        
+{% csrf_token %}
+                <h1>Sign Up below</h1><style>h3{color: red}</style>
+                <form method='POST' action="register" class='signupform'>
+                <table  class='appttable ' border="1"> 
+                <tbody class='apptbody'>
+                    <!-- USER NAME
+                    <tr>
+                    <td  class='username'>Username</td><td> <input class='username' type="text" required autocomplete='off' name="username" /></td>
+                    </tr>
+                    <!--EMAIL-
+                    <tr>  
+                    <td  class='username'>Email:</td><td> <input class='username' type="emailt" required autocomplete='off' name="email" /></td>
+                    </tr>
+                    <tr>  
+                    <!-- PASSWORD 
+                    <tr>  
+                    <td  class='username'>Password:</td><td> <input class='username'  type="password" name="password" /></td>
+                    </tr>
+                    <!--REPEAT PASSWORD 
+                  <tr>  
+                    <td  class='username'>Repeat Password:</td><td> <input class='username'  type="password"  name="password2" /></td>
+                    </tr>
+                    <tbody>
+                </table>
+                <br>
+                <input class="btn2" type='submit'></input>
+                <br>
+            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn">-->
+            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"> -->
+                <br>
+            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn">-->
+        </form>
+        
       </main>
       </center
     
