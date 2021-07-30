@@ -9,20 +9,28 @@
       <meta content="" name="keywords">
       <!-- CSS File -->
       <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
- <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615878/styles_pmvdq6.css"  rel="stylesheet"  >
+ <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627627668/styles_jknax8.css"  rel="stylesheet"  >
       <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615872/formstyles_yodlzl.css" />
+      <style>
+        <style> ul.nav__sidenav.nav--right {
+          background-color: #EBC3C2;
+        }
+        </style>
+      </style>
       <script src='https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627616012/form_clkn7f.js'></script>
 </head>
-<body class="container">
-  <header class="header">
+    <!--BODY-->
+  <body class="container">
+    <!-- HEADER NAV -->
+    <header class="header">
       <nav class="header__nav">
-        <ul class="nav__sidenav nav--right">
-          <li><a href="/" class="header__logo">  <img  src="{% static "assets/verticalheadcrest.svg" %}" alt="" /> </a></li>
-          <div class="header__links">
+            <ul class="nav__sidenav nav--right">
+          <li><a href="/" class="header__logo"> <img   class='header__img' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></li>
+            <div class="header__links">
           <li class="header__link"><a href="about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
           <li class="header__link"><a href="calendar" >Book</a></li>
-          <li class="header__link"><a href="register" >Contact Us</a></li>
+          <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
           <li class="header__link"><a href="profile" >My Profile</a></li>
           <li class="header__link"><a href="logout" >Logout</a></li>
@@ -30,18 +38,16 @@
           <li class="header__link"><a href="register" >Create Account</a></li>
           <li><a href="login" class="header__link">Login</a></li>
 {% endif %}
-          <li class="header__link"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
         </div>
 {% if user.is_authenticated%}
-          <p class="header__welcome">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
+        <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
 {% else%}
-          <p class="header__welcome">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
 {% endif %}
         </ul>
       </nav>
   </header>
-  <center>
-  <main>
 
 {% for messsages in messages%}
       <h3>{{messages}}}</h3>
@@ -73,7 +79,7 @@
 
         
       </main>
-      </cente>
+      </center>
             <!--FOOTER-->
               <br><br>
       <footer class="footer">
@@ -94,7 +100,7 @@
                     <li class='footer__text       '> <a href="#" class="footer__link">Tacoma WA 98406</a></li>
                   </div>
             </ul>
-            <div class='footer__imgcontainer'> <a class="" href="#"><img class='footer__logo' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></div>
+            <div class='footer__imgcontainer'> <a class="" href="/"><img class='footer__logo' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></div>
         <div class="footer__social">
             <a class="" href="https://www.facebook.com/madeleine.beach.3"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/facebook_eknuzn.svg" alt="facebook" /></a>
             <a class="" href="https://twitter.com/madecoiffure"><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/twitter_nfohqw.svg" alt="twitter" /></a>
