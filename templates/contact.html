@@ -8,7 +8,10 @@
       <meta content="" name="description">
       <meta content="" name="keywords">
       <!--CSS FILE-->
-      <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610610/styles_sfs1la.css"  rel="stylesheet"  >
+      <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615878/styles_pmvdq6.css"  rel="stylesheet"  >
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
+      <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615872/formstyles_yodlzl.css" />
+      <script src='https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627616012/form_clkn7f.js'></script>
 </head>
     <!--BODY-->
   <body class="container">
@@ -42,8 +45,29 @@
   <!--MAIN-->
       <main class="main">
     <h1 class="header__welcome">{{user.username}} </h1>
+    {% for messsages in messages%}
+      <h3>{{messages}}}</h3>
+{% endfor%}
+      <form  class=""method='POST' action="login">
+{% csrf_token %}
+    <form>
+      <h1 class='form-header'>CONTACT US</h1>
+      <br>
+        <divclass="form-input"  class="input-block">
+            <label for="user">Username:</label>
+            <input name='username' type="text" id="user" class="form-input" autocomplete="off">
+        </div>
+        <div class="input-block">
+            <label for="password">Password:</label>
+            <input name='password' type="password" id="password" class="form-input">
+        </div>
+
+        <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <div id="welcomeMsg" class="welcome-msg"></div>
     </main>
-    <center><h1>CONTACT US</h1></center>
+
           <!--FOOTER-->
       <footer class="footer">
             <ul class="footer__text">

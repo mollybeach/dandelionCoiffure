@@ -8,7 +8,172 @@
         <meta content="" name="description">
         <meta content="" name="keywords">
     <!-- CSS File -->
-        <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610610/styles_sfs1la.css"  rel="stylesheet"  >
+        <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615878/styles_pmvdq6.css"  rel="stylesheet"  >
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
+          <style> 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background: #EBC3C2;
+    font-family: 'Roboto Slab', serif;
+}
+
+form{
+    width: 350px;
+    height: 400px;
+    background: white;
+    border-radius: 7px;
+    padding: 50px;
+    margin: auto auto auto auto;
+    color:#EBC3C2;
+    margin-bottom:10%;
+}
+
+.input-block{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    color: #EBC3C2;;
+    font-size: 22px;
+    color: #EBC3C2;
+}
+.form-header{
+    width: 100%;
+    padding: 0.5em;
+}
+.form-input{
+    width: 100%;
+    padding: 0.5em;
+    font-size: 16px;
+    border: 2px solid #EBC3C2;;
+    border-radius: 7px;
+}
+.form-input:focus{
+    outline: none;
+
+    box-shadow: 0 0 6px #EBC3C2;;
+}
+.submit-btn{
+    padding: 0.3em 1em 0.3em 1em;
+    font-size: 22px;
+    color: #EBC3C2;;
+    font-family: 'Roboto Slab', serif;
+    border: 2px solid #EBC3C2;;
+    border-radius: 7px;
+    background: white;
+    display: block;
+    margin: 40px auto 0 auto;
+    transition: background 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+    color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.submit-btn:hover{
+    background: #EBC3C2;;
+    color: white;
+    cursor: pointer;
+}
+
+.welcome-msg{
+    color: white;
+    font-size: 48px;
+    text-align: center;
+    opacity: 0;
+    margin: 200px 0 0 0;
+}
+
+/* Animations */
+
+.form-refuse{
+    animation: refuse 0.3s linear 2;
+}
+
+@keyframes refuse{
+    0%{
+        transform: translateX(0%);
+    }
+    35%{
+        transform: translateX(15%);
+    }
+    70%{
+        transform: translateX(-15%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+.form-accept{
+    animation: accept 0.5s ease-in-out forwards;
+}
+@keyframes accept {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100vw);
+    }
+}
+
+.active-msg{
+    animation: fade 0.5s ease-in-out 0.7s forwards;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+      </style> 
+
+  <script>const inputForm = document.querySelectorAll(".input-block input");
+const submitBtn = document.querySelector(".submit-btn");
+const form = document.querySelector("form");
+const welcomeMsg = document.querySelector("#welcomeMsg");
+
+submitBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    validateForm();
+});
+
+function validateForm(){
+    inputForm.forEach( inputForm => {
+        if(inputForm.value == ""){
+            form.classList.add("form-refuse");
+        }else{
+            form.classList.add("form-accept");
+            welcomeMsgShow();
+        }
+    });
+}
+
+form.addEventListener("animationend", () =>{
+    form.classList.remove("form-refuse");
+})
+
+function welcomeMsgShow(){
+    let username = inputForm[0].value;
+
+    welcomeMsg.classList.add("active-msg");
+    welcomeMsg.innerHTML = `Welcome, ${username}, glad to see you back!`;
+
+    setTimeout(() => {
+        form.style.display = "none";
+    }, 500);
+}
+</script>
     </head>
     <!-- BODY -->
     <body class="container">
