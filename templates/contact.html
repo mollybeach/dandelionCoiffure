@@ -8,7 +8,7 @@
       <meta content="" name="description">
       <meta content="" name="keywords">
       <!--CSS FILE-->
-      <link href=" {% static "/styles.css" %}"  rel="stylesheet"  >
+      <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610610/styles_sfs1la.css"  rel="stylesheet"  >
 </head>
     <!--BODY-->
   <body class="container">
@@ -18,9 +18,9 @@
             <ul class="nav__sidenav nav--right">
           <li><a href="/" class="header__logo"> <img   class='header__img' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></li>
             <div class="header__links">
-          <li class="header__link"><a href="#about" >About</a></li>
+          <li class="header__link"><a href="about" >About</a></li>
           <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="form" >Book</a></li>
+          <li class="header__link"><a href="calendar" >Book</a></li>
           <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
           <li class="header__link"><a href="profile" >My Profile</a></li>
@@ -43,6 +43,7 @@
       <main class="main">
     <h1 class="header__welcome">{{user.username}} </h1>
     </main>
+    <center><h1>CONTACT US</h1></center>
           <!--FOOTER-->
       <footer class="footer">
             <ul class="footer__text">

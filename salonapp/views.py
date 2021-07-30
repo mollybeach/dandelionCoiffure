@@ -1,19 +1,68 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from django.contrib.auth.models import User, auth
-from django.contrib import messages
+from django.http.response import HttpResponse, BadHeaderError, JsonResponse
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.contrib.auth import authenticate, login
 from django.db import connection
-from .models import Feature, client
+from django.contrib import messages
+from salonapp.models import Users
 import calendar
 from  calendar import HTMLCalendar
-#from datatime import datetime
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template import RequestContext, loader
+from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
+#import models 
+from salonapp import models
+from json import dumps
+import json
+from django.core import serializers
 
 
 def index(request):
-    features = Feature.objects.all()
-    return render(request, 'index.html',{'features': features})
+    return render(request, 'users/index.html')
+appname = 'Users'
 
-# we have new variable that we get from feature.object.all() this variable is a list 
+@csrf_exempt
+def calendar(request):
+    eventdata = serializers.serialize('json', Users.objects.all())
+    result = dumps(eventdata)
+    return render(request, 'calendar.html', {'result': result})
+
+@csrf_exempt
+def get(request):
+    context= serializers.serialize('json', Users.objects.all())
+    return JsonResponse(context, safe=False)
+
+@csrf_exempt
+def post_user(request):
+    if request.method == 'POST':
+        rp = json.loads(request.body.decode('utf-8'))
+        user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'])
+        user.save()
+        context = serializers.serialize('json', Users.objects.all())
+        return JsonResponse(context, safe=False)
+    
+@csrf_exempt
+def delete_user(request):
+    rp=json.loads(request.body.decode('utf-8'))
+    Users.objects.get(pk=rp['pk']).delete()
+    return get(request)
+
+@csrf_exempt
+def update_user(request):
+    rp=json.loads(request.body.decode('utf-8'))
+    field = Users.objects.get(pk=rp['pk'])
+    field.firstname=rp['firstname']
+    field.lastname=rp['lastname']
+    field.email=rp['email']
+    field.service=rp['service']
+    field.telephone=rp['telephone']
+    field.appointmentdate=rp['appointmentdate']
+    field.save()
+    return get(request)
+
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -37,6 +86,7 @@ def register(request):
             return redirect('register')
     else: 
         return render(request, 'register.html')
+
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -57,27 +107,19 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-def counter(request):
-    posts = [1,2,3,4,5, 'mary', 'jane', 'tom']
-    return render(request, 'counter.html', {'posts' : posts})
-
-def post(request, pk):
-    return render(request, 'post.html', {'pk': pk}) #<--send that value in url to html ? 
-
 def profile(request):
     userprofile = {'user': request.user}
     return render(request, 'profile.html', userprofile)
 
 def clients(request):
-    clients = {'user': request.user}
-    return render(request, 'clients.html', clients)
+    return render(request, 'clients.html')
+
 
 def contact(request):
-    contact = {'user': request.user}
-    return render(request, 'contact.html', contact)
+    return render(request, 'contact.html')
+
 def about(request):
-    about = {'user': request.user}
-    return render(request, 'about.html', about)
+    return render(request, 'about.html')
 
 
 def form(request):
@@ -104,29 +146,10 @@ def form(request):
     else: 
         return render(request, 'form.html')
 
-def calendar(request):
-    if request.method=="POST":
-        if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('email') and request.POST.get('telephone') and request.POST.get('appointment_date'):
-            saveobj = client()
-            saveobj.first_name=request.POST.get('first_name')
-            saveobj.last_name=request.POST.get('last_name')
-            saveobj.email=request.POST.get('email')
-            saveobj.telephone=request.POST.get('telephone')
-            saveobj.appointment_date=request.POST.get('appointment_date')
-            cursor=connection.cursor()
-            cursor.execute("insert into client(first_name, appointment_date) values(' "+saveobj.first_name+ "', ' "+saveobj.last_name+ "',  ' "+saveobj.email+ "',  ' "+saveobj.telephone+ "',  '" + saveobj.appointment_date+ "' )")
-            messages.success(request, "Client name  "+saveobj.first_name+ " "+saveobj.last_name+ "has successfully scheduled appointment on "+ saveobj.appointment_date)
-            return render(request, 'calendar.html')
-    else:
-        return render(request, 'calendar.html')
 
 
-#make a calendar feature that we can put in our app
-#calendar user can add events to a calender and see all events in a calender
-#calendar user can delete events from a caldenar
-#calendar can see all the events in a calendar
-#schedule a meeting
-#schedule appointment
 
+
+        
 
 

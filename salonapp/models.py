@@ -2,19 +2,17 @@ from django.db import models
 from django import forms
 from datetime import datetime
 # Create your models here.
-class Feature(models.Model): 
-    name = models.CharField(max_length=100)
-    details = models.CharField(max_length=500)
+class Users(models.Model):
+    firstname = models.CharField(max_length=2000, null=True, blank=True, default=None)
+    lastname = models.TextField(max_length=20000, null=True, blank=True, default=None)
+    email = models.TextField(max_length=20000, null=True, blank=True, default=None)
+    service = models.TextField(max_length=20000, null=True, blank=True, default=None)
+    telephone = models.TextField(max_length=20000, null=True, blank=True, default=None)
+    appointmentdate= models.TextField(max_length=20000, null=True, blank=True, default=None)
+    def _str_(self):
+        return self.firstname +" " + self.lastname + " " +self.email+" "+self.service+" "+self.telephone+" "+self.appointmentdate
 
-#class NameForm(forms.Form):
- #   your_name = forms.CharField(max_length=100)
 
-class client(models.Model):
-    first_name=models.CharField(max_length=150)
-    last_name=models.CharField(max_length=150)
-    email=models.CharField(max_length=150)
-    telephone=models.CharField(max_length=150)
-    appointment_date=models.DateTimeField()
 
 
 
