@@ -12,8 +12,7 @@ import dj_database_url
 import django_heroku
 import psycopg2
 from pathlib import Path
-
-
+import cloudinary
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'salonapp',
 ]
 
@@ -163,4 +163,9 @@ django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-
+#cloudinary://784459254455196:888jgqkxGPBr5HPIUsNPBerqnQ8@madeleinesalondecoiffure
+cloudinary.config( 
+  cloud_name = "madeleinesalondecoiffure", 
+  api_key = "784459254455196", 
+  api_secret = "888jgqkxGPBr5HPIUsNPBerqnQ8" 
+)
