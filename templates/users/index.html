@@ -9,16 +9,13 @@
       <meta content="" name="keywords">
       <!--CSS FILE-->
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
-      <link href=" https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627688577/styles_xrzwd6.css"  rel="stylesheet"  >
-        <style> 
-        ul.nav__sidenav.nav--right {
-          background-color: #EBC3C2;
-          min-height: 410px;
-        }
-        header__links{
-          background-color: #EBC3C2;
-        }
-        </style>
+     
+      <link href=" https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627699685/styles_nivkcg.css"  rel="stylesheet"  >
+<style>
+.imgborderround{
+    border: 20px solid white;
+    border-radius: 40px;
+}</style>
 </head>
     <!--BODY-->
   <body class="container">
@@ -57,7 +54,7 @@
             <article class="sector sector-featured">
               <div class="sector-card">
                   <div class="sector__text">
-                    <a href="#" class=""><img class="hero__image hide-3"src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669445/lookingbackgirl_u5ssmo.jpg" alt="" /></a><br>
+                    <a href="#" class=""><img class="hero__image hide-3 imgborderround"src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669445/lookingbackgirl_u5ssmo.jpg" alt="" /></a><br>
                     <h6 class="sector-date">Bonjour! </h6>
                     <h3 class="sector-category">Madeleine Salon de Coiffure !!!</h3>
                     <h1 class="sector-title"><a href="#">Salon and Spa propose une tarification à plusieurs niveaux pour s'adapter à un large éventail de goûts et de styles.</a></h1>
@@ -101,7 +98,7 @@
             <!-- HAIRCUT -->
               <li class="sidebar-list__item">
                   <h4 class="sidebar-list__label">HAIRCUT</h4>
-                  <a href="#"><img class="sidebar-list__image" src= "https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669562/hairgirl_adatvb.jpg" width="256" height="256" alt="" /> </a>
+                  <a href="#"><img class="sidebar-list__image imgborderround" src= "https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669562/hairgirl_adatvb.jpg" width="256" height="256" alt="" /> </a>
                   <span></span>
               </li>
               <!-- HAIRDYE -->
@@ -113,7 +110,7 @@
               <!-- MAKEUP -->
               <li class="sidebar-list__item">
                   <h4 class="sidebar-list__label">MAKEUP</h4>
-                  <a href="#"><img class="sidebar-list__image" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669102/makeup_v1oy32.png" width="256" height="256" alt="" /></a>
+                  <a href="#"><img class="sidebar-list__image imgborderround" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669102/makeup_v1oy32.png" width="256" height="256" alt="" /></a>
                   <span></span>
               </li>
               <!-- NAILS-->
@@ -142,13 +139,13 @@
             <div class="shop">
               <button class="slider__button"type="button" name="button"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/arrow_left_h5ibyg.svg" alt=""/></button>
               <div class="shop-list__item hide-1">
-                  <a href="#"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669602/eiffeltowergirl_aiasuh.jpg" width="290" height="256" alt=""/></a>
+                  <a href="#"><img  src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669602/eiffeltowergirl_aiasuh.jpg" class="imgborderround" width="290" height="256" alt=""/></a>
               </div>
               <div class="shop-list__item">
                   <a href="#"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669635/victoriancrest_qg1wyx.svg" alt="" /></a>
               </div>
               <div class="shop-list__item hide-2"> 
-                  <a href="#"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669667/windowdressgirl_zrdxmf.jpg" width="290" height="256" alt=""></a>
+                  <a href="#"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669667/windowdressgirl_zrdxmf.jpg" class="imgborderround" width="290" height="256" alt=""></a>
               </div>
               <button class="slider__button" type="button" name="button"></button>
             </div>
@@ -187,10 +184,10 @@
                 <div id="footer-newsletter-social">
                     <div id="footer-newsletter">
                         <h3 class="footer__center">Get more deals with Madeleine</h3>
-                        <form class='footer__enter'>
-                            <input type="text" placeholder="Enter email address" />
-                            <input type="submit" value="Sign Up" />
-                        </form>
+                        <div class='footer__enter'>
+                            <input type="text" placeholder="Enter email address" class="getemailform"/>
+                            <input class="enteremailbutton" type="submit" value="Sign Up" />
+                        </div>
                     </div>
                     <div id="footer-social">
                         <a class="footer__a" href="https://www.facebook.com/madeleine.beach.3" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669349/facebook_eknuzn_drzww6.svg" alt="facebook" /></a>

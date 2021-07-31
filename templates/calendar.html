@@ -7,7 +7,7 @@
         <title>Madeleine Salon de Coiffure Schedule Calender  </title>
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
-            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627689406/calender_dhhsda.css" />
+            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627699645/calender_c2jlet.css" />
             <style>
             td, th, table {
                 border:none;
@@ -22,6 +22,14 @@
             ul.nav__sidenav.nav--right {
                 background-color: #EBC3C2;
                 min-height: 410px;
+                border-radius: 20px;
+                border: 25px solid #EBC3C2;
+        }
+        header{
+                background-color: #EBC3C2;
+                min-height: 410px;
+                border-radius: 20px;
+                border: 25px solid #EBC3C2;
         }
 }</style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -272,8 +280,8 @@
     </head>
     <body class='container'>
         <!-- HEADER NAV -->
-    <header class="header page-header">
-        <nav class="header__nav page-header">
+     <header class="header">
+      <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
             <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
             <div class="header__links">
@@ -296,7 +304,7 @@
         <!-- MAIN-->
         <main >
         <center> 
-            <h1>Select date for Appointment with Madeleine Salon de Coiffure</h1>
+            <h1 class='greeting-calendar'>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
             </div>
 
@@ -376,10 +384,10 @@
                 <div id="footer-newsletter-social">
                     <div id="footer-newsletter">
                         <h3 class="footer__center">Get more deals with Madeleine</h3>
-                        <form class='footer__enter'>
-                            <input type="text" placeholder="Enter email address" />
-                            <input type="submit" value="Sign Up" />
-                        </form>
+                        <div class='footer__enter'>
+                            <input type="text" placeholder="Enter email address" class="getemailform"/>
+                            <input class="enteremailbutton" type="submit" value="Sign Up" />
+                        </div>
                     </div>
                     <div id="footer-social">
                         <a class="footer__a" href="https://www.facebook.com/madeleine.beach.3" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669349/facebook_eknuzn_drzww6.svg" alt="facebook" /></a>
