@@ -7,7 +7,128 @@
         <title>Madeleine Salon de Coiffure Schedule Calender  </title>
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
-            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627615862/calender_wcwibq.css" />
+            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627716019/calender_omm4fg.css" />
+            <style>
+.maincenter{
+border-radius: 20px;
+border: 25px solid  #E0C9C1;
+margin:1% 0;
+padding:2%;
+}
+.header{
+    margin-bottom:0px;}
+td,
+th,
+table {
+    border: none;
+    padding: 2%;
+}
+.username {
+    margin: 0;
+    margin-top: 2%;
+    width:20%;
+    border-radius: 15px;
+    padding: none;
+    background: #ebeef5;
+}
+input.username{
+    width: 95%;
+      background: #ebeef5;
+}
+td.username{
+    background-color: #909fbb;
+    color: #fafafa;
+    border-radius: 15px;
+}
+
+.apptable {
+    border: none;
+}
+ul.nav__sidenav.nav--right {
+    background-color: #ebc3c2;
+    min-height: 410px;
+    border-radius: 20px;
+    border: 25px solid #ebc3c2;
+}
+header {
+    background-color: #ebc3c2;
+    min-height: 410px;
+    border-radius: 20px;
+    border: 25px solid #ebc3c2;
+}
+
+@media all and (max-width: 599px) and (min-width: 0px) {
+    .getemailform {
+        width: 90%;
+    }
+    #footer-newsletter {
+        margin: auto;
+    }
+    #footer-social {
+        margin-top: 20px;
+    }
+}
+
+@media all and (max-width: 411px) and (min-width: 0px) {
+    form {
+        margin: 1%;
+    }
+}
+    
+
+a:link {
+    font-weight: bold;
+}
+a:hover {
+    color: #534f4f;
+}
+.fc-content{
+    background-color: #909fbb;
+    color: #fafafa;
+    font-weight: bold;
+     border-radius: 25px;
+    border: 1px solid #909fbb;
+    background: #909fbb;
+
+}
+.fc-event{
+    border: 1px solid #909fbb;
+  background-color: #909fbb;
+}
+.fc-state-default {
+     background-color: #ebeef5;
+    background-image: none;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+     */
+  font-weight: bold;
+       padding: 0 1%;
+       color:#2f343e;
+      
+}
+.fc-state-active{
+      background-color: #9b9b9b;
+       color: #fafafa;
+
+}
+.formcaption{
+    font-weight: bold;
+    font-size: 20px;
+    color:#9b9b9b;
+}
+
+.td.fc-highlight {
+    background:  #ebeef5;
+}
+.fc-unthemed .fc-today {
+    background: #9b9b9b;
+    color: #fafafa;
+}
+a.fc-more{
+    color:#2f343e;
+    font-wight: bold;
+    font-size: 1rem;
+}
+</style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
@@ -53,7 +174,6 @@
             }
             events.push(obj);
         }
-
     console.log(events);
 /********** CURRENT TIME************/
         let currentDate = new Date();
@@ -151,7 +271,7 @@
                     $("telephone").datepicker("option", "maxDate", dateText);
                 }
             });
-           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker"></input>');
+           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
             $(function() {
             $("#datepicker").datepicker({
                 showOn: "both",
@@ -180,7 +300,6 @@
         for (const link of links) {
             link.addEventListener("click", clickHandler);
         }
-
         function clickHandler(e) {
             e.preventDefault();
             const href = this.getAttribute("href");
@@ -255,14 +374,13 @@
         });
 }
 </script>
-
     </head>
     <body class='container'>
         <!-- HEADER NAV -->
-    <header class="header page-header">
-        <nav class="header__nav page-header">
+     <header class="header">
+      <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
-            <li><a href="/" class="header__logo"> <img   class='header__img' src="https://www.dropbox.com/s/s0kwmwkhw4dm8ee/verticalheadcrest.svg?raw=1" alt="" /></a></li>
+            <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
             <div class="header__links">
             <li class="header__link"><a href="about" class="header__linking">About</a></li>
             <li class="header__link"><a href="clients" class="header__linking">Clients</a></li>
@@ -277,25 +395,24 @@
 {% endif %}
             <li class="header__link hide-3"><a href="calendar" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
             </div>
-{% if user.is_authenticated%}
-        <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
-{% else%}
-        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
-{% endif %}
             </ul>
         </nav>
     </header>
-        <!-- MAIN-->
-        <main >
-        <center> 
-            <h1>Select date for Appointment with Madeleine Salon de Coiffure</h1>
+     <main class='maincenter'>
+        <!-- MAIN-
+       
+        <section class='maincenter'>
+        <center > ->
+            <h1 class='greeting-calendar'>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
-            </div>
+            
 
 <!--APPOINTMENT FORM-->
         <form >
 {% csrf_token %}
                 <table  class='appttable ' border="1"> 
+                <caption class='formcaption' >Please fill out form </caption>
+                <caption class='formcaption'> Select appointment date with Madeleine Salon de Coiffure</caption>
                 <tbody class='apptbody'>
                 <!---  <div id='userlist' class='apptform '> </div>-->
                     <!-- FIRST NAME -->
@@ -305,11 +422,10 @@
                     <!-- LAST NAME -->
                     <tr>  
                     <td  class='username'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
-                    </tr>
-                    <tr>  
+                    </tr> 
                     <!-- SERVICE NAME -->
                     <tr>  
-                    <td  class='username'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"></td>
+                    <td  class='username'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
                     </tr>
                     <!-- EMAIL -->
                     <tr>
@@ -321,54 +437,82 @@
                     </tr>
                     <!-- APPOINTMENT DATE -->
                     <tr>
-                    <td  class='username'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'></td>
+                    <td  class='username'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
                     </tr>
-                    <tbody>
+                    </tbody>
                 </table>
                 <br>
-                <input type="button" name="add" id='add' value="Add Appointment" class="btn"></input>
+                <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
-            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn">-->
-            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"> -->
+            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
+            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"/> -->
                 <br>
-            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn">-->
+            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn"/>-->
         </form>
         <div id="calendar"> </div> <br><br><br><br><br> 
     </main>
-    <footer class="footer">
-        <div class="footer__copyright">
+<!--FOOTER-->
+  <!--FOOTER-->
+        <footer id="footer">
+                <div id="footer-utility">
+                    <div class="footer__chat">
+                        <ul class="footer__ul"><h3 class="footer__left">À propos de nous</h3>
+                            <li class="footer__li"><a class="footer__a" href="#">Politique de confidentialité</a></li>
+                            <li class="footer__li"><a class="footer__a" href="#">Termes et conditions</a></li>
+                            <li class="footer__li"> <img class="footer__chat-img-icon footer__li" width="18" height="14" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469462241/msg_jn0whe.svg" href="#" />Chat</li>
+                            <li class="footer__li"> <img class="footer__chat-img-icon footer__li" width="15" height="15" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469462243/phone_zfj4ey.svg" href="#" />1-253-306-3470</li>
+                        </ul>
+                    </div>
+                    <div class="footer__partition"></div>
+                    <div class="footer__about">
+                        <ul class="footer__ul">
+                            <h3 class="footer__left">Madeleine Dupont</h3>
+                            <li class="footer__li"><a class="footer__a" href="#">madeleinesalondecoiffure@gmail.com</a></li>
+                            <li class="footer__li"><a class="footer__a" href="#">© 2021, Madeleine Salon de Coiffure</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__partition"></div>
+                    <div class="footer__card">
+                        <ul class="footer__ul">
+                            <h3 class="footer__left">À propos de nous</h3>
+                            <li class="footer__li"><a class="footer__a" href="#">Politique de confidentialité</a></li>
+                            <li class="footer__li"><a class="footer__a" href="#">Termes et conditions</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </center>
-    </main>
-    <!---  <script src=" {% static "js/scripts.js" %}"  ></script>-->
-    <!--FOOTER-->
-    <footer class="footer">
-            <ul class="footer__text">
-                <div class="footer__column">
-                    <li class='footer__text       '> <a href="#" class="footer__link">À propos de nous </a></li>
-                    <li class='footer__text       '> <a href="#" class="footer__link">Politique de confidentialité</a></li>
-                    <li class='footer__text       '> <a href="#" class="footer__link">Termes et conditions </a></li>
+                <a class="footer__a" class="" href="/"><img class='footer__logo' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668880/skeletoncrest_t9zecb.svg" alt="" /></a>
+                <div id="footer-newsletter-social">
+                    <div id="footer-newsletter">
+                        <h3 class="footer__center">Get more deals with Madeleine</h3>
+                        <div class='footer__enter'>
+                            <input type="text" placeholder="Enter email address" class="getemailform"/>
+                            <input class="enteremailbutton" type="submit" value="Sign Up" />
+                        </div>
+                    </div>
+                    <br><br>
+                    <div id="footer-social">
+                        <a class="footer__a" href="https://www.facebook.com/madeleine.beach.3" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669349/facebook_eknuzn_drzww6.svg" alt="facebook" /></a>
+                        <a class="footer__a" href="https://twitter.com/madecoiffure" target="_blank"> <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669267/twitter_nfohqw_wdseyj.svg" alt="twitter" /></a> 
+                        <a class="footer__a" href="https://pin.it/5qgAohs" target="_blank"> <img width="34" height="34" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/pinterest_vtom0c.svg" alt="pintrest" /></a > 
+                        <a class="footer__a" href="https://www.instagram.com/madeleinebeachh/" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669343/instagram_u4wt1i_br0ox6.svg" alt="instagram"/> </a>
+                        <a class="footer__a" href="http://youtube.com/madeleinesalondecoiffure" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627677813/youtubeicon_u5ks3w.svg" alt="youtube" /></a>
+                    </div>
+                </div>       
+                <div class="footer__border"></div>
+                <div id="footer-copyright">
+                    <div class="footer__law">
+                    <ul class="footer__ul">
+                        <li class="footer__li footer__copy"> © 2021 Madeleine Salon de Coiffure.</li>
+                        <li class="footer__li footer__copy"> Privacy Policy | Terms + Conditions | Sitemap</li>
+                        <li class=" footer__li footer__copy"> Washington | Transparency in Supply Chains Act</li>
+                    </ul>
+                    </div>
                 </div>
-                <div class="footer__column ">
-                    <li class='footer__text top   '><a href="#"  class="footer__link"> Madeleine Dupont</a></li>
-                    <li class='footer__text center'> <a href="#" class="footer__link">madeleinesalondecoiffure@gmail.com</a></li>
-                    <li class='footer__text center'> <a href="#" class="footer__link"> © 2021, Madeleine Salon de Coiffure</a></li>
-                </div>
-                <div class="footer__column">
-                    <li class='footer__text top  '> <a href="#"  class="footer__link"> Contactez-nous</a></li>
-                    <li class='footer__text       '> <a href="#" class="footer__link">2206 N Alder St </a></li>
-                    <li class='footer__text       '> <a href="#" class="footer__link">Tacoma WA 98406</a></li>
-                </div>
-            </ul>
-            <div class='footer__imgcontainer'> <a class="" href="#"><img class='footer__logo' src="https://www.dropbox.com/s/8m1yd3e958c9ic2/skeletoncrest.svg?raw=1" alt="" /></a></div>
-        <div class="footer__social">
-            <a class="footer_icon" href="https://www.facebook.com/madeleine.beach.3" width='30' height='30'><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/facebook_eknuzn.svg" alt="facebook" width='30'height='30' /></a>
-            <a class="footer_icon" href="https://twitter.com/madecoiffure" width='30' height='30'><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/twitter_nfohqw.svg" alt="twitter" width='30'height='30'/></a>
-            <a class="footer_icon" href="https://www.instagram.com/madeleinebeachh/"  width='30' height='30'><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/instagram_u4wt1i.svg" alt="instagram"width='30'height='30' /></a>
-            <a class="footer_icon" href="https://pin.it/5qgAohs"  width='30' height='30'><img class="footer__icon" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/pinterest_vtom0c.svg" alt="pinterest" width='30'height='30'/></a>
-        </div>
-    </footer>
+                <br><br>
+                </footer>
+                <!-- </center>
+               
+                </section> -->
+       
     </body>
 </html>

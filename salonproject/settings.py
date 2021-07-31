@@ -12,7 +12,7 @@ import dj_database_url
 import django_heroku
 import psycopg2
 from pathlib import Path
-import cloudinary
+#import cloudinary
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary',
     'salonapp',
 ]
 
@@ -79,8 +78,6 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 #'default': dj_database_url.config(
 #default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
 #}
-
-
 
 #LOCAL POSTGRES PSQL DATABASE 
 
@@ -164,8 +161,8 @@ django_heroku.settings(locals())
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 #cloudinary://784459254455196:888jgqkxGPBr5HPIUsNPBerqnQ8@madeleinesalondecoiffure
-cloudinary.config( 
-  cloud_name = "madeleinesalondecoiffure", 
-  api_key = "784459254455196", 
-  api_secret = "888jgqkxGPBr5HPIUsNPBerqnQ8" 
-)
+#cloudinary.config( 
+ # cloud_name = "madeleinesalondecoiffure", 
+  #api_key = "784459254455196", 
+  #api_secret = "888jgqkxGPBr5HPIUsNPBerqnQ8" 
+#)
