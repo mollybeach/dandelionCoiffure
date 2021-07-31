@@ -7,45 +7,128 @@
         <title>Madeleine Salon de Coiffure Schedule Calender  </title>
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
-            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627699645/calender_c2jlet.css" />
+            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627716019/calender_omm4fg.css" />
             <style>
-            td, th, table {
-                border:none;
-                padding: 2%;
-            }
-            .username{
-                margin:-top 2%;
-            }
-            .apptable{
-                border:none;
-            }
-            ul.nav__sidenav.nav--right {
-                background-color: #EBC3C2;
-                min-height: 410px;
-                border-radius: 20px;
-                border: 25px solid #EBC3C2;
-        }
-        header{
-                background-color: #EBC3C2;
-                min-height: 410px;
-                border-radius: 20px;
-                border: 25px solid #EBC3C2;
-        }
-        a:link{
-            font-weight:bold;
-            }
-             @media all and (max-width: 599px) and (min-width: 0px) {
-     form{
-         margin:1%;
-         }
-         .getemailform{
-             width:90%;
-         }
- }
-  a:hover{
-   color: #534f4f;
- }
-}</style>
+.maincenter{
+border-radius: 20px;
+border: 25px solid  #E0C9C1;
+margin:1% 0;
+padding:2%;
+}
+.header{
+    margin-bottom:0px;}
+td,
+th,
+table {
+    border: none;
+    padding: 2%;
+}
+.username {
+    margin: 0;
+    margin-top: 2%;
+    width:20%;
+    border-radius: 15px;
+    padding: none;
+    background: #ebeef5;
+}
+input.username{
+    width: 95%;
+      background: #ebeef5;
+}
+td.username{
+    background-color: #909fbb;
+    color: #fafafa;
+    border-radius: 15px;
+}
+
+.apptable {
+    border: none;
+}
+ul.nav__sidenav.nav--right {
+    background-color: #ebc3c2;
+    min-height: 410px;
+    border-radius: 20px;
+    border: 25px solid #ebc3c2;
+}
+header {
+    background-color: #ebc3c2;
+    min-height: 410px;
+    border-radius: 20px;
+    border: 25px solid #ebc3c2;
+}
+
+@media all and (max-width: 599px) and (min-width: 0px) {
+    .getemailform {
+        width: 90%;
+    }
+    #footer-newsletter {
+        margin: auto;
+    }
+    #footer-social {
+        margin-top: 20px;
+    }
+}
+
+@media all and (max-width: 411px) and (min-width: 0px) {
+    form {
+        margin: 1%;
+    }
+}
+    
+
+a:link {
+    font-weight: bold;
+}
+a:hover {
+    color: #534f4f;
+}
+.fc-content{
+    background-color: #909fbb;
+    color: #fafafa;
+    font-weight: bold;
+     border-radius: 25px;
+    border: 1px solid #909fbb;
+    background: #909fbb;
+
+}
+.fc-event{
+    border: 1px solid #909fbb;
+  background-color: #909fbb;
+}
+.fc-state-default {
+     background-color: #ebeef5;
+    background-image: none;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+     */
+  font-weight: bold;
+       padding: 0 1%;
+       color:#2f343e;
+      
+}
+.fc-state-active{
+      background-color: #9b9b9b;
+       color: #fafafa;
+
+}
+.formcaption{
+    font-weight: bold;
+    font-size: 20px;
+    color:#9b9b9b;
+}
+
+.td.fc-highlight {
+    background:  #ebeef5;
+}
+.fc-unthemed .fc-today {
+    background: #9b9b9b;
+    color: #fafafa;
+}
+a.fc-more{
+    color:#2f343e;
+    font-wight: bold;
+    font-size: 1rem;
+}
+</style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
@@ -188,7 +271,7 @@
                     $("telephone").datepicker("option", "maxDate", dateText);
                 }
             });
-           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker"></input>');
+           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
             $(function() {
             $("#datepicker").datepicker({
                 showOn: "both",
@@ -315,17 +398,21 @@
             </ul>
         </nav>
     </header>
-        <!-- MAIN-->
-        <main >
-        <center> 
+     <main class='maincenter'>
+        <!-- MAIN-
+       
+        <section class='maincenter'>
+        <center > ->
             <h1 class='greeting-calendar'>Select date for Appointment with Madeleine Salon de Coiffure</h1>
             <h2>Please complete form</h2><br/>
-            </div>
+            
 
 <!--APPOINTMENT FORM-->
         <form >
 {% csrf_token %}
                 <table  class='appttable ' border="1"> 
+                <caption class='formcaption' >Please fill out form </caption>
+                <caption class='formcaption'> Select appointment date with Madeleine Salon de Coiffure</caption>
                 <tbody class='apptbody'>
                 <!---  <div id='userlist' class='apptform '> </div>-->
                     <!-- FIRST NAME -->
@@ -335,11 +422,10 @@
                     <!-- LAST NAME -->
                     <tr>  
                     <td  class='username'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
-                    </tr>
-                    <tr>  
+                    </tr> 
                     <!-- SERVICE NAME -->
                     <tr>  
-                    <td  class='username'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"></td>
+                    <td  class='username'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
                     </tr>
                     <!-- EMAIL -->
                     <tr>
@@ -351,17 +437,17 @@
                     </tr>
                     <!-- APPOINTMENT DATE -->
                     <tr>
-                    <td  class='username'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'></td>
+                    <td  class='username'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
                     </tr>
-                    <tbody>
+                    </tbody>
                 </table>
                 <br>
-                <input type="button" name="add" id='add' value="Add Appointment" class="btn"></input>
+                <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
-            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn">-->
-            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"> -->
+            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
+            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"/> -->
                 <br>
-            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn">-->
+            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn"/>-->
         </form>
         <div id="calendar"> </div> <br><br><br><br><br> 
     </main>
@@ -423,6 +509,10 @@
                     </div>
                 </div>
                 <br><br>
-        </footer>
+                </footer>
+                <!-- </center>
+               
+                </section> -->
+       
     </body>
 </html>
