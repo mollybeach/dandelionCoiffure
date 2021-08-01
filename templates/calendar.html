@@ -299,6 +299,15 @@ margin:auto}
             $("#save-event").show();
             $("input").prop("readonly", false);
             },
+             eventRender: function(event, element) {
+            //dynamically prepend close button to event
+            element
+              .find(".fc-content")
+              .prepend("<span class='closeon material-icons'>&#xe5cd;</span>");
+            element.find(".closeon").on("click", function() {
+              $("#calendar").fullCalendar("removeEvents", event._id);
+            });
+          },
         
 
         
