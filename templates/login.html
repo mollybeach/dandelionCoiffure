@@ -77,11 +77,7 @@ main{
     <main class="main">
     
       <br>
-{% if messages%}
-{% for message in messages%}
-<h1 class="header__welcome headerp">Bonjour ! {{user.username}} </h1>
-{% endfor%}
-{% endif%}
+
 
       <form  class=""method='POST' action="login">
       {% csrf_token %}
