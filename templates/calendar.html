@@ -30,7 +30,6 @@ table {
     margin-top: 2%;
     width:20%;
     border-radius: 15px;
-    padding: none;
     background: #ebeef5;
 }
 input.username{
@@ -195,6 +194,12 @@ td, th, table {
 .fc-slats .fc-minor td {
     border-top-style: solid;
 }
+.space{
+    padding: 3.5%;
+}
+.appttable{
+    /*padding:12%;*/
+margin:auto}
 </style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
@@ -503,43 +508,45 @@ td, th, table {
 
 <!--APPOINTMENT FORM-->
         <form >
+        <br>
+        <br>
 {% csrf_token %}
-                <table  class='appttable ' border="1"> 
+                <table  class='appttable space' border="1"> 
                 <caption class='formcaption' >Please fill out form </caption>
                 <caption class='formcaption'> Select appointment date with Madeleine Salon de Coiffure</caption>
-                <tbody class='apptbody'>
+                <tbody class='apptbody space'>
                 <!---  <div id='userlist' class='apptform '> </div>-->
                     <!-- FIRST NAME -->
-                    <tr>
-                    <td  class='username'>First Name</td><td> <input  id='firstname'class='username' type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
+                    <tr class='space'>
+                    <td  class='username space'>First Name</td><td> <input  id='firstname'class='username' type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
                     </tr>
                     <!-- LAST NAME -->
-                    <tr>  
-                    <td  class='username'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
+                    <tr class='space'>  
+                    <td  class='username space'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
                     </tr> 
                     <!-- SERVICE NAME -->
-                    <tr>  
-                    <td  class='username'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
+                    <tr class='space'>  
+                    <td  class='username space'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
                     </tr>
                     <!-- EMAIL -->
-                    <tr>
-                    <td  class='username'>Email</td><td> <input id='email' class='username'  type="email" placeholder=" email "  name="email"/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Email</td><td> <input id='email' class='username'  type="email" placeholder=" email "  name="email"/></td>
                     </tr>
                     <!-- TELEPHONE -->
-                    <tr>
-                    <td  class='username'>Telephone</td><td> <input id='telephone' class='username'  type="text"  placeholder=" telephone " required autocomplete='off' name="telephone"/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Telephone</td><td> <input id='telephone' class='username'  type="text"  placeholder=" telephone " required autocomplete='off' name="telephone"/></td>
                     </tr>
                     <!-- APPOINTMENT DATE -->
-                    <tr>
-                    <td  class='username'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
                     </tr>
                     <!-- TIME -->
-                    <tr>
-                    <td  class='username'>Time</td><td> <input id='time' class='username'  type="text"  placeholder=" time " required autocomplete='off' name="time"/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Time</td><td> <input id='time' class='username'  type="text"  placeholder=" time " required autocomplete='off' name="time"/></td>
                     </tr>
                     </tbody>
                 </table>
-                <br>
+           
                 <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
             <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
