@@ -62,10 +62,8 @@
   <br>
   <!--MAIN-->
       <main class="mainsection">
-    <h1 class="header__welcome">{{user.username}} </h1>
-    {% for messsage in messages%}
-      <h3 class='messeagesweb'>{{message}}</h3>
-{% endfor%}
+    <h1 class="header__welcome"> Bonjour {{user.username}} </h1>
+
 
       <form  class=""method='POST' action="post">
       {% csrf_token %}
@@ -83,7 +81,11 @@
         <button type="submit" class="submit-btn">Submit</button>
     </form>
 
-    <div id="welcomeMsg" class="welcome-msg"></div>
+    <div id="welcomeMsg" class="welcome-msg">    
+    {% for messsage in messages%}
+      <h3 class='messeagesweb'>{{message}}</h3>
+{% endfor%}
+        </div>
     </main>
   <!--FOOTER-->
         <footer id="footer">
