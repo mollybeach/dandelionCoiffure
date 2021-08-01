@@ -392,10 +392,15 @@ margin:auto}
                 selectOtherMonths: true,
                 onSelect: function(formated, dates) {
                 $("#calendar").fullCalendar("gotoDate", formated);
-                var selectedDate = $("#datepicker").datepicker('getDate');
+                let  selectedDate = $("#datepicker").datepicker('getDate');
+                },
+                    onSelect: function(selectedDateFormatted){
+
+                    let  selectedDate = $("#datepickerr").datepicker('getDate');
 
                     deactivateDates(selectedDate);
-                }
+                   }
+
             });
             $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
             $("#datepicker").datepicker( "setDate" , "+0d" );
@@ -406,20 +411,22 @@ margin:auto}
                 "4-4-2017", "5-4-2017", "6-4-2017", "6-4-2016", "7-4-2017", "8-4-2017", "9-4-2017"
             ];*/
             /*disable all days that are in the events obj */
-    var excludedDates = [ "10-20-2017","10-21-2016", "11-21-2016"]    deactivateDates(new Date())  function deactivateDates(selectedDate){
+    let  excludedDates = [ "10-20-2017","10-21-2016", "11-21-2016"];
+        deactivateDates(new Date())  f
+        function deactivateDates(selectedDate){
         setTimeout(function(){ 
-            var thisMonthExcludedDates = thisMonthDates(selectedDate);
+            let  thisMonthExcludedDates = thisMonthDates(selectedDate);
             thisMonthExcludedDates = getDaysfromDate(thisMonthExcludedDates);
-            var excludedTDs = page.find('td[data-handler="selectDay"]').filter(function(){
+            let  excludedTDs = page.find('td[data-handler="selectDay"]').filter(function(){
                 return $.inArray( $(this).text(), thisMonthExcludedDates) >= 0
             })             excludedTDs.unbind('click').addClass('ui-datepicker-unselectable');
         }, 10);
     function thisMonthDates(date){
     return $.grep( excludedDates, function( n){
-      var dateParts = n.split("-");
-      return dateParts[0] == date.getMonth() + 1  && dateParts[2] == date.getYear() + 1900;
+        let  dateParts = n.split("-");
+        return dateParts[0] == date.getMonth() + 1  && dateParts[2] == date.getYear() + 1900;
   });
-     function getDaysfromDate(datesArray){
+    function getDaysfromDate(datesArray){
         return  $.map( datesArray, function( n){
           return n.split("-")[1]; 
       });
