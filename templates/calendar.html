@@ -351,14 +351,11 @@ function todayEqualActive(){
                 selectHelper: true,
             
  /*when i click on the full calendar day click the jquery timepicker will be shown*/
-            eventClick: function(event, jsEvent, view) {
+        
         dayClick: function(date, jsEvent, view) {
 
-           /* alert('Clicked on: ' + date.format());*/
-           /* alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert("You clicked on " + $(this).attr("data-date"));
-            alert('Current view: ' + view.name);*/
             $("#appointmentdate").val(date.format());
+            
             $('#time').timepicker({
                 timeFormat: 'hh:mm:ss',
                 interval: 60,
