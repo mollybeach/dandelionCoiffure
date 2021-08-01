@@ -198,6 +198,12 @@ td, th, table {
 .appttable{
     /*padding:12%;*/
 margin:auto}
+.messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
 </style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
@@ -548,12 +554,12 @@ margin:auto}
                 <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
                 <br>
-{% if messages%}
- <br>
+ {% if messages%}
 {% for message in messages%}
-{{% message %}}
+<h1 class="messageweb">Bonjour ! {{message}} </h1>
 {% endfor%}
 {% endif%}
+
             <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
             <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"/> -->
                 <br>
