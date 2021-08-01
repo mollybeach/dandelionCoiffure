@@ -355,7 +355,30 @@ margin:auto}
         });  
 
 /*************************END OF CALENDAR*******************/
+/***********************DATE PICKER*******************/ //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
 
+            $(function() {
+            $("#datepicker").datepicker({
+                showOn: "both",
+                showOptions: { 
+                direction: "down" 
+                },           
+                autoSize: true,
+                buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+                buttonText: "Select date",
+                changeMonth: true,
+                changeYear: true,
+                currentText: "Now",
+                firstDay: 1,
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                onSelect: function(formated, dates) {
+                $("#calendar").fullCalendar("gotoDate", formated);
+                }
+            });
+            $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
+            $("#datepicker").datepicker( "setDate" , "+0d" );
+            });
         
        /* $("#starts-at, #ends-at").datetimepicker(); // Bind the dates to datetimepicker.*/
         $("#save-event").on("click", function(event) {  //click to save "save"
@@ -442,30 +465,7 @@ margin:auto}
                 }
             })
 
-/***********************DATE PICKER*******************/ //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
 
-            $(function() {
-            $("#datepicker").datepicker({
-                showOn: "both",
-                showOptions: { 
-                direction: "down" 
-                },           
-                autoSize: true,
-                buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-                buttonText: "Select date",
-                changeMonth: true,
-                changeYear: true,
-                currentText: "Now",
-                firstDay: 1,
-                showOtherMonths: true,
-                selectOtherMonths: true,
-                onSelect: function(formated, dates) {
-                $("#calendar").fullCalendar("gotoDate", formated);
-                }
-            });
-            $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
-            $("#datepicker").datepicker( "setDate" , "+0d" );
-            });
 
 });
 /*=========================================================================================================*/
