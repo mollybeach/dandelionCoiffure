@@ -74,13 +74,12 @@ WSGI_APPLICATION = 'salonproject.wsgi.application'
 
 #HEROKU DATABASE 
 #HEROKU_POSTGRESQL_MAROON_URL
-#DATABASES = {
-#'default': dj_database_url.config(
-#default="postgres://rlwaomzyvunsxw:86baaee427d37fd854a29885c5cc27ecb60a05f95769474ec9d95827970cad89@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d9e037ciuano87")
-#}
+DATABASE_URL='postgres://kcephsxhxheiob:d004979b53e452efde56c82adfcec829b73544fd151b38afa7f1bb49969dc6a3@ec2-3-226-134-153.compute-1.amazonaws.com:5432/d3saqmno8kra55'
+DATABASES = {'default': dj_database_url.config(os.environ.get('DATABASE_URL'))
+}
 
 #LOCAL POSTGRES PSQL DATABASE 
-
+'''
 DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -90,7 +89,7 @@ DATABASES = {
         'HOST' : 'localhost',
         'PORT' : '5432'
     }
-}
+}'''
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 
@@ -119,7 +118,6 @@ USE_TZ = True
 '''
 # STATIC FILES (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
 # Extra places for collectstatic to find static files.

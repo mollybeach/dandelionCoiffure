@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from django.db import connection
 from django.contrib import messages
-from salonapp.models import Users
+from salonapp.models import Users, Payment
 import calendar
 from  calendar import HTMLCalendar
 from django.core.mail import send_mail
@@ -38,7 +38,7 @@ def get(request):
 def post_user(request):
     if request.method == 'POST':
         rp = json.loads(request.body.decode('utf-8'))
-        user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'])
+        user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'],time=rp['time'])
         user.save()
         context = serializers.serialize('json', Users.objects.all())
         return JsonResponse(context, safe=False)
@@ -59,6 +59,7 @@ def update_user(request):
     field.service=rp['service']
     field.telephone=rp['telephone']
     field.appointmentdate=rp['appointmentdate']
+    field.time=rp['time']
     field.save()
     return get(request)
 
@@ -118,6 +119,14 @@ def contact(request):
 
 def about(request):
     return render(request, 'about.html')
+
+@csrf_exempt
+def payment(request):
+    billingdata = serializers.serialize('json', Payment.objects.all())
+    result = dumps(billingdata)
+    return render(request, 'payment.html', {'result': result})
+
+
 
 
 

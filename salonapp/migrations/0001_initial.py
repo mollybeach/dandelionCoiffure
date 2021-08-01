@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('service', models.CharField(max_length=100)),
                 ('telephone', models.CharField(max_length=20)),
                 ('appointmentdate', models.CharField(max_length=20)),
+                ('time', models.CharField(max_length=20)),
             ],
         ),
     ]

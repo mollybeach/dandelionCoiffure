@@ -4,11 +4,12 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title>Madeleine Salon de Coiffure Schedule Calender  </title>
+        <title>Madeleine Salon de Coiffure Schedule Calendar  </title>
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
-            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627716019/calender_omm4fg.css" />
-            <style>
+            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627775345/calender_x3yfqn.css" />
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<style>
 .maincenter{
 border-radius: 20px;
 border: 25px solid  #E0C9C1;
@@ -21,14 +22,13 @@ td,
 th,
 table {
     border: none;
-    padding: 2%;
+    padding: 0;
 }
 .username {
     margin: 0;
     margin-top: 2%;
     width:20%;
     border-radius: 15px;
-    padding: none;
     background: #ebeef5;
 }
 input.username{
@@ -57,17 +57,6 @@ header {
     border: 25px solid #ebc3c2;
 }
 
-@media all and (max-width: 599px) and (min-width: 0px) {
-    .getemailform {
-        width: 90%;
-    }
-    #footer-newsletter {
-        margin: auto;
-    }
-    #footer-social {
-        margin-top: 20px;
-    }
-}
 
 @media all and (max-width: 411px) and (min-width: 0px) {
     form {
@@ -93,21 +82,21 @@ a:hover {
 }
 .fc-event{
     border: 1px solid #909fbb;
-  background-color: #909fbb;
+    background-color: #909fbb;
 }
 .fc-state-default {
-     background-color: #ebeef5;
+    background-color: #ebeef5;
     background-image: none;
     /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
      */
-  font-weight: bold;
-       padding: 0 1%;
-       color:#2f343e;
-      
+font-weight: bold;
+    padding: 0 1%;
+    color:#2f343e;
+
 }
 .fc-state-active{
-      background-color: #9b9b9b;
-       color: #fafafa;
+    background-color: #9b9b9b;
+    color: #fafafa;
 
 }
 .formcaption{
@@ -120,18 +109,100 @@ a:hover {
     background:  #ebeef5;
 }
 .fc-unthemed .fc-today {
-    background: #9b9b9b;
-    color: #fafafa;
+    background: #ebeef5;
+    color: black;
 }
 a.fc-more{
     color:#2f343e;
     font-wight: bold;
     font-size: 1rem;
 }
+.fc td, .fc th {
+    border-style: solid;
+    border-width: 3px;
+    border-color: antiquewhite;
+    /*padding: 2%; remove padding 0*/
+    /*border-radius: 5px;
+    vertical-align: top;
+    /*border-collapse: separate;*/
+}
+
+.fc table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: seperate; 
+    border-spacing: 0;
+    font-size: 1em;
+}
+.fc-state-default {
+    background-repeat: repeat-x;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #333;
+    text-shadow: none;
+}
+.fc td.fc-today {
+    border-style: solid;
+}
+td, th, table {
+    border: none;
+    border-collapse: separate;
+    border-radius: 10px;
+}
+
+.fc-state-default {
+    border: 5px;
+    border-radius: 20px;
+    background-color: #ebc3c2;
+}
+/*****CUSTIMIZE THIS PER SIZE*****/
+.fc-toolbar button {
+    position: relative;
+    width: 5%
+    height: auto;
+}
+.fc {
+    direction: ltr;
+    text-align: center; /* center the text in event */
+}
+.fc table{
+    border-collapse: unset;
+}
+
+@media all and (max-width: 599px) and (min-width: 0px) {
+    .getemailform {
+        width: 90%;
+    }
+    #footer-newsletter {
+        margin: auto;
+    }
+    #footer-social {
+        margin-top: 20px;
+    }
+    .fc-toolbar button {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+}
+.fc-state-active {
+    background: #9b9b9b;
+    color: #EbC3c2;
+}
+.fc-slats .fc-minor td {
+    border-top-style: solid;
+}
+.space{
+    padding: 3.5%;
+}
+.appttable{
+    /*padding:12%;*/
+margin:auto}
 </style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+             <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
         <script>
 /******************GET *********************/
@@ -147,6 +218,7 @@ a.fc-more{
             $('#service').val("service")
             $('telephone').val("telephone")
             $('#appointmentdate').val("appointmentdate")
+            $('time').val("time")
             if (textlist == "")
                 $("#userlist").html("No users available, add one below please")
             else
@@ -168,9 +240,18 @@ a.fc-more{
             let obj = {
                 "id": event.pk,
                 "title": event.fields["firstname"] + " " + event.fields["lastname"] + " " + event.fields["service"],
-                "start": event.fields["telephone"] ,
-                "end": event.fields["appointmentdate"] 
+                //"start": event.fields["telephone"] ,
+               // "end": event.fields["appointmentdate"] 
                // "allDay": false,
+               // start:  '2010-01-01T14:30:00',
+               //convert appointmentdateTime back to dateTime floatformat
+               // start: moment(event.fields["appointmentdateTime"]).format('YYYY-MM-DDTHH:mm:ss')
+              // "start":   event.fields["appointmentdate"]+"T"+event.fields["time"] ,
+              //convert appointmentdateTime back to dateTime format to be read by fullcalendar
+              start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
+              //"start":   event.fields["appointmentdate"]
+               //end:  events.fields[appointmentdate] + (event.fields["telephone"]+30)
+               //add 2 hours to the start time value  and make it my end time and create another obj.value called end that has the saame date just2 hours add to time 
             }
             events.push(obj);
         }
@@ -220,7 +301,8 @@ a.fc-more{
                 selectable: true,
                 eventLimit: true,
                 selectMirror: true,
-                events: events
+                events: events,
+                allDaySlot: false,
             
             });
 /***************ADD *********************/
@@ -231,7 +313,8 @@ a.fc-more{
             let service = $("input[name=service]").val()
             let telephone = $("input[name=telephone]").val()
             let appointmentdate = $("input[name=appointmentdate]").val()
-            
+            let time = $("input[name=time]").val()
+            let appointmentdateTime = moment(appointmentdate+"T"+time, "YYYY-MM-DDTHH:mm").format("YYYY-MM-DDTHH:mm:ss");
             $.ajax({
                 type: "POST",
                 url: '/useradded/',
@@ -242,35 +325,46 @@ a.fc-more{
                     'email': email,
                     'service': service,
                     'telephone': telephone,
-                    'appointmentdate': appointmentdate
+                    'appointmentdate': appointmentdate,
+                    'time': appointmentdateTime,
+                    
                 }),
                 success: getUsers
             });
             events.push({
                 title: service,
-                start: telephone,
-                end: appointmentdate
+                date: appointmentdate,
+                allDay: true,     
                 });
                 $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
-            });
-            $("#telephone").datepicker({
-                dateFormat: "yy-mm-dd",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "c-10:c+10",
-                onSelect: function(dateText, inst) {
-                    $("#appointmentdate").datepicker("option", "minDate", dateText);
-                }
             });
             $("#appointmentdate").datepicker({
                 dateFormat: "yy-mm-dd",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "c-10:c+10",
+                multiSelect: false,
+                minDate: 0,
                 onSelect: function(dateText, inst) {
-                    $("telephone").datepicker("option", "maxDate", dateText);
+                    $("#appointmentdate").datepicker("option", "minDate", dateText);
+                    
                 }
             });
+            $('#time').timepicker({
+                timeFormat: 'hh:mm:ss',
+                interval: 60,
+                minTime: '07:00:00',
+                maxTime: '17:00:00',
+                startTime: '07:00:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true,
+                onSelect: function(timeText, inst) {
+                    $("#appointmentdate").datepicker("option", "time", timeText);
+                    
+                }
+            })
+
            //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
             $(function() {
             $("#datepicker").datepicker({
@@ -323,6 +417,7 @@ a.fc-more{
                                 $('#service').val(Json[i].fields['service'])
                                 $('#telephone').val(Json[i].fields['telephone'])
                                 $('#appointmentdate').val(Json[i].fields['appointmentdate'])
+                                $('#time').val(Json[i].fields['time'])
                                 break;
                             }
                         }
@@ -355,7 +450,7 @@ a.fc-more{
                 let service = $("input[name=service]").val()
                 let telephone = $("input[name=telephone]").val()
                 let appointmentdate = $("input[name=appointmentdate]").val()
-            
+                let time = $("input[name=time]").val()
                 $.ajax({
                 url: 'userupdated/',
                 type: 'PUT',
@@ -367,7 +462,9 @@ a.fc-more{
                     'email': email,
                     'service': service,
                     'telephone': telephone,
-                    'appointmentdate': appointmentdate
+                    'appointmentdate': appointmentdate,
+                    'time': time,
+
                 }),
                 success: getUsers,
             });
@@ -409,39 +506,45 @@ a.fc-more{
 
 <!--APPOINTMENT FORM-->
         <form >
+        <br>
+        <br>
 {% csrf_token %}
-                <table  class='appttable ' border="1"> 
+                <table  class='appttable space' border="1"> 
                 <caption class='formcaption' >Please fill out form </caption>
                 <caption class='formcaption'> Select appointment date with Madeleine Salon de Coiffure</caption>
-                <tbody class='apptbody'>
+                <tbody class='apptbody space'>
                 <!---  <div id='userlist' class='apptform '> </div>-->
                     <!-- FIRST NAME -->
-                    <tr>
-                    <td  class='username'>First Name</td><td> <input  id='firstname'class='username' type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
+                    <tr class='space'>
+                    <td  class='username space'>First Name</td><td> <input  id='firstname'class='username' type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
                     </tr>
                     <!-- LAST NAME -->
-                    <tr>  
-                    <td  class='username'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
+                    <tr class='space'>  
+                    <td  class='username space'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
                     </tr> 
                     <!-- SERVICE NAME -->
-                    <tr>  
-                    <td  class='username'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
+                    <tr class='space'>  
+                    <td  class='username space'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
                     </tr>
                     <!-- EMAIL -->
-                    <tr>
-                    <td  class='username'>Email</td><td> <input id='email' class='username'  type="email" placeholder=" email "  name="email"/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Email</td><td> <input id='email' class='username'  type="email" placeholder=" email "  name="email"/></td>
                     </tr>
                     <!-- TELEPHONE -->
-                    <tr>
-                    <td  class='username'>Telephone</td><td> <input id='telephone' class='username'  type="tel" placeholder=" telephone " required autocomplete='off' name="telephone"/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Telephone</td><td> <input id='telephone' class='username'  type="text"  placeholder=" telephone " required autocomplete='off' name="telephone"/></td>
                     </tr>
                     <!-- APPOINTMENT DATE -->
-                    <tr>
-                    <td  class='username'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
+                    <tr class='space'>
+                    <td  class='username space'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
+                    </tr>
+                    <!-- TIME -->
+                    <tr class='space'>
+                    <td  class='username space'>Time</td><td> <input id='time' class='username'  type="text"  placeholder=" time " required autocomplete='off' name="time"/></td>
                     </tr>
                     </tbody>
                 </table>
-                <br>
+           
                 <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
             <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
