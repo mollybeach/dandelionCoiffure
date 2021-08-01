@@ -356,25 +356,8 @@ margin:auto}
 
 /*************************END OF CALENDAR*******************/
 
-/************DELETE EVENT*****************
-            eventClick: function(calEvent, jsEvent, view) {
-            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
-            // your deletion code
-            $.ajax({
-                    type: 'DELETE',
-                    url: '/userremoved/',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        'pk':  calEvent.id
-                    }),
-                    success: getUsers
-                });
-            }
-            return false;
-            },*/
-            
         
-        $("#starts-at, #ends-at").datetimepicker(); // Bind the dates to datetimepicker.
+       /* $("#starts-at, #ends-at").datetimepicker(); // Bind the dates to datetimepicker.*/
         $("#save-event").on("click", function(event) {  //click to save "save"
                 let title = $("#title").val();
                 if (title) {
@@ -484,78 +467,6 @@ margin:auto}
             $("#datepicker").datepicker( "setDate" , "+0d" );
             });
 
-
-/************************SELECT DETAILS****************************/
-
-            $("#details").click(function(e) {
-                let id = $("input[name=user]:checked").attr('id');
-                $.ajax({
-                    type: "GET",
-                    url: 'users/',
-                    dataType: 'json',
-                    success: function(response) {
-                        let Json = JSON.parse(response)
-                        for (let i = Json.length - 1; i >= 0; i--) {
-                            if (id == Json[i].pk) {
-                                $('#firstname').val(Json[i].fields['firstname'])
-                                $('#lastname').val(Json[i].fields['lastname'])
-                                $('#email').val(Json[i].fields['email'])
-                                $('#service').val(Json[i].fields['service'])
-                                $('#telephone').val(Json[i].fields['telephone'])
-                                $('#appointmentdate').val(Json[i].fields['appointmentdate'])
-                                $('#time').val(Json[i].fields['time'])
-                                break;
-                            }
-                        }
-                    },
-                });
-
-            });
-
-/**********************DELETE**********************
-            $("#delete").click(function(e) {
-                //let id = $("input[name=user]:checked").attr('id');
-                id=e,
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/userremoved/',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        'pk': id
-                    }),
-                    success: getUsers
-                });
-            
-            });
-/*********************UPDATE*********************/   
-
-            $("#update").click(function() {
-                let id = $("input[name=user]:checked").attr('id');
-                let firstname = $('input[name=firstname]').val()
-                let lastname = $("input[name=lastname]").val()
-                let email = $("input[name=email]").val()
-                let service = $("input[name=service]").val()
-                let telephone = $("input[name=telephone]").val()
-                let appointmentdate = $("input[name=appointmentdate]").val()
-                let time = $("input[name=time]").val()
-                $.ajax({
-                url: 'userupdated/',
-                type: 'PUT',
-                dataType: 'json',
-                data: JSON.stringify({
-                    'pk': id,
-                    'firstname': firstname,
-                    'lastname': lastname,
-                    'email': email,
-                    'service': service,
-                    'telephone': telephone,
-                    'appointmentdate': appointmentdate,
-                    'time': time,
-
-                }),
-                success: getUsers,
-            });
-        });
 });
 /*=========================================================================================================*/
 /*========================================END OF JQUERY===================================================*/
