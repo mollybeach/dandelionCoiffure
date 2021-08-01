@@ -398,16 +398,19 @@ margin:auto}
             $("#datepicker").datepicker( "setDate" , "+0d" );
             });
         });
-            var disabledDays = [
+          /*  let disabledDays = [
                 "27-4-2016", "25-12-2016", "26-12-2016",
                 "4-4-2017", "5-4-2017", "6-4-2017", "6-4-2016", "7-4-2017", "8-4-2017", "9-4-2017"
-            ];
+            ];*/
+            /*disable all days that are in the events obj */
+
+            let disabledDays = eventsObj;
                         //replace these with the id's of your datepickers
             $("#datepicker").datepicker({
                 beforeShowDay: function(date){
-                    var day = date.getDay();
-                    var string = jQuery.datepicker.formatDate('d-m-yy', date);
-                    var isDisabled = ($.inArray(string, disabledDays) != -1);
+                    let day = date.getDay();
+                    let string = jQuery.datepicker.formatDate('d-m-yy', date);
+                    let isDisabled = ($.inArray(string, disabledDays) != -1);
                               //day != 0 disables all Sundays
                 return [day != 0 && !isDisabled];
             }
@@ -567,12 +570,10 @@ margin:auto}
                     </tr>
                     </tbody>
                 </table>
-           
                 <input type="submit" name="add" id='add' value="Add Appointment" class="btn"/>
-                <br>
-           <br>
-             <!--  
- {% if messages%}
+                <br><br>
+    <!--  
+{% if messages%}
 {% for message in messages%}
 <h1 class="messageweb"> {{message}} </h1>
 {% endfor%}
@@ -586,7 +587,6 @@ margin:auto}
         <div id="calendar"> </div> <br><br><br><br><br> 
     </main>
 <!--FOOTER-->
-  <!--FOOTER-->
         <footer id="footer">
                 <div id="footer-utility">
                     <div class="footer__chat">
@@ -645,8 +645,6 @@ margin:auto}
                 <br><br>
                 </footer>
                 <!-- </center>
-               
-                </section> -->
-       
+</section> -->
     </body>
 </html>
