@@ -72,69 +72,53 @@
   <body class="container">
     <!-- HEADER NAV -->
     <header class="header">
-      <nav class="header__nav">
+        <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
-          <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
-            <div class="header__links">
-          <li class="header__link"><a href="about" >About</a></li>
-          <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="calendar" >Book</a></li>
-          <li class="header__link"><a href="contact" >Contact Us</a></li>
+                <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
+                <div class="header__links">
+                <li class="header__link"><a href="about" >About</a></li>
+                <li class="header__link"><a href="clients" >Clients</a></li>
+                <li class="header__link"><a href="calendar" >Book</a></li>
+                <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
-          <li class="header__link"><a href="profile" >My Profile</a></li>
-          <li class="header__link"><a href="logout" >Logout</a></li>
+                <li class="header__link"><a href="profile" >My Profile</a></li>
+                <li class="header__link"><a href="logout" >Logout</a></li>
 {% else%}
-          <li class="header__link"><a href="register" >Create Account</a></li>
-          <li><a href="login" class="header__link">Login</a></li>
+                <li class="header__link"><a href="register" >Create Account</a></li>
+                <li><a href="login" class="header__link">Login</a></li>
 {% endif %}
-          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
-        </div>
+                <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+                </div>
 {% if user.is_authenticated%}
-        <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
+                <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
 {% else%}
-        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+                <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
 {% endif %}
-        </ul>
-      </nav>
-  </header>
-      <body>
-  <br>
-  <br>
-  <!--MAIN-->
-      <main class="mainsection">
-    <h1 class="header__welcome">{{user.username}} </h1>
-    {% for messsage in messages%}
-      <h3 class='messeagesweb'>{{message}}</h3>
+            </ul>
+        </nav>
+    </header>
+    <body>
+        <br>
+        <br>
+<!--MAIN-->
+    <main class="mainsection">
+        <h2>Profile Information:</h2>
+            <div class="profile">
+                <div class="profile__image"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627794758/profilepic_lhfmad.jpg"/></div>
+                <div class="profile__name"><p>{{user.username}}</p></div>
+                <p>{{user.email}}</p>
+                <p>vous n'avez pas de rendez-vous programmé</p>
+                <p>You have no appointments scheduled with Salon de Madeleine</p>
+                <p>si vous souhaitez en programmer un, rendez-vous sur la page de réservation</p>
+                <br>
+                <a href="book"<button type="submit" class="submit-btn">Schedule Appointment</button></a>
+            </div>
+
+{% for messsage in messages%}
+<h3 class='messeagesweb'>{{message}}</h3>
 {% endfor%}
-            <h1 class="header__welcome">{{user.username}} </h1>
-
-
-    <h2>Profile Information: </h2>
-
-<div class="profile">
-	<div class="profile__image">
-		<img src='https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627794758/profilepic_lhfmad.jpg' />
-	</div>
-	<div class="profile__name">
-		<p>{{user.username}}</p>
-	</div>
-       <p>{{user.email}}  </p>
-	<p>vous n'avez pas de rendez-vous programmé</p>
-	<p>You have no appointments scheduled with Salon de Madeleine</p>
-	<p>si vous souhaitez en programmer un, rendez-vous sur la page de réservation</p>
-    <br>
-		 <a href='book'><button type="submit" class="submit-btn">Schedule Appointment</button></a>
-</div>
-
-
-    
-
-       
-  
-
-    <div id="welcomeMsg" class="welcome-msg"></div>
     </main>
-  <!--FOOTER-->
+<!--FOOTER-->
         <footer id="footer">
                 <div id="footer-utility">
                     <div class="footer__chat">
