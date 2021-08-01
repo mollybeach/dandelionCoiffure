@@ -281,37 +281,65 @@ margin:auto}
         let strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
         $('#currentTime').html(strTime);
 /***************CALENDAR*************/
-        $(document).ready(function() {
-            $("#calendar").fullCalendar({
+    $(document).ready(function() {
+        $("#calendar").fullCalendar({
+            /*********CALENDAR HEADERS*********/
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+                editable: true,
+                navLinks: true,
+                selectable: true,
+                eventLimit: true,
+                selectMirror: true,
+                events: events,
+                allDaySlot: false,
+                selectHelper: true,
             select: function(start, end) {
-              // Display the modal.
-              // You could fill in the start and end fields based on the parameters
-            $(".modal").modal("show");
-            $(".modal")
+                // Display the modal.
+                // You could fill in the start and end fields based on the parameters
+                $(".modal").modal("show");
+                $(".modal")
                 .find("#title")
                 .val("");
-            $(".modal")
+                $(".modal")
                 .find("#starts-at")
                 .val("");
-            $(".modal")
-                .find("#ends-at")
-                .val("");
-            $("#save-event").show();
-            $("input").prop("readonly", false);
+                $(".modal")
+                    .find("#ends-at")
+                    .val("");
+                $("#save-event").show();
+                $("input").prop("readonly", false);
             },
-             eventRender: function(event, element) {
-            //dynamically prepend close button to event
-            element
-              .find(".fc-content")
-              .prepend("<span class='closeon material-icons'>&#xe5cd;</span>");
-            element.find(".closeon").on("click", function() {
-              $("#calendar").fullCalendar("removeEvents", event._id);
+            eventRender: function(event, element) {
+                element.find(".fc-content").prepend("<span class='closeon material-icons'>&#xe5cd;</span>"); //dynamically prepend close button to event
+                element.find(".closeon").on("click", function() {
+                    $("#calendar").fullCalendar("removeEvents", event._id);
+                });
+            },      
+            $("#starts-at, #ends-at").datetimepicker();       // Bind the dates to datetimepicker. 
+          //click to save "save"
+        $("#save-event").on("click", function(event) {
+            let title = $("#title").val();
+                if (title) {
+                    let eventData = {
+                        title: title,
+                        start: $("#starts-at").val(),
+                        end: $("#ends-at").val()
+                    };
+                  $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
+            }
+            $("#calendar").fullCalendar("unselect");
+            // Clear modal inputs
+            $(".modal").find("input").val("");
+            // hide modal
+            $(".modal").modal("hide");
             });
-          },
         
+            $("textarea").autosize();
 
-        
-   /* $("textarea").autosize();*/
 /************DELETE EVENT*****************
             eventClick: function(calEvent, jsEvent, view) {
             if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
@@ -328,20 +356,7 @@ margin:auto}
             }
             return false;
             },*/
-/*********CALENDAR HEADERS*********/
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-                editable: true,
-                navLinks: true,
-                selectable: true,
-                eventLimit: true,
-                selectMirror: true,
-                events: events,
-                allDaySlot: false,
-                selectHelper: true,
+
             
             });
 /***************ADD *********************/
