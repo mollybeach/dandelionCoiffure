@@ -539,7 +539,21 @@ margin:auto}
 /*=================================================================================================*/
 /*========================================VANILLA JS===================================================*/
 /*=================================================================================================*/
-
+// remove border if the selected date is today's date
+function todayEqualActive(){
+  setTimeout(function(){
+    if($(".ui-datepicker-current-day").hasClass("ui-datepicker-today")){
+      $(".ui-datepicker-today")
+        .children(".ui-state-default")
+        .css("border-bottom", "0");
+    }
+    else{
+      $(".ui-datepicker-today")
+        .children(".ui-state-default")
+        .css("border-bottom", "2px solid rgba(53,60,66,0.5)");
+    }
+  }, 20);
+}
 /******************SMOOTH PAGE LOADING***********/
         const links = document.querySelectorAll(".page-header ul a");
 
