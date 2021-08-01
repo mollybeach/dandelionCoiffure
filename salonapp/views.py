@@ -81,7 +81,6 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
-
         if password == password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, 'Email already used')
@@ -91,12 +90,12 @@ def register(request):
                 return redirect('register')
             else: 
                 user = User.objects.create_user(username=username, email=email, password=password)
-                info = Users(firstname=request.POST['firstname'],lastname=request.POST['lastname'],email=request.POST['email'])
+                info = Users(username = request.POST['username'],email=request.POST['email'])
                 user.save();
-                subjectfornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.firstname+ "'  for  '" + info.lastname+ "'"
-                subjectforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.firstname+ "'  for  '" + info.lastname+ "'"
-                messagefornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.firstname+ "'  for  '" + info.lastname+ "'"
-                messageforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.firstname+ "'  for  '" + info.lastname+ "'"
+                subjectfornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
+                subjectforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.username+ "'  for  '" + info.email+ "'"
+                messagefornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
+                messageforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.username+ "'  for  '" + info.email+ "'"
                 try:
                         send_mail(subjectfornewuser, messagefornewuser, info.email, [info.email])
                         send_mail(subjectforhairdressernewuser, messageforhairdressernewuser, info.email, ['madeleinesalondecoiffure@gmail.com'])
