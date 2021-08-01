@@ -97,6 +97,7 @@
         </ul>
       </nav>
   </header>
+      <body>
   <br>
   <br>
   <!--MAIN-->
@@ -106,31 +107,29 @@
       <h3 class='messeagesweb'>{{message}}</h3>
 {% endfor%}
             <h1 class="header__welcome">{{user.username}} </h1>
-    <h2>You have no appointments scheduled with Salon de Madeleine </h2>
+
 
     <h2>Profile Information: </h2>
-    <body>
+
 <div class="profile">
 	<div class="profile__image">
 		<img src='https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627794758/profilepic_lhfmad.jpg' />
 	</div>
 	<div class="profile__name">
-		<p>Name Placeholder</p>
+		<p>{{user.username}}</p>
 	</div>
-	<p>Details Placeholder one</p>
-	<p>Placeholder Two</p>
-	<p>Placeholder Three</p>
-	<div class="submit-btn">
-		<p>View Profile</p>
-	</div>
+       <p>{{user.email}}  </p>
+	<p>vous n'avez pas de rendez-vous programmé</p>
+	<p>You have no appointments scheduled with Salon de Madeleine</p>
+	<p>si vous souhaitez en programmer un, rendez-vous sur la page de réservation</p>
+    <br>
+		 <a href='book'><button type="submit" class="submit-btn">Schedule Appointment</button></a>
 </div>
 
-    <h2>{{user.username}}  </h2>
-      <h2>{{user.email}}  </h2>
-      <h2>Update Info?</h2>
+
     
 
-        <a href='book'><button type="submit" class="submit-btn">Schedule Appointment</button></a>
+       
   
 
     <div id="welcomeMsg" class="welcome-msg"></div>
