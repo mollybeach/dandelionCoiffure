@@ -32,6 +32,9 @@
 	  background-color: #fafafa;
 	  border-radius: 1rem;
  }
+ .profile__header {
+     height:2rem
+ }
   .profile__image {
 	  padding: 2rem;
 	  padding-bottom: 0;
@@ -103,7 +106,7 @@
 <!--MAIN-->
     <main class="mainsection"><br>
             <div class="profile">
-                <h2>Profile Information:</h2><br><br>
+                <h2 class='profile__header'>Profile Information:</h2><br><br>
                 <div class="profile__image"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627794758/profilepic_lhfmad.jpg"/></div>
                 <div class="profile__name"><p>{{user.username}}</p></div>
                 <p>{{user.email}}</p>
@@ -175,5 +178,5 @@
                 </div>
                 <br><br>
         </footer>
-  </body>
+    </body>
 </html>
