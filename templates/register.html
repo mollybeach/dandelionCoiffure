@@ -25,7 +25,12 @@ a:link{
 }
 form{
 height:630px}
-
+.messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
 </style>
 </head>
     <!--BODY-->
@@ -58,9 +63,7 @@ height:630px}
       </nav>
   </header>
   <main class='mainsection'>
-{% for messsages in messages%}
-      <h3>{{messages}}}</h3>
-{% endfor%}
+
       <form  class=""method='POST' action="login">
 {% csrf_token %}
     <form>
@@ -83,6 +86,10 @@ height:630px}
             <input name='password2' type="password" id="password2" class="form-input">
         </div>
         <button type="submit" class="submit-btn">Login</button>
+        <br>
+        {% for messsages in messages%}
+      <h3 class='messeagesweb' >{{messages}}</h3>
+{% endfor%}
     </form>
       </center> 
       </main>
