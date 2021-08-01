@@ -54,11 +54,7 @@ def post_user(request):
         return JsonResponse(context, safe=False)
     else:
         return render(request, 'calendar.html')
-       
 
-        
-        
-    
 @csrf_exempt
 def delete_user(request):
     rp=json.loads(request.body.decode('utf-8'))
