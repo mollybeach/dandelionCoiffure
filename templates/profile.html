@@ -27,6 +27,47 @@
     background-color: #EBC3C2;
     width: 100%;
 }
+ }
+  .profile {
+	  background-color: #fafafa;
+	  border-radius: 1rem;
+ }
+  .profile__image {
+	  padding: 2rem;
+	  padding-bottom: 0;
+	  width: 30rem;
+	  height: 30rem;
+ }
+  .profile__image img {
+	  position: absolute;
+	  border-radius: 1rem;
+	  width: inherit;
+	  height: 24rem;
+	  transform: translateY(-4.5rem);
+	  object-fit: cover;
+	  box-shadow: -7px 6px 12px -1px rgba(40, 40, 40, 0.55);
+	  transition: all 0.5s ease;
+ }
+  .profile__image img:hover {
+	  transform: translateY(-4.5rem) scale(1.05);
+ }
+  .profile p {
+	  padding: 1rem;
+	  padding-bottom: 0;
+	  font-size: 1.5rem;
+	  text-align: center;
+ }
+  .profile__name p {
+	  color: #EBC3C2;
+	  font-weight: bold;
+	  font-size: 2.2rem;
+	  text-align: center;
+ }
+  .submit-btn p {
+	  font-size: 1.8rem;
+	  padding: 0;
+ }
+
 </style>
 </head>
     <!--BODY-->
@@ -70,6 +111,22 @@
     <h2>You have no appointments scheduled with Salon de Madeleine </h2>
 
     <h2>Profile Information: </h2>
+    <body>
+<div class="profile">
+	<div class="profile__image">
+		<img src='https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627794758/profilepic_lhfmad.jpg' />
+	</div>
+	<div class="profile__name">
+		<p>Name Placeholder</p>
+	</div>
+	<p>Details Placeholder one</p>
+	<p>Placeholder Two</p>
+	<p>Placeholder Three</p>
+	<div class="submit-btn">
+		<p>View Profile</p>
+	</div>
+</div>
+     <a href="#"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669635/victoriancrest_qg1wyx.svg" class="imgborderround"  alt="" /></a>
     <h2>{{user.username}}  </h2>
       <h2>{{user.email}}  </h2>
       <h2>Update Info?</h2>
