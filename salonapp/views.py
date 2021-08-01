@@ -89,9 +89,9 @@ def register(request):
                 messages.info(request, 'Username already used')
                 return redirect('register')
             else: 
-                user = User.objects.create_user(username=username, email=email, password=password)
+               # user = User.objects.request.POST(username = request.POST['username'],email=request.POST['email'])
                 info = Users(username = request.POST['username'],email=request.POST['email'])
-                user.save();
+                info.save();
                 subjectfornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
                 subjectforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.username+ "'  for  '" + info.email+ "'"
                 messagefornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
