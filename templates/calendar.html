@@ -358,7 +358,7 @@ function todayEqualActive(){
            /* alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
             alert("You clicked on " + $(this).attr("data-date"));
             alert('Current view: ' + view.name);*/
-             $("#appointmentdate")= date.format();
+             $("#appointmentdate").val(date.format());
 
             // change the day's background color just for fun
             $(this).css('background-color', 'red');
@@ -408,7 +408,7 @@ function todayEqualActive(){
 
 /******************SELECT APPOINTMENT DATE *********************/
 
-            $("#appointmentdate").datepicker({ 
+         /*   $("#appointmentdate").datepicker({ 
                 dateFormat: "yy-mm-dd",
                 changeMonth: true,
                 changeYear: true,
@@ -419,7 +419,7 @@ function todayEqualActive(){
                     $("#appointmentdate").datepicker("option", "minDate", dateText);
                     
                 }
-            });
+            });*/ 
 
 /**************************SELECT TIME *********************/
 
@@ -439,7 +439,7 @@ function todayEqualActive(){
             })
             /***********************DATE PICKER*******************/ //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
 
-            $(function() {
+          /*  $(function() {
             $("#datepicker").datepicker({
                 showOn: "both",
                 showOptions: { 
@@ -459,7 +459,7 @@ function todayEqualActive(){
                 }
             });
             $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
-            $("#datepicker").datepicker( "setDate" , "+0d" );
+            $("#datepicker").datepicker( "setDate" , "+0d" );*/
             });
 
 /*=========================================================================================================*/
@@ -648,39 +648,7 @@ function todayEqualActive(){
                 </div>
                 <br><br>
                         
-        <div id='datepicker'></div>
-        
-        <div class="modal fade" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4><input class="modal-title" type="text" name="title" id="title" placeholder="Event Title/Description" /></h4>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <label class="col-xs-4" for="starts-at">Starts at</label>
-                    <input type="text" name="starts_at" id="starts-at" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <label class="col-xs-4" for="ends-at">Ends at</label>
-                    <input type="text" name="ends_at" id="ends-at" />
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="save-event">Save</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+
                 </footer>
                 <!-- </center>
 </section> -->
