@@ -38,7 +38,7 @@ def get(request):
 def post_user(request):
     if request.method == 'POST':
         rp = json.loads(request.body.decode('utf-8'))
-        user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'])
+        user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'],time=rp['time'])
         user.save()
         context = serializers.serialize('json', Users.objects.all())
         return JsonResponse(context, safe=False)
@@ -59,6 +59,7 @@ def update_user(request):
     field.service=rp['service']
     field.telephone=rp['telephone']
     field.appointmentdate=rp['appointmentdate']
+    field.time=rp['time']
     field.save()
     return get(request)
 

@@ -9,8 +9,9 @@ class Users(models.Model):
     service = models.TextField(max_length=20000, null=True, blank=True, default=None)
     telephone = models.TextField(max_length=20000, null=True, blank=True, default=None)
     appointmentdate= models.TextField(max_length=20000, null=True, blank=True, default=None)
+    time = models.DateTimeField(max_length=20000, null=True, blank=True, default=None)
     def _str_(self):
-        return self.firstname +" " + self.lastname + " " +self.email+" "+self.service+" "+self.telephone+" "+self.appointmentdate
+        return self.firstname +" " + self.lastname + " " +self.email+" "+self.service+" "+self.telephone+" "+self.appointmentdate+" "+self.time
 
 
 
