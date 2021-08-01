@@ -351,8 +351,70 @@ function todayEqualActive(){
                 selectHelper: true,
             
  /*when i click on the full calendar day click the jquery timepicker will be shown*/
+ // on day click the timepicker will render and the time will be set to the timepicker input
+            dayClick: function(date, jsEvent, view) {
+                $('#timepicker').timepicker({
+                    'timeFormat': 'H:i',
+                    'minTime': '8:00',
+                    'maxTime': '18:00',
+                    'showDuration': true,
+                    'showPeriod': false,
+                    'showLeadingZero': false,
+                    'showHours': true,
+                    'showMinutes': true,
+                    'showSeconds': true,
+                    'showTimezone': false,
+                    'timezone': '',
+                    'defaultTime': '',
+                    'scrollDefaultNow': true,
+                    'appendTo': 'body',
+                    'readonlyInput': false,
+                    'disableTouchKeyboard': false,
+                    'timeOnlyTitle': 'Choose a time',
+                    'timeText': 'Time',
+                    'hourText': 'Hour',
+                    'minuteText': 'Minute',
+                    'secondText': 'Second',
+                    'millisecText': 'Millisecond',
+                    'microsecText': 'Microsecond',
+                    'timezoneText': 'Timezone',
+                    'timezoneList': null,
+                    'dayNamesMin': ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    'monthNames': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    'monthNamesShort': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    'dayNames': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                    'dayNamesShort': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    'dayNamesMin': ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    'weekHeader': 'Wk',
+                    'dateFormat': 'mm/dd/yy',
+                    'firstDay': 1,
+                    'isRTL': false,
+                    'showMonthAfterYear': false,
+                    'yearSuffix': '',
+                    'yearRange': '-1:+1',
+                    'changeMonth': true,
+                    'changeYear': true,
+                    'showWeeks': true,
+                    'numberOfMonths': 1,
+                    'mainCalendar': '',
+                    'beforeShowDay': null,
+                    'showOtherMonths': true,
+                    'selectOtherMonths': true,
+                    'showWeek': false,
+                    'stepMonths': 1,
+                    'stepBigMonths': 12,
+                    'altField': '',
+                    'altFormat': '',
+                    'constrainInput': true,
+                    'showButtonPanel': false,
+                    'autoSize': false,
+                    'disabled': false
+                });
+                $('#timepicker').timepicker('show');
+            },
+            /*when i click on the full calendar day click the jquery timepicker will be shown*/
         
-        dayClick: function(date, jsEvent, view) {
+      /*  dayClick: function(date, jsEvent, view) {
 
             $("#appointmentdate").val(date.format());//create a div with the id of time when click on dayClicka the timepicker will be shown//and the time will be set to the timepicker
 
@@ -366,7 +428,7 @@ function todayEqualActive(){
             });
 
             $("#timepicker").show();
-        }
+        }*/
     }); 
 
 /*************************END OF CALENDAR*******************/
