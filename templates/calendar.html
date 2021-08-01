@@ -668,7 +668,19 @@ function todayEqualActive(){
                 allDaySlot: false,
                 selectHelper: true,
             
-        });  
+        }); 
+        dayClick: function(date, jsEvent, view) {
+
+            alert('Clicked on: ' + date.format());
+            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            alert("You clicked on " + $(this).attr("data-date"));
+            alert('Current view: ' + view.name);
+
+            // change the day's background color just for fun
+            $(this).css('background-color', 'red');
+
+        }
+}); 
 
 /*************************END OF CALENDAR*******************/
 /****************************ADD *********************/
@@ -709,24 +721,7 @@ function todayEqualActive(){
 
  
 
-             $("fc-day fc-widget-content fc-sat fc-future" ).on("click", function () {
-                 //have an alert 
-                 alert("You clicked on " + $(this).attr("data-date"));
-                 //console.log($(this).text());
-                 //console.log($(this).attr("data-date"));
-                 //console.log($(this).attr("data-start"));
-                 //console.log($(this).attr("data-end"));
-                 //console.log($(this).attr("data-title"));
-                 //console.log($(this).attr("data-service"));
-                 //console.log($(this).attr("data-telephone"));
-                 //console.log($(this).attr("data-appointmentdate"));
-                 //console.log($(this).attr("data-appointmentdateTime"));
-                 //console.log($(this).attr("data-id"));
-                 //console.log($(this).attr("data-email"));
-                 //console.log($(this).attr("data-firstname"));
-                 //console.log($(this).attr("data-lastname"));
-                
-            });
+
 /******************SELECT APPOINTMENT DATE *********************/
 
             $("#appointmentdate").datepicker({ 
