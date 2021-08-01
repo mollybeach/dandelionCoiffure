@@ -214,14 +214,31 @@ margin:auto}
             <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
         <script>
-/******************GET *********************/
+
+/*=================================================================================================*/
+/*========================================VANILLA JS===================================================*/
+/*=================================================================================================*/
+
+/******************SMOOTH PAGE LOADING***********/
+        const links = document.querySelectorAll(".page-header ul a");
+
+        for (const link of links) {
+            link.addEventListener("click", clickHandler);
+        }
+        function clickHandler(e) {
+            e.preventDefault();
+            const href = this.getAttribute("href");
+            document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+        };
+
+/*****************************GET JSON FROM VIEWS.PY ***************************/
         function getUsers(response) {
             let Json = JSON.parse(response)
             textlist = ""
             for (let i = 0; i < Json.length; i++) {
-                textlist += "<input type='radio'  name='user' id=" + Json[i].pk + ">" + Json[i].fields['firstname'] + " " + Json[i].fields['lastname'] + "<br>"
+            textlist += "<input type='radio'  name='user' id=" + Json[i].pk + ">" + Json[i].fields['firstname'] + " " + Json[i].fields['lastname'] + "<br>"
             }
-          /*  $('#firstname').val("firstname")
+            /*  $('#firstname').val("firstname")
             $('#lastname').val("lastname")
             $('#email').val("email")
             $('#service').val("service")
@@ -240,7 +257,9 @@ margin:auto}
                 success: getUsers,
             });
         });
-/*************EVENTS LIST*********************/
+
+/*************************EVENTS LIST*****************************/
+
         let resultStr = JSON.parse("{{result|escapejs}}");
         let resultObj = JSON.parse(resultStr);
         let events = [];  
@@ -257,7 +276,7 @@ margin:auto}
                // start: moment(event.fields["appointmentdateTime"]).format('YYYY-MM-DDTHH:mm:ss')
               // "start":   event.fields["appointmentdate"]+"T"+event.fields["time"] ,
               //convert appointmentdateTime back to dateTime format to be read by fullcalendar
-              start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
+                start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
               //"start":   event.fields["appointmentdate"]
                //end:  events.fields[appointmentdate] + (event.fields["telephone"]+30)
                //add 2 hours to the start time value  and make it my end time and create another obj.value called end that has the saame date just2 hours add to time 
@@ -265,7 +284,9 @@ margin:auto}
             events.push(obj);
         }
     console.log(events);
-/********** CURRENT TIME************/
+
+/*****************************CURRENT TIME***************************/
+
         let currentDate = new Date();
         let month = currentDate.getMonth() + 1;
         let year = currentDate.getFullYear();
@@ -280,7 +301,19 @@ margin:auto}
         seconds = seconds < 10 ? '0' + seconds : seconds;
         let strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
         $('#currentTime').html(strTime);
-/***************CALENDAR*************/
+
+/*============================================================================================================*/
+/*========================================END OF VANILLA JS===================================================*/
+/*===========================================================================================================*/
+
+/*==========================================================================================================*/
+/*========================================JQUERY============================================================*/
+/*=========================================================================================================*/
+
+
+
+/************************CALENDAR**********************/
+
     $(document).ready(function() {
         $("#calendar").fullCalendar({
             /*********CALENDAR HEADERS*********/
@@ -319,8 +352,9 @@ margin:auto}
                     $("#calendar").fullCalendar("removeEvents", event._id);
                 });
             },
-        }); //end of $#calendar   
+        });  
 
+/*************************END OF CALENDAR*******************/
 
 /************DELETE EVENT*****************
             eventClick: function(calEvent, jsEvent, view) {
@@ -338,33 +372,28 @@ margin:auto}
             }
             return false;
             },*/
-        // Bind the dates to datetimepicker.
-        $("#starts-at, #ends-at").datetimepicker();
-      
-        //click to save "save"
-        $("#save-event").on("click", function(event) {
-          var title = $("#title").val();
-          if (title) {
-            var eventData = {
-              title: title,
-              start: $("#starts-at").val(),
-              end: $("#ends-at").val()
-            };
-            $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
-          }
-          $("#calendar").fullCalendar("unselect");
-      
-          // Clear modal inputs
-          $(".modal")
-            .find("input")
-            .val("");
-          // hide modal
-          $(".modal").modal("hide");
+            
+        
+        $("#starts-at, #ends-at").datetimepicker(); // Bind the dates to datetimepicker.
+        $("#save-event").on("click", function(event) {  //click to save "save"
+                let title = $("#title").val();
+                if (title) {
+                let eventData = {
+                    title: title,
+                    start: $("#starts-at").val(),
+                    end: $("#ends-at").val()
+                };
+                  $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
+            }
+            $("#calendar").fullCalendar("unselect");
+            $(".modal").find("input").val(""); // Clear modal inputs
+            $(".modal").modal("hide"); // hide modal
         });
-      
+        
         $("textarea").autosize();
-      });
-/***************ADD *********************/
+ 
+/****************************ADD *********************/
+
             $("#add").on("click", function () {
             let firstname = $('input[name=firstname]').val()
             let lastname = $("input[name=lastname]").val()
@@ -397,7 +426,10 @@ margin:auto}
                 });
                 $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
             });
-            $("#appointmentdate").datepicker({
+
+/******************SELECT APPOINTMENT DATE *********************/
+
+            $("#appointmentdate").datepicker({ 
                 dateFormat: "yy-mm-dd",
                 changeMonth: true,
                 changeYear: true,
@@ -409,6 +441,9 @@ margin:auto}
                     
                 }
             });
+
+/**************************SELECT TIME *********************/
+
             $('#time').timepicker({
                 timeFormat: 'hh:mm:ss',
                 interval: 60,
@@ -424,7 +459,8 @@ margin:auto}
                 }
             })
 
-           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
+/***********************DATE PICKER*******************/ //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
+
             $(function() {
             $("#datepicker").datepicker({
                 showOn: "both",
@@ -447,20 +483,10 @@ margin:auto}
             $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
             $("#datepicker").datepicker( "setDate" , "+0d" );
             });
-        });
 
-        const links = document.querySelectorAll(".page-header ul a");
 
-        for (const link of links) {
-            link.addEventListener("click", clickHandler);
-        }
-        function clickHandler(e) {
-            e.preventDefault();
-            const href = this.getAttribute("href");
-        document.querySelector(href).scrollIntoView({
-            behavior: "smooth"
-        });
-        /******************DETAILS****************/
+/************************SELECT DETAILS****************************/
+
             $("#details").click(function(e) {
                 let id = $("input[name=user]:checked").attr('id');
                 $.ajax({
@@ -486,7 +512,7 @@ margin:auto}
 
             });
 
-/******************DELETE***************
+/**********************DELETE**********************
             $("#delete").click(function(e) {
                 //let id = $("input[name=user]:checked").attr('id');
                 id=e,
@@ -501,7 +527,8 @@ margin:auto}
                 });
             
             });
-/**************UPDATE****************/    
+/*********************UPDATE*********************/   
+
             $("#update").click(function() {
                 let id = $("input[name=user]:checked").attr('id');
                 let firstname = $('input[name=firstname]').val()
@@ -529,7 +556,10 @@ margin:auto}
                 success: getUsers,
             });
         });
-}
+});
+/*=========================================================================================================*/
+/*========================================END OF JQUERY===================================================*/
+/*=======================================================================================================*/
 </script>
     </head>
     <body class='container'>
@@ -555,16 +585,15 @@ margin:auto}
             </ul>
         </nav>
     </header>
-     <main class='maincenter'>
+    <main class='maincenter'>
         <!-- MAIN-
-       
         <section class='maincenter'>
         <center > ->
             <h1 class='greeting-calendar'>Select date for Appointment with Madeleine Salon de Coiffure</h1>
-            <h2>Please complete form</h2><br/>
+            <h2>Please complete form</h2><br/> -->
             
 
-<!--APPOINTMENT FORM-->
+<!-- APPOINTMENT FORM-->
         <form >
         <br>
         <br>
