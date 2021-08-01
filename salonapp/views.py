@@ -91,7 +91,17 @@ def register(request):
                 return redirect('register')
             else: 
                 user = User.objects.create_user(username=username, email=email, password=password)
+                info = Users(firstname=request.POST['firstname'],lastname=request.POST['lastname'],email=request.POST['email'])
                 user.save();
+                subjectfornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.firstname+ "'  for  '" + info.lastname+ "'"
+                subjectforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.firstname+ "'  for  '" + info.lastname+ "'"
+                messagefornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.firstname+ "'  for  '" + info.lastname+ "'"
+                messageforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.firstname+ "'  for  '" + info.lastname+ "'"
+                try:
+                        send_mail(subjectfornewuser, messagefornewuser, info.email, [info.email])
+                        send_mail(subjectforhairdressernewuser, messageforhairdressernewuser, info.email, ['madeleinesalondecoiffure@gmail.com'])
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
                 return redirect('login')
         else:
             messages.info(request, 'Passwords do not match')
@@ -103,9 +113,7 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
         user = auth.authenticate(username=username, password=password)
-
         if user is not None: #check if user None that means is not register
             auth.login(request, user)
             return redirect('/')
