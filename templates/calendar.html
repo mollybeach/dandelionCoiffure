@@ -354,11 +354,12 @@ function todayEqualActive(){
  
         dayClick: function(date, jsEvent, view) {
 
-            alert('Clicked on: ' + date.format());
+           /* alert('Clicked on: ' + date.format());*/
            /* alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
             alert("You clicked on " + $(this).attr("data-date"));
             alert('Current view: ' + view.name);*/
              $("#appointmentdate").val(date.format());
+             $("#time").val(date.format());
 
             // change the day's background color just for fun
             $(this).css('background-color', 'red');
@@ -402,28 +403,9 @@ function todayEqualActive(){
             $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
             });
 
-
- 
-
-
-/******************SELECT APPOINTMENT DATE *********************/
-
-         /*   $("#appointmentdate").datepicker({ 
-                dateFormat: "yy-mm-dd",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "c-10:c+10",
-                multiSelect: false,
-                minDate: 0,
-                onSelect: function(dateText, inst) {
-                    $("#appointmentdate").datepicker("option", "minDate", dateText);
-                    
-                }
-            });*/ 
-
 /**************************SELECT TIME *********************/
 
-            $('#time').timepicker({
+/*            $('#time').timepicker({
                 timeFormat: 'hh:mm:ss',
                 interval: 60,
                 minTime: '07:00:00',
@@ -436,46 +418,18 @@ function todayEqualActive(){
                     $("#appointmentdate").datepicker("option", "time", timeText);
                     
                 }
-            })
-            /***********************DATE PICKER*******************/ //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
-
-          /*  $(function() {
-            $("#datepicker").datepicker({
-                showOn: "both",
-                showOptions: { 
-                direction: "down" 
-                },           
-                autoSize: true,
-                buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-                buttonText: "Select date",
-                changeMonth: true,
-                changeYear: true,
-                currentText: "Now",
-                firstDay: 1,
-                showOtherMonths: true,
-                selectOtherMonths: true,
-                onSelect: function(formated, dates) {
-                $("#calendar").fullCalendar("gotoDate", formated);
-                }
-            });
-            $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
-            $("#datepicker").datepicker( "setDate" , "+0d" );
-            });
-*/
-/*=========================================================================================================*/
+            }) */
+    });
+/*======================================================================================================*/
 /*========================================END OF JQUERY===================================================*/
 /*=======================================================================================================*/
 
-/*=========================================================================================================*/
-/*========================================START OF OWL===================================================*/
-/*=======================================================================================================*/
 
 
-});
 
-/*=========================================================================================================*/
-/*========================================END OF OWL===================================================*/
-/*=======================================================================================================*/
+
+
+
 </script>
     </head>
     <body class='container'>
