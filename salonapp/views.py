@@ -99,7 +99,7 @@ def register(request):
                 try:
                         send_mail(subjectfornewuser, messagefornewuser, info.email, [info.email])
                         send_mail(subjectforhairdressernewuser, messageforhairdressernewuser, info.email, ['madeleinesalondecoiffure@gmail.com'])
-                        messages.info(request, 'Account successfully created check your email for conformation')
+                        messages.success(request, 'Account successfully created check your email for conformation')
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
                 return redirect('login')
@@ -121,15 +121,16 @@ def login(request):
             messages.info(request, 'User does not exist please create an account')
             return redirect('register')
     else:
+        messages.success(request, 'Logging in!')
         return render(request, 'login.html', )
 
 def logout(request):
-    messages.info(request, 'Logging out')
+    messages.success(request, 'Logging out')
     auth.logout(request)
     return redirect('/')
 
 def profile(request):
-    messages.info(request, 'Signed in!')
+    messages.success(request, 'Signed in!')
     userprofile = {'user': request.user}
     return render(request, 'profile.html', userprofile)
 
