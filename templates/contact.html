@@ -63,8 +63,8 @@
   <!--MAIN-->
       <main class="mainsection">
     <h1 class="header__welcome">{{user.username}} </h1>
-    {% for messsages in messages%}
-      <h3 class='messeagesweb'>{{messages}}</h3>
+    {% for messsage in messages%}
+      <h3 class='messeagesweb'>{{message}}</h3>
 {% endfor%}
       <form  class=""method='POST' action="login">
 {% csrf_token %}

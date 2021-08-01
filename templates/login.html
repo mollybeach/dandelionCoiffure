@@ -77,8 +77,8 @@ main{
     <main class="main">
     
       
-{% for messsages in messages%}
-      <h3 class='messeagesweb'>{{messages}}</h3>
+{% for messsage in messages%}
+      <h3 class='messeagesweb'>{{message}}</h3>
 {% endfor%}
       <form  class=""method='POST' action="login">
 {% csrf_token %}
