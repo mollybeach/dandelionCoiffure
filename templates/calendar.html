@@ -318,27 +318,9 @@ margin:auto}
                 element.find(".closeon").on("click", function() {
                     $("#calendar").fullCalendar("removeEvents", event._id);
                 });
-            },      
-            /*$("#starts-at, #ends-at").datetimepicker();       // Bind the dates to datetimepicker. */
-          //click to save "save"
-        $("#add").on("click", function(event) {
-            let title = $("#title").val();
-                if (title) {
-                    let eventData = {
-                        title: title,
-                        start: $("#starts-at").val(),
-                        end: $("#ends-at").val()
-                    };
-                  $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
-            }
-            $("#calendar").fullCalendar("unselect");
-            // Clear modal inputs
-            $(".modal").find("input").val("");
-            // hide modal
-            $(".modal").modal("hide");
-            });
-        
-            $("textarea").autosize();
+            },
+        }); //end of $#calendar   
+
 
 /************DELETE EVENT*****************
             eventClick: function(calEvent, jsEvent, view) {
@@ -356,9 +338,32 @@ margin:auto}
             }
             return false;
             },*/
-
-            
-            });
+        // Bind the dates to datetimepicker.
+        $("#starts-at, #ends-at").datetimepicker();
+      
+        //click to save "save"
+        $("#save-event").on("click", function(event) {
+          var title = $("#title").val();
+          if (title) {
+            var eventData = {
+              title: title,
+              start: $("#starts-at").val(),
+              end: $("#ends-at").val()
+            };
+            $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
+          }
+          $("#calendar").fullCalendar("unselect");
+      
+          // Clear modal inputs
+          $(".modal")
+            .find("input")
+            .val("");
+          // hide modal
+          $(".modal").modal("hide");
+        });
+      
+        $("textarea").autosize();
+      });
 /***************ADD *********************/
             $("#add").on("click", function () {
             let firstname = $('input[name=firstname]').val()
