@@ -244,7 +244,9 @@ td, th, table {
                //convert appointmentdateTime back to dateTime floatformat
                // start: moment(event.fields["appointmentdateTime"]).format('YYYY-MM-DDTHH:mm:ss')
               // "start":   event.fields["appointmentdate"]+"T"+event.fields["time"] ,
-              "start":   event.fields["appointmentdate"]
+              //convert appointmentdateTime back to dateTime format to be read by fullcalendar
+              start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
+              //"start":   event.fields["appointmentdate"]
                //end:  events.fields[appointmentdate] + (event.fields["telephone"]+30)
                //add 2 hours to the start time value  and make it my end time and create another obj.value called end that has the saame date just2 hours add to time 
             }
