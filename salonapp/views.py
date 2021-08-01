@@ -42,10 +42,11 @@ def post_user(request):
         user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'],time=rp['time'])
         user.save()
         context = serializers.serialize('json', Users.objects.all())
-        subjectforclient="Appointment with MadeleineSalonDeCoiffure on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'"
+        subjectforclient="Appointment with MadeleineSalonDeCoiffure on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'  has been scheduled sucessfully!   '"
         subjectforhairdresser="Client Appointment with ' "+user.firstname+ "' ' "+user.lastname+ "' on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'"
         messageforclient="Thank you for scheduling an appointment with Madeleine for this date  '" + user.appointmentdate+ "' "
         messageforhairdresser="You are scheduled with' "+user.firstname+ "' ' "+user.lastname+ "'  for  '" + user.appointmentdate+ "' please make sure to follow up with your client at either' "+user.email+ "' or  ' "+user.telephone+ "' "
+        messages.success(request,  subjectforclient+ "' please check you email for conformation  '")
         try:
                 send_mail(subjectforclient, messageforclient, user.email, [user.email])
                 send_mail(subjectforhairdresser, messageforhairdresser, user.email, ['madeleinesalondecoiffure@gmail.com'])

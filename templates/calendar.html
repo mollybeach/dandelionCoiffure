@@ -202,7 +202,7 @@ margin:auto}
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-             <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
         <script>
 /******************GET *********************/
@@ -354,7 +354,7 @@ margin:auto}
                 timeFormat: 'hh:mm:ss',
                 interval: 60,
                 minTime: '07:00:00',
-                maxTime: '17:00:00',
+                maxTime: '12:00:00',
                 startTime: '07:00:00',
                 dynamic: false,
                 dropdown: true,
@@ -547,6 +547,13 @@ margin:auto}
            
                 <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
+                <br>
+{% if messages%}
+ <br>
+{% for message in messages%}
+<h1 class="header__welcome headerp">Bonjour ! {{user.username}} </h1>
+{% endfor%}
+{% endif%}
             <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
             <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"/> -->
                 <br>

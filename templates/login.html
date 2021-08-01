@@ -77,9 +77,11 @@ main{
     <main class="main">
     
       <br>
-{% for messsage in messages%}
-      <h3 class='messeagesweb'> Bonjour {{message}}</h3>
+{% if messages%}
+{% for message in messages%}
+<h1 class="header__welcome headerp">Bonjour ! {{user.username}} </h1>
 {% endfor%}
+{% endif%}
 
       <form  class=""method='POST' action="login">
       {% csrf_token %}
