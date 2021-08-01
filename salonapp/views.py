@@ -105,7 +105,7 @@ def register(request):
                 return redirect('login')
         else:
             messages.info(request, 'Passwords do not match')
-            return redirect('register')
+            return redirect('register.html')
     else: 
         return render(request, 'register.html')
 

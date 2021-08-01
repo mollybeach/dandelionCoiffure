@@ -8,11 +8,26 @@
       <meta content="" name="description">
       <meta content="" name="keywords">
       <!--CSS FILE-->
-      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
       <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627722425/styles_n5guzo.css"  rel="stylesheet"  >
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
+      <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627723191/formstyles_akkwuz.css" />
+      <script src='https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627616012/form_clkn7f.js'></script>
  <style>a:link{
   font-weight:bold;
-}</style>
+}
+ @media all and (max-width: 599px) and (min-width: 0px) {
+     form{
+  
+         margin: 1%;
+     }
+ }
+ .messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
+</style>
 </head>
     <!--BODY-->
   <body class="container">
@@ -46,18 +61,25 @@
   <br>
   <br>
   <!--MAIN-->
-      <main class="main">
-      <center>
+      <main class="mainsection">
     <h1 class="header__welcome">{{user.username}} </h1>
+    {% for messsage in messages%}
+      <h3 class='messeagesweb'>{{message}}</h3>
+{% endfor%}
+            <h1 class="header__welcome">{{user.username}} </h1>
     <h2>You have no appointments scheduled with Salon de Madeleine </h2>
-    <a href="book">schedule</a>
+
     <h2>Profile Information: </h2>
     <h2>{{user.username}}  </h2>
       <h2>{{user.email}}  </h2>
       <h2>Update Info?</h2>
-</center>
-   
-      <br><br>
+    
+
+        <a href='book'><button type="submit" class="submit-btn">Schedule Appointment</button></a>
+  
+
+    <div id="welcomeMsg" class="welcome-msg"></div>
+    </main>
   <!--FOOTER-->
         <footer id="footer">
                 <div id="footer-utility">
@@ -115,6 +137,5 @@
                 </div>
                 <br><br>
         </footer>
-         </main>
   </body>
 </html>
