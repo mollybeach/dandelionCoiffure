@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from django.db import connection
 from django.contrib import messages
-from salonapp.models import Users
+from salonapp.models import Users, Payment
 import calendar
 from  calendar import HTMLCalendar
 from django.core.mail import send_mail
@@ -119,6 +119,14 @@ def contact(request):
 
 def about(request):
     return render(request, 'about.html')
+
+@csrf_exempt
+def payment(request):
+    billingdata = serializers.serialize('json', Payment.objects.all())
+    result = dumps(billingdata)
+    return render(request, 'payment.html', {'result': result})
+
+
 
 
 
