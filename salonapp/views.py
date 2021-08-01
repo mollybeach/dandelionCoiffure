@@ -34,6 +34,7 @@ def get(request):
     context= serializers.serialize('json', Users.objects.all())
     return JsonResponse(context, safe=False)
 
+            
 @csrf_exempt
 def post_user(request):
     if request.method == 'POST':
@@ -41,7 +42,22 @@ def post_user(request):
         user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'],time=rp['time'])
         user.save()
         context = serializers.serialize('json', Users.objects.all())
+        subjectforclient="Appointment with MadeleineSalonDeCoiffure on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'"
+        subjectforhairdresser="Client Appointment with ' "+user.firstname+ "' ' "+user.lastname+ "' on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'"
+        messageforclient="Thank you for scheduling an appointment with Madeleine for this date  '" + user.appointmentdate+ "' "
+        messageforhairdresser="You are scheduled with' "+user.firstname+ "' ' "+user.lastname+ "'  for  '" + user.appointmentdate+ "' please make sure to follow up with your client at either' "+user.email+ "' or  ' "+user.telephone+ "' "
+        try:
+                send_mail(subjectforclient, messageforclient, user.email, [user.email])
+                send_mail(subjectforhairdresser, messageforhairdresser, user.email, ['madeleinesalondecoiffure@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
         return JsonResponse(context, safe=False)
+    else:
+        return render(request, 'calendar.html')
+       
+
+        
+        
     
 @csrf_exempt
 def delete_user(request):
