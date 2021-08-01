@@ -392,57 +392,13 @@ margin:auto}
                 selectOtherMonths: true,
                 onSelect: function(formated, dates) {
                 $("#calendar").fullCalendar("gotoDate", formated);
-                let  selectedDate = $("#datepicker").datepicker('getDate');
-                },
-                    onSelect: function(selectedDateFormatted){
-
-                    let  selectedDate = $("#datepickerr").datepicker('getDate');
-
-                    deactivateDates(selectedDate);
-                   }
-
+                }
             });
             $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
             $("#datepicker").datepicker( "setDate" , "+0d" );
             });
         });
-          /*  let disabledDays = [
-                "27-4-2016", "25-12-2016", "26-12-2016",
-                "4-4-2017", "5-4-2017", "6-4-2017", "6-4-2016", "7-4-2017", "8-4-2017", "9-4-2017"
-            ];*/
-            /*disable all days that are in the events obj */
-    let  excludedDates = [ "10-20-2017","10-21-2016", "11-21-2016"];
-        deactivateDates(new Date())  f
-        function deactivateDates(selectedDate){
-        setTimeout(function(){ 
-            let  thisMonthExcludedDates = thisMonthDates(selectedDate);
-            thisMonthExcludedDates = getDaysfromDate(thisMonthExcludedDates);
-            let  excludedTDs = page.find('td[data-handler="selectDay"]').filter(function(){
-                return $.inArray( $(this).text(), thisMonthExcludedDates) >= 0
-            })             excludedTDs.unbind('click').addClass('ui-datepicker-unselectable');
-        }, 10);
-    function thisMonthDates(date){
-    return $.grep( excludedDates, function( n){
-        let  dateParts = n.split("-");
-        return dateParts[0] == date.getMonth() + 1  && dateParts[2] == date.getYear() + 1900;
-  });
-    function getDaysfromDate(datesArray){
-        return  $.map( datesArray, function( n){
-          return n.split("-")[1]; 
-      });
-   }
-   /*
-            let disabledDays = eventsObj;
-                        //replace these with the id's of your datepickers
-            $("#datepicker").datepicker({
-                beforeShowDay: function(date){
-                    let day = date.getDay();
-                    let string = jQuery.datepicker.formatDate('d-m-yy', date);
-                    let isDisabled = ($.inArray(string, disabledDays) != -1);
-                              //day != 0 disables all Sundays
-                return [day != 0 && !isDisabled];
-            }
-            });*/
+
         const links = document.querySelectorAll(".page-header ul a");
 
         for (const link of links) {
@@ -601,7 +557,7 @@ margin:auto}
                 <input type="submit" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br><br>
     <!--  
-{% if messages%}
+ {% if messages%}
 {% for message in messages%}
 <h1 class="messageweb"> {{message}} </h1>
 {% endfor%}
