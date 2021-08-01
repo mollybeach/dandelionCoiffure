@@ -654,12 +654,6 @@ margin:auto}
                 allDaySlot: false,
                 selectHelper: true,
             },
-            eventRender: function(event, element) {
-                element.find(".fc-content").prepend("<span class='closeon material-icons'>&#xe5cd;</span>"); //dynamically prepend close button to event
-                element.find(".closeon").on("click", function() {
-                    $("#calendar").fullCalendar("removeEvents", event._id);
-                });
-            },
         });  
 
 /*************************END OF CALENDAR*******************/
