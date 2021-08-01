@@ -74,7 +74,7 @@ def update_user(request):
     field.time=rp['time']
     field.save()
     return get(request)
-
+@csrf_exempt
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -109,6 +109,7 @@ def register(request):
     else: 
         return render(request, 'register.html')
 
+@csrf_exempt
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -124,22 +125,27 @@ def login(request):
         messages.success(request, 'Logging in!')
         return render(request, 'login.html', )
 
+@csrf_exempt
 def logout(request):
     messages.success(request, 'Logging out')
     auth.logout(request)
     return redirect('/')
 
+@csrf_exempt
 def profile(request):
     messages.success(request, 'Signed in!')
     userprofile = {'user': request.user}
     return render(request, 'profile.html', userprofile)
 
+@csrf_exempt
 def clients(request):
     return render(request, 'clients.html')
 
+@csrf_exempt
 def contact(request):
     return render(request, 'contact.html')
-
+    
+@csrf_exempt
 def about(request):
     return render(request, 'about.html')
 
