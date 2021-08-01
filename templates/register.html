@@ -3,28 +3,28 @@
 <!--HTML-->
 <html lang="en">
   <head>
-      <meta charset="utf-8">
-      <meta content="width=device-width, initial-scale=1.0" name="viewport">
-      <meta content="" name="description">
-      <meta content="" name="keywords">
-      <!-- CSS File -->
-      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
-      <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627722425/styles_n5guzo.css"  rel="stylesheet"  >
-      <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627723191/formstyles_akkwuz.css" />
-    
-      <script src='https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627616012/form_clkn7f.js'></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- CSS File -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
+    <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627722425/styles_n5guzo.css"  rel="stylesheet"  >
+    <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627723191/formstyles_akkwuz.css" />
+    <script src='https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627616012/form_clkn7f.js'></script>
 <style>
- @media all and (max-width: 599px) and (min-width: 0px) {
-     form{
-         width: auto;
-         margin: 1%;
-     }
- }
+@media all and (max-width: 599px) and (min-width: 0px) {
+form{
+    width: auto;
+    margin: 1%;
+}
+}
 a:link{
-  font-weight:bold;
+    font-weight:bold;
 }
 form{
-height:630px}
+    height:630px
+}
 .messagesweb{
     color: #909FBB;
     font-size: 18px;
@@ -32,27 +32,27 @@ height:630px}
     width: 100%;
 }
 </style>
-</head>
+    </head>
     <!--BODY-->
-  <body class="container">
+    <body class="container">
     <!-- HEADER NAV -->
     <header class="header">
-      <nav class="header__nav">
-        <ul class="nav__sidenav nav--right">
-          <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
-            <div class="header__links">
-          <li class="header__link"><a href="about" >About</a></li>
-          <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="calendar" >Book</a></li>
-          <li class="header__link"><a href="contact" >Contact Us</a></li>
+        <nav class="header__nav">
+            <ul class="nav__sidenav nav--right">
+            <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
+                <div class="header__links">
+            <li class="header__link"><a href="about" >About</a></li>
+            <li class="header__link"><a href="clients" >Clients</a></li>
+            <li class="header__link"><a href="calendar" >Book</a></li>
+            <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
-          <li class="header__link"><a href="profile" >My Profile</a></li>
-          <li class="header__link"><a href="logout" >Logout</a></li>
+            <li class="header__link"><a href="profile" >My Profile</a></li>
+            <li class="header__link"><a href="logout" >Logout</a></li>
 {% else%}
-          <li class="header__link"><a href="register" >Create Account</a></li>
-          <li><a href="login" class="header__link">Login</a></li>
+            <li class="header__link"><a href="register" >Create Account</a></li>
+            <li><a href="login" class="header__link">Login</a></li>
 {% endif %}
-          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+            <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
         </div>
 {% if user.is_authenticated%}
         <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
@@ -60,14 +60,14 @@ height:630px}
         <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
 {% endif %}
         </ul>
-      </nav>
-  </header>
-  <main class='mainsection'>
+        </nav>
+    </header>
+<main class='mainsection'>
 
-      <form  class=""method='POST' action="login">
+    <form  class=""method='POST' action="login">
 {% csrf_token %}
     <form>
-      <h1 class='form-header'>Create Account</h1>
+        <h1 class='form-header'>Create Account</h1>
       <br>
         <div  class="input-block">
             <label for="user">Username:</label>
