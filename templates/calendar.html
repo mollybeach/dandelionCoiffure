@@ -355,9 +355,10 @@ function todayEqualActive(){
         dayClick: function(date, jsEvent, view) {
 
             alert('Clicked on: ' + date.format());
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+           /* alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
             alert("You clicked on " + $(this).attr("data-date"));
-            alert('Current view: ' + view.name);
+            alert('Current view: ' + view.name);*/
+             $("#appointmentdate")= date.format();
 
             // change the day's background color just for fun
             $(this).css('background-color', 'red');
