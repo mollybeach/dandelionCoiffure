@@ -90,7 +90,7 @@ def register(request):
                 return redirect('register')
             else: 
                # user = User.objects.request.POST(username = request.POST['username'],email=request.POST['email'])
-                info = Users(username = request.POST['username'],email=request.POST['email'])
+                info = User.objects.create_user(username=username, email=email, password=password)
                 info.save();
                 subjectfornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
                 subjectforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.username+ "'  for  '" + info.email+ "'"
@@ -144,7 +144,7 @@ def clients(request):
 @csrf_exempt
 def contact(request):
     return render(request, 'contact.html')
-    
+
 @csrf_exempt
 def about(request):
     return render(request, 'about.html')

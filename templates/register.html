@@ -63,8 +63,8 @@ form{
         </nav>
     </header>
 <main class='mainsection'>
-{% csrf_token %}
-    <form  class=""method='POST' action="login">
+    <form  class=""method='POST' action="register">
+    {% csrf_token %}
         <h1 class='form-header'>Create Account</h1>
       <br>
         <div  class="input-block">
