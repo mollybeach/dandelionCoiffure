@@ -551,12 +551,12 @@ margin:auto}
                     </tbody>
                 </table>
            
-                <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
+                <input type="submit" name="add" id='add' value="Add Appointment" class="btn"/>
                 <br>
                 <br>
  {% if messages%}
 {% for message in messages%}
-<h1 class="messageweb">Bonjour ! {{message}} </h1>
+<h1 class="messageweb"> {{message}} </h1>
 {% endfor%}
 {% endif%}
 

@@ -46,8 +46,8 @@ def post_user(request):
         subjectforhairdresser="Client Appointment with ' "+user.firstname+ "' ' "+user.lastname+ "' on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'"
         messageforclient="Thank you for scheduling an appointment with Madeleine for this date  '" + user.appointmentdate+ "' "
         messageforhairdresser="You are scheduled with' "+user.firstname+ "' ' "+user.lastname+ "'  for  '" + user.appointmentdate+ "' please make sure to follow up with your client at either' "+user.email+ "' or  ' "+user.telephone+ "' "
-        messages.success(request,  subjectforclient+ "' please check you email for conformation  '")
         try:
+                messages.success(request,  subjectforclient+ "' please check you email for conformation  '")
                 send_mail(subjectforclient, messageforclient, user.email, [user.email])
                 send_mail(subjectforhairdresser, messageforhairdresser, user.email, ['madeleinesalondecoiffure@gmail.com'])
         except BadHeaderError:
