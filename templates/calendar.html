@@ -300,56 +300,7 @@ margin:auto}
             $("input").prop("readonly", false);
             },
         
-            eventRender: function(event, element) {
-              //dynamically prepend close button to event
-            element
-                .find(".fc-content")
-                .prepend("<span class='closeon material-icons'>&#xe5cd;</span>");
-            element.find(".closeon").on("click", function() {
-                $("#calendar").fullCalendar("removeEvents", event._id);
-            });
-            },
-        
-            eventClick: function(calEvent, jsEvent) {
-              // Display the modal and set event values.
-            $(".modal").modal("show");
-            $(".modal")
-                .find("#title")
-                .val(calEvent.title);
-            $(".modal")
-                .find("#starts-at")
-                .val(calEvent.start);
-            $(".modal")
-                .find("#ends-at")
-                .val(calEvent.end);
-            $("#save-event").hide();
-            $("input").prop("readonly", true);
-            }
-        });
-        
-          // Bind the dates to datetimepicker.
-        $("#starts-at, #ends-at").datetimepicker();
-        
-          //click to save "save"
-        $("#save-event").on("click", function(event) {
-            let  title = $("#title").val();
-            if (title) {
-                let  eventData = {
-                    title: title,
-                    start: $("#starts-at").val(),
-                    end: $("#ends-at").val()
-                };
-              $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
-            }
-            $("#calendar").fullCalendar("unselect");
-        
-            // Clear modal inputs
-            $(".modal")
-                .find("input")
-                .val("");
-            // hide modal
-            $(".modal").modal("hide");
-        }),
+
         
    /* $("textarea").autosize();*/
 /************DELETE EVENT*****************
