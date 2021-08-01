@@ -63,10 +63,8 @@ form{
         </nav>
     </header>
 <main class='mainsection'>
-
-    <form  class=""method='POST' action="login">
 {% csrf_token %}
-    <form>
+    <form  class=""method='POST' action="login">
         <h1 class='form-header'>Create Account</h1>
       <br>
         <div  class="input-block">
@@ -87,12 +85,13 @@ form{
         </div>
         <button type="submit" class="submit-btn">Login</button>
         <br>
-{%if messages%}
+
+    </form>
+    {%if messages%}
 {% for messsage in messages%}
 <h3 class='messeagesweb' >{{messages}}</h3>
 {% endfor%}
 {%endif%}
-    </form>
       </center> 
       </main>
   <!--FOOTER-->

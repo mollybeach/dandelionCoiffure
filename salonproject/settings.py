@@ -153,6 +153,7 @@ EMAIL_HOST_USER = "madeleinesalondecoiffure@gmail.com"
 EMAIL_HOST_PASSWORD = 'Moselle1'
 EMAIL_PORT = '587'
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 django_heroku.settings(locals())
 
 # Default primary key field type

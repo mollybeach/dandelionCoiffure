@@ -66,9 +66,8 @@
     {% for messsage in messages%}
       <h3 class='messeagesweb'>{{message}}</h3>
 {% endfor%}
-      <form  class=""method='POST' action="login">
 {% csrf_token %}
-    <form>
+      <form  class=""method='POST' action="login">
       <h1 class='form-header'>CONTACT US</h1>
       <br>
         <divclass="form-input"  class="input-block">
