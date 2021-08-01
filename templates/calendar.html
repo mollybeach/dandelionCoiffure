@@ -355,23 +355,19 @@ function todayEqualActive(){
         dayClick: function(date, jsEvent, view) {
 
             $("#appointmentdate").val(date.format());
-            
-            $('#time').timepicker({
-                timeFormat: 'hh:mm:ss',
-                interval: 60,
-                minTime: '07:00:00',
-                maxTime: '12:00:00',
-                startTime: '07:00:00',
-                showOn: 'button',
-                dynamic: false,
-                dropdown: true,
-                scrollbar: true,
-                onSelect: function(timeText, inst) {
-                    $("#appointmentdate").datepicker("option", "time", timeText);
-                      $("#time").val(timeText);
-                    
+//create a div with the id of time when click on dayClicka the timepicker will be shown
+//and the time will be set to the timepicker
+            $("#time").val(date.format());
+            $("#timepicker").timepicker({
+                showInputs: false,
+                timeFormat: 'H:i',
+                onSelect: function(h, m) {
+                    $("#time").val(h + ":" + m);
                 }
-            }) 
+            });
+            $("#timepicker").show();
+        },
+
 
         }
 }); 
