@@ -198,6 +198,7 @@ td, th, table {
 }
 .appttable{
     /*padding:12%;*/
+    margin-left: 2%; 
 }
 .messagesweb{
     color: #909FBB;
@@ -368,7 +369,7 @@ function todayEqualActive(){
 
         eventClick: function(calEvent, jsEvent, view) {
         {% if user.is_authenticated%}
-            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
+            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" ){
             // your deletion code
             $.ajax({
                     type: 'DELETE',
@@ -506,7 +507,7 @@ function todayEqualActive(){
                     </tr>
                     <!-- TIME -->
                     <tr class='space'>
-                    <td  class='username space'>Time</td><td> <input id='time' class='username inputplaceholder'   type="text"  placeholder=" Time " required autocomplete='off' name="time"/></td>
+                    <td  class='username space'>Appointment Time</td><td> <input id='time' class='username inputplaceholder'   type="text"  placeholder=" Time " required autocomplete='off' name="time"/></td>
                     </tr>
                     </tbody>
                 </table>
