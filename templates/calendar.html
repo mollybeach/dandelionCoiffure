@@ -366,8 +366,9 @@ function todayEqualActive(){
             $("#appointmentdate").val(justtheday);
             $("#time").val(justthetime);
         },
-      {% if user.is_authenticated%}
+   
         eventClick: function(calEvent, jsEvent, view) {
+               {% if user.is_authenticated%}
             if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
             // your deletion code
             $.ajax({
@@ -384,8 +385,9 @@ function todayEqualActive(){
          
                 {% else%}
         alert('Clicked on: ' + date.format() + calEvent.title + 'sorry madeleine is unavailable during this time please select another time slot ');
-           }
+        
     {% endif %}
+       }
     
     }); 
 
