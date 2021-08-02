@@ -356,8 +356,8 @@ function todayEqualActive(){
             /*when i click on the full calendar day click the jquery timepicker will be shown*/
         
         dayClick: function(date, jsEvent, view) {
-            if(view.name == 'month' || view.name == 'basicWeek') {
-            $('#calendar').fullCalendar('changeView', 'basicDay');
+            if(view.name == 'month' || view.name == 'agendaWeek') {
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
             $('#calendar').fullCalendar('gotoDate', date);      
   }
             $("#appointmentdate").val(date.format());//create a div with the id of time when click on dayClicka the timepicker will be shown//and the time will be set to the timepicker
