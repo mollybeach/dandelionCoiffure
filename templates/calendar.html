@@ -198,7 +198,7 @@ td, th, table {
 }
 .appttable{
     /*padding:12%;*/
-    margin-left: 2%; 
+    margin-left: 2%;
 }
 .messagesweb{
     color: #909FBB;
@@ -366,10 +366,9 @@ function todayEqualActive(){
             $("#appointmentdate").val(justtheday);
             $("#time").val(justthetime);
         },
-
+      {% if user.is_authenticated%}
         eventClick: function(calEvent, jsEvent, view) {
-        {% if user.is_authenticated%}
-            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" ){
+            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
             // your deletion code
             $.ajax({
                     type: 'DELETE',
@@ -382,9 +381,11 @@ function todayEqualActive(){
                 });
             }
             return false;
-    {% else%}
+            }
+                {% else%}
      alert('Clicked on: ' + date.format() + calEvent.title + 'sorry madeleine is unavailable during this time please select another time slot ');
     {% endif %}
+            {% endif %}
     }); 
 
 /*************************END OF CALENDAR*******************/
