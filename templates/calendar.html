@@ -198,7 +198,7 @@ td, th, table {
 }
 .appttable{
     /*padding:12%;*/
-margin:auto}
+}
 .messagesweb{
     color: #909FBB;
     font-size: 18px;
@@ -359,19 +359,29 @@ function todayEqualActive(){
             if(view.name == 'month' || view.name == 'agendaWeek') {
             $('#calendar').fullCalendar('changeView', 'agendaDay');
             $('#calendar').fullCalendar('gotoDate', date);      
-  }
-        let justtheday = moment(date).format('YYYY-MM-DD');
-        let justthetime = moment(date).format('HH:mm:ss');
-    
-         $("#appointmentdate").val(justtheday);//create a div with the id of time when click on dayClicka the timepicker will be shown//and the time will be set to the timepicker
-         $("#time").val(justthetime);
-        //have appoint mnet date .val just show the date not the hours 
-   
-
-
-
-       
-        }
+            }
+            let justtheday = moment(date).format('YYYY-MM-DD');
+            let justthetime = moment(date).format('HH:mm:ss');
+            $("#appointmentdate").val(justtheday);
+            $("#time").val(justthetime);
+        },
+    {% if user.is_authenticated%}
+        eventClick: function(calEvent, jsEvent, view) {
+            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
+            // your deletion code
+            $.ajax({
+                    type: 'DELETE',
+                    url: '/userremoved/',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        'pk':  calEvent.id
+                    }),
+                    success: getUsers
+                });
+            }
+            return false;
+            }
+    {% endif %}
     }); 
 
 /*************************END OF CALENDAR*******************/
