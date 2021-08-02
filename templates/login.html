@@ -33,7 +33,12 @@ main{
     padding: 1%;
 
 }
-
+.messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
 </style>
 </head>
     <!--BODY-->
@@ -71,13 +76,11 @@ main{
     <center> 
     <main class="main">
     
-      
-{% for messsages in messages%}
-      <h3>{{messages}}}</h3>
-{% endfor%}
+      <br>
+
+
       <form  class=""method='POST' action="login">
-{% csrf_token %}
-    <form>
+      {% csrf_token %}
       <h1 class='form-header'>LOGIN</h1>
       <br>
         <divclass="form-input"  class="input-block">

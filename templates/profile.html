@@ -8,57 +8,120 @@
       <meta content="" name="description">
       <meta content="" name="keywords">
       <!--CSS FILE-->
-      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
       <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627722425/styles_n5guzo.css"  rel="stylesheet"  >
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
+      <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627723191/formstyles_akkwuz.css" />
+      <script src='https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627616012/form_clkn7f.js'></script>
  <style>a:link{
   font-weight:bold;
-}</style>
+}
+ @media all and (max-width: 599px) and (min-width: 0px) {
+     form{
+  
+         margin: 1%;
+     }
+ }
+ .messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
+ }
+  .profile {
+	  background-color: #fafafa;
+	  border-radius: 1rem;
+ }
+ .profile__header {
+     height:2rem
+ }
+  .profile__image {
+	  padding: 2rem;
+	  padding-bottom: 0;
+	  width: 30rem;
+	  height: 30rem;
+ }
+  .profile__image img {
+	 /* position: absolute;*/
+	  border-radius: 1rem;
+	  width: inherit;
+	  height: 30rem;
+	  /*transform: translateY(-4.5rem);*/
+	  object-fit: cover;
+      margin: auto;
+	  box-shadow: -7px 6px 12px -1px rgba(40, 40, 40, 0.55);
+	  /*transition: all 0.5s ease;*/
+ }
+  .profile__image img:hover {
+	  transform: translateY(-4.5rem) scale(1.05);
+ }
+  .profile p {
+	  padding: 1rem;
+	  padding-bottom: 0;
+	  font-size: 1.5rem;
+	  text-align: center;
+ }
+  .profile__name p {
+	  color: #EBC3C2;
+	  font-weight: bold;
+	  font-size: 2.2rem;
+	  text-align: center;
+ }
+
+
+</style>
 </head>
     <!--BODY-->
   <body class="container">
     <!-- HEADER NAV -->
     <header class="header">
-      <nav class="header__nav">
+        <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
-          <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
-            <div class="header__links">
-          <li class="header__link"><a href="about" >About</a></li>
-          <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="calendar" >Book</a></li>
-          <li class="header__link"><a href="contact" >Contact Us</a></li>
+                <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
+                <div class="header__links">
+                <li class="header__link"><a href="about" >About</a></li>
+                <li class="header__link"><a href="clients" >Clients</a></li>
+                <li class="header__link"><a href="calendar" >Book</a></li>
+                <li class="header__link"><a href="contact" >Contact Us</a></li>
 {% if user.is_authenticated%}
-          <li class="header__link"><a href="profile" >My Profile</a></li>
-          <li class="header__link"><a href="logout" >Logout</a></li>
+                <li class="header__link"><a href="profile" >My Profile</a></li>
+                <li class="header__link"><a href="logout" >Logout</a></li>
 {% else%}
-          <li class="header__link"><a href="register" >Create Account</a></li>
-          <li><a href="login" class="header__link">Login</a></li>
+                <li class="header__link"><a href="register" >Create Account</a></li>
+                <li><a href="login" class="header__link">Login</a></li>
 {% endif %}
-          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
-        </div>
+                <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+                </div>
 {% if user.is_authenticated%}
-        <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
+                <p class="header__welcome hide-3">Bonjour {{user.username}} ! Welcome to Madeleine Salon de Coiffure</p>
 {% else%}
-        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+                <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
 {% endif %}
-        </ul>
-      </nav>
-  </header>
-  <br>
-  <br>
-  <!--MAIN-->
-      <main class="main">
-      <center>
-    <h1 class="header__welcome">{{user.username}} </h1>
-    <h2>You have no appointments scheduled with Salon de Madeleine </h2>
-    <a href="book">schedule</a>
-    <h2>Profile Information: </h2>
-    <h2>{{user.username}}  </h2>
-      <h2>{{user.email}}  </h2>
-      <h2>Update Info?</h2>
-</center>
-   
-      <br><br>
-  <!--FOOTER-->
+            </ul>
+        </nav>
+    </header>
+    <body>
+        <br>
+        <br>
+<!--MAIN-->
+    <main class="mainsection"><br>
+            <div class="profile">
+                <h2 class='profile__header'>Profile Information:</h2><br><br>
+                <div class="profile__image"><img src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627794758/profilepic_lhfmad.jpg"/></div>
+                <div class="profile__name"><p>{{user.username}}</p></div>
+                <p>{{user.email}}</p>
+                <p>vous n'avez pas de rendez-vous programmé</p>
+                <p>You have no appointments scheduled with Salon de Madeleine</p>
+                <p>si vous souhaitez en programmer un, rendez-vous sur la page de réservation</p>
+                <br>
+                <a href="book"<button type="submit" class="submit-btn">Schedule Appointment</button></a>
+            </div>
+
+{% for messsage in messages%}
+<h3 class='messeagesweb'>{{message}}</h3>
+{% endfor%}
+    </main>
+<!--FOOTER-->
         <footer id="footer">
                 <div id="footer-utility">
                     <div class="footer__chat">
@@ -115,6 +178,5 @@
                 </div>
                 <br><br>
         </footer>
-         </main>
-  </body>
+    </body>
 </html>

@@ -9,6 +9,7 @@
             <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
             <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627775345/calender_x3yfqn.css" />
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 .maincenter{
 border-radius: 20px;
@@ -75,7 +76,7 @@ a:hover {
     background-color: #909fbb;
     color: #fafafa;
     font-weight: bold;
-     border-radius: 25px;
+    border-radius: 25px;
     border: 1px solid #909fbb;
     background: #909fbb;
 
@@ -197,28 +198,71 @@ td, th, table {
 }
 .appttable{
     /*padding:12%;*/
-margin:auto}
+    margin-left: 5%;
+}
+.messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
+.inputplaceholder{
+    opacity: 0.5;
+}
+
+ 
 </style>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-             <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
         <script>
-/******************GET *********************/
+
+/*=================================================================================================*/
+/*========================================VANILLA JS===================================================*/
+/*=================================================================================================*/
+// remove border if the selected date is today's date
+function todayEqualActive(){
+  setTimeout(function(){
+    if($(".ui-datepicker-current-day").hasClass("ui-datepicker-today")){
+      $(".ui-datepicker-today")
+        .children(".ui-state-default")
+        .css("border-bottom", "0");
+    }
+    else{
+      $(".ui-datepicker-today")
+        .children(".ui-state-default")
+        .css("border-bottom", "2px solid rgba(53,60,66,0.5)");
+    }
+  }, 20);
+}
+/******************SMOOTH PAGE LOADING***********/
+        const links = document.querySelectorAll(".page-header ul a");
+
+        for (const link of links) {
+            link.addEventListener("click", clickHandler);
+        }
+        function clickHandler(e) {
+            e.preventDefault();
+            const href = this.getAttribute("href");
+            document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+        };
+
+/*****************************GET JSON FROM VIEWS.PY ***************************/
         function getUsers(response) {
             let Json = JSON.parse(response)
             textlist = ""
             for (let i = 0; i < Json.length; i++) {
-                textlist += "<input type='radio'  name='user' id=" + Json[i].pk + ">" + Json[i].fields['firstname'] + " " + Json[i].fields['lastname'] + "<br>"
+            textlist += "<input type='radio'  name='user' id=" + Json[i].pk + ">" + Json[i].fields['firstname'] + " " + Json[i].fields['lastname'] + "<br>"
             }
-            $('#firstname').val("firstname")
+            /*  $('#firstname').val("firstname")
             $('#lastname').val("lastname")
             $('#email').val("email")
             $('#service').val("service")
             $('telephone').val("telephone")
             $('#appointmentdate').val("appointmentdate")
-            $('time').val("time")
+            $('time').val("time")*/
             if (textlist == "")
                 $("#userlist").html("No users available, add one below please")
             else
@@ -231,7 +275,9 @@ margin:auto}
                 success: getUsers,
             });
         });
-/*************EVENTS LIST*********************/
+
+/*************************EVENTS LIST*****************************/
+
         let resultStr = JSON.parse("{{result|escapejs}}");
         let resultObj = JSON.parse(resultStr);
         let events = [];  
@@ -248,7 +294,7 @@ margin:auto}
                // start: moment(event.fields["appointmentdateTime"]).format('YYYY-MM-DDTHH:mm:ss')
               // "start":   event.fields["appointmentdate"]+"T"+event.fields["time"] ,
               //convert appointmentdateTime back to dateTime format to be read by fullcalendar
-              start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
+                start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
               //"start":   event.fields["appointmentdate"]
                //end:  events.fields[appointmentdate] + (event.fields["telephone"]+30)
                //add 2 hours to the start time value  and make it my end time and create another obj.value called end that has the saame date just2 hours add to time 
@@ -256,7 +302,9 @@ margin:auto}
             events.push(obj);
         }
     console.log(events);
-/********** CURRENT TIME************/
+
+/*****************************CURRENT TIME***************************/
+
         let currentDate = new Date();
         let month = currentDate.getMonth() + 1;
         let year = currentDate.getFullYear();
@@ -264,6 +312,8 @@ margin:auto}
         let hours = currentDate.getHours();
         let minutes = currentDate.getMinutes();
         let seconds = currentDate.getSeconds();
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var center;
         let ampm = hours >= 12 ? 'pm' : 'am';
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
@@ -271,11 +321,54 @@ margin:auto}
         seconds = seconds < 10 ? '0' + seconds : seconds;
         let strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
         $('#currentTime').html(strTime);
-/***************CALENDAR*************/
-        $(document).ready(function() {
-            $("#calendar").fullCalendar({
-/************DELETE EVENT******************/
-            eventClick: function(calEvent, jsEvent, view) {
+
+/*============================================================================================================*/
+/*========================================END OF VANILLA JS===================================================*/
+/*===========================================================================================================*/
+
+/*==========================================================================================================*/
+/*========================================JQUERY============================================================*/
+/*=========================================================================================================*/
+
+
+
+/************************CALENDAR**********************/
+
+    $(document).ready(function() {
+        $("#calendar").fullCalendar({
+            /*********CALENDAR HEADERS*********/
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+                editable: true,
+                navLinks: true,
+                selectable: true,
+                eventLimit: true,
+                selectMirror: true,
+                events: events,
+                allDaySlot: false,
+                selectHelper: true,
+            
+ /*when i click on the full calendar day click the jquery timepicker will be shown*/
+ // on day click the timepicker will render and the time will be set to the timepicker input
+
+            /*when i click on the full calendar day click the jquery timepicker will be shown*/
+        
+        dayClick: function(date, jsEvent, view) {
+            if(view.name == 'month' || view.name == 'agendaWeek') {
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
+            $('#calendar').fullCalendar('gotoDate', date);      
+            }
+            let justtheday = moment(date).format('YYYY-MM-DD');
+            let justthetime = moment(date).format('HH:mm:ss');
+            $("#appointmentdate").val(justtheday);
+            $("#time").val(justthetime);
+        },
+   
+        eventClick: function(calEvent, jsEvent, view) {
+               {% if user.is_authenticated%}
             if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
             // your deletion code
             $.ajax({
@@ -289,23 +382,18 @@ margin:auto}
                 });
             }
             return false;
-            },
-/*********CALENDAR HEADERS*********/
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-                editable: true,
-                navLinks: true,
-                selectable: true,
-                eventLimit: true,
-                selectMirror: true,
-                events: events,
-                allDaySlot: false,
-            
-            });
-/***************ADD *********************/
+         
+                {% else%}
+        alert('Clicked on: ' + calEvent.title + '  Sorry Madeleine is unavailable during this time please select another time slot ');
+        
+    {% endif %}
+       }
+    
+    }); 
+
+/*************************END OF CALENDAR*******************/
+/****************************ADD *********************/
+
             $("#add").on("click", function () {
             let firstname = $('input[name=firstname]').val()
             let lastname = $("input[name=lastname]").val()
@@ -336,146 +424,24 @@ margin:auto}
                 date: appointmentdate,
                 allDay: true,     
                 });
-                $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
-            });
-            $("#appointmentdate").datepicker({
-                dateFormat: "yy-mm-dd",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "c-10:c+10",
-                multiSelect: false,
-                minDate: 0,
-                onSelect: function(dateText, inst) {
-                    $("#appointmentdate").datepicker("option", "minDate", dateText);
-                    
-                }
-            });
-            $('#time').timepicker({
-                timeFormat: 'hh:mm:ss',
-                interval: 60,
-                minTime: '07:00:00',
-                maxTime: '17:00:00',
-                startTime: '07:00:00',
-                dynamic: false,
-                dropdown: true,
-                scrollbar: true,
-                onSelect: function(timeText, inst) {
-                    $("#appointmentdate").datepicker("option", "time", timeText);
-                    
-                }
-            })
-
-           //$(".fc-center").append('<input type="text" class="headerdate" id="datepicker">');
-            $(function() {
-            $("#datepicker").datepicker({
-                showOn: "both",
-                showOptions: { 
-                direction: "down" 
-                },           
-                autoSize: true,
-                buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-                buttonText: "Select date",
-                changeMonth: true,
-                changeYear: true,
-                currentText: "Now",
-                firstDay: 1,
-                showOtherMonths: true,
-                selectOtherMonths: true,
-                onSelect: function(formated, dates) {
-                $("#calendar").fullCalendar("gotoDate", formated);
-                }
-            });
-            $("#datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
-            $("#datepicker").datepicker( "setDate" , "+0d" );
-            });
-        });
-        const links = document.querySelectorAll(".page-header ul a");
-
-        for (const link of links) {
-            link.addEventListener("click", clickHandler);
-        }
-        function clickHandler(e) {
-            e.preventDefault();
-            const href = this.getAttribute("href");
-        document.querySelector(href).scrollIntoView({
-            behavior: "smooth"
-        });
-        /******************DETAILS****************/
-            $("#details").click(function(e) {
-                let id = $("input[name=user]:checked").attr('id');
-                $.ajax({
-                    type: "GET",
-                    url: 'users/',
-                    dataType: 'json',
-                    success: function(response) {
-                        let Json = JSON.parse(response)
-                        for (let i = Json.length - 1; i >= 0; i--) {
-                            if (id == Json[i].pk) {
-                                $('#firstname').val(Json[i].fields['firstname'])
-                                $('#lastname').val(Json[i].fields['lastname'])
-                                $('#email').val(Json[i].fields['email'])
-                                $('#service').val(Json[i].fields['service'])
-                                $('#telephone').val(Json[i].fields['telephone'])
-                                $('#appointmentdate').val(Json[i].fields['appointmentdate'])
-                                $('#time').val(Json[i].fields['time'])
-                                break;
-                            }
-                        }
-                    },
-                });
-
+            $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
             });
 
-/******************DELETE***************
-            $("#delete").click(function(e) {
-                //let id = $("input[name=user]:checked").attr('id');
-                id=e,
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/userremoved/',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        'pk': id
-                    }),
-                    success: getUsers
-                });
-            
-            });
-/**************UPDATE****************/    
-            $("#update").click(function() {
-                let id = $("input[name=user]:checked").attr('id');
-                let firstname = $('input[name=firstname]').val()
-                let lastname = $("input[name=lastname]").val()
-                let email = $("input[name=email]").val()
-                let service = $("input[name=service]").val()
-                let telephone = $("input[name=telephone]").val()
-                let appointmentdate = $("input[name=appointmentdate]").val()
-                let time = $("input[name=time]").val()
-                $.ajax({
-                url: 'userupdated/',
-                type: 'PUT',
-                dataType: 'json',
-                data: JSON.stringify({
-                    'pk': id,
-                    'firstname': firstname,
-                    'lastname': lastname,
-                    'email': email,
-                    'service': service,
-                    'telephone': telephone,
-                    'appointmentdate': appointmentdate,
-                    'time': time,
+    });
 
-                }),
-                success: getUsers,
-            });
-        });
-}
+/**************************SELECT TIME *********************/
+
+
+/*======================================================================================================*/
+/*========================================END OF JQUERY===================================================*/
+/*=======================================================================================================*/
+
 </script>
     </head>
     <body class='container'>
         <!-- HEADER NAV -->
-     <header class="header">
-      <nav class="header__nav">
+        <header class="header">
+        <nav class="header__nav">
             <ul class="nav__sidenav nav--right">
             <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
             <div class="header__links">
@@ -495,16 +461,15 @@ margin:auto}
             </ul>
         </nav>
     </header>
-     <main class='maincenter'>
+    <main class='maincenter'>
         <!-- MAIN-
-       
         <section class='maincenter'>
         <center > ->
             <h1 class='greeting-calendar'>Select date for Appointment with Madeleine Salon de Coiffure</h1>
-            <h2>Please complete form</h2><br/>
+            <h2>Please complete form</h2><br/> -->
             
 
-<!--APPOINTMENT FORM-->
+<!-- APPOINTMENT FORM-->
         <form >
         <br>
         <br>
@@ -516,46 +481,59 @@ margin:auto}
                 <!---  <div id='userlist' class='apptform '> </div>-->
                     <!-- FIRST NAME -->
                     <tr class='space'>
-                    <td  class='username space'>First Name</td><td> <input  id='firstname'class='username' type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
+                    <td  class='username space'>First Name</td><td> <input  id='firstname'class='username inputplaceholder'  type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
                     </tr>
                     <!-- LAST NAME -->
                     <tr class='space'>  
-                    <td  class='username space'>Last Name</td><td> <input id='lastname' class='username'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
+                    <td  class='username space'>Last Name</td><td> <input id='lastname' class='username inputplaceholder'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
                     </tr> 
                     <!-- SERVICE NAME -->
                     <tr class='space'>  
-                    <td  class='username space'>Service Requested</td><td> <input id='service' class='username' type="text"   placeholder="service" required autocomplete='off' name="service"/></td>
+                    <td  class='username space'>Service Requested</td><td> <input id='service' class='username inputplaceholder'  type="text"   placeholder=" Service " required autocomplete='off' name="service"/></td>
                     </tr>
                     <!-- EMAIL -->
                     <tr class='space'>
-                    <td  class='username space'>Email</td><td> <input id='email' class='username'  type="email" placeholder=" email "  name="email"/></td>
+                    <td  class='username space'>Email</td><td> <input id='email' class='username inputplaceholder'   type="text" placeholder=" Email "  required autocomplete='off' name="email"/></td>
                     </tr>
                     <!-- TELEPHONE -->
                     <tr class='space'>
-                    <td  class='username space'>Telephone</td><td> <input id='telephone' class='username'  type="text"  placeholder=" telephone " required autocomplete='off' name="telephone"/></td>
+                    <td  class='username space'>Telephone</td><td> <input id='telephone' class='username inputplaceholder'  type="text"  placeholder=" Phone Number " required autocomplete='off' name="telephone"/></td>
                     </tr>
+                    </tbody>
+                    </table>
+                    <br><br><br>
+                    <div class='formcaption'> Please select date and time from calendar</div> <br><br>
+                    <div id="calendar"> </div> <br><br>
                     <!-- APPOINTMENT DATE -->
+                        <table  class='appttable space' border="1"> 
                     <tr class='space'>
-                    <td  class='username space'>Appointment Date</td><td> <input  id='appointmentdate'class='username' type="text" name="appointmentdate" placeholder="Appointment Date" required autocomplete='off'/></td>
+                    <td  class='username space'>Appointment Date</td><td> <input  id='appointmentdate'class='username inputplaceholder'  type="text" placeholder=" Appointment Date" required autocomplete='off' name="appointmentdate" /></td>
                     </tr>
+                    <br>
                     <!-- TIME -->
                     <tr class='space'>
-                    <td  class='username space'>Time</td><td> <input id='time' class='username'  type="text"  placeholder=" time " required autocomplete='off' name="time"/></td>
+                    <td  class='username space'>Appointment Time</td><td> <input id='time' class='username inputplaceholder'   type="text"  placeholder=" Time " required autocomplete='off' name="time"/></td>
                     </tr>
                     </tbody>
                 </table>
-           
-                <input type="button" name="add" id='add' value="Add Appointment" class="btn"/>
-                <br>
+                <input type="submit" name="add" id='add' value="Add Appointment" style="float:right" class="btn"/>
+                <br><br>
+    <!--  
+ {% if messages%}
+{% for message in messages%}
+<h1 class="messageweb"> {{message}} </h1>
+{% endfor%}
+{% endif%}--> 
+
             <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
             <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"/> -->
                 <br>
             <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn"/>-->
         </form>
-        <div id="calendar"> </div> <br><br><br><br><br> 
+  
+    <br><br><br> 
     </main>
 <!--FOOTER-->
-  <!--FOOTER-->
         <footer id="footer">
                 <div id="footer-utility">
                     <div class="footer__chat">
@@ -612,10 +590,10 @@ margin:auto}
                     </div>
                 </div>
                 <br><br>
+                        
+
                 </footer>
                 <!-- </center>
-               
-                </section> -->
-       
+</section> -->
     </body>
 </html>
