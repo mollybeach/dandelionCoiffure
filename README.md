@@ -1,6 +1,6 @@
 # dandelion salon application
 
-#set up
+#set up up
 
 make appointments, make account email, view hair styles 
 
