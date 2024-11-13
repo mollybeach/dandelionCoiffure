@@ -9,3 +9,9 @@ shell:
 
 test:
 	python manage.py test 
+
+static:
+	python manage.py collectstatic
+
+superuser:
+	python manage.py createsuperuser
