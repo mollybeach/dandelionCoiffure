@@ -193,7 +193,6 @@ Key features:
 dandelionCoiffure/
 ├── .git/
 ├── deployment/
-│   │   │   ├── responsive.css
 ├── docs/
 │   ├── static/
 │   ├── users/
