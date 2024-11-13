@@ -75,7 +75,7 @@ main{
 
 
       <form  class=""method='POST' action="login">
-      <input type="hidden" name="csrfmiddlewaretoken" value="jAUHCCpQjOVgio00Q7cYI78zbuPt4uMeBEKuue3X6Q5aFZwXEPTxiJ5GDhSfBj7k">
+      <input type="hidden" name="csrfmiddlewaretoken" value="8zdATNiUvxIrAlkatiIqqL4hn139H9SyLTSjjsAZu8150k6f71E2zaE6SC2GXgZr">
       <h1 class='form-header'>LOGIN</h1>
       <br>
         <divclass="form-input"  class="input-block">
