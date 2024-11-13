@@ -25,14 +25,18 @@ jobs:
         run: |
           python manage.py collectstatic --noinput
           
-      - name: Copy HTML Files
+      - name: Copy Files to Docs
         run: |
-          mkdir -p build
-          cp -r templates/* build/
-          cp -r staticfiles/* build/
+          mkdir -p docs
+          cp -r templates/* docs/
+          cp -r staticfiles/* docs/
+          # Ensure index.html exists in docs root
+          if [ -f templates/index.html ]; then
+            cp templates/index.html docs/
+          fi
           
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: master
-          folder: build
+          folder: docs
