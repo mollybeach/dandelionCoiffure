@@ -455,7 +455,7 @@ function todayEqualActive(){
         <form >
         <br>
         <br>
-<input type="hidden" name="csrfmiddlewaretoken" value="qDvG2KoObUETGRgWkyWk55a9iYjEsTZxeXgpLQAIRVcohc3a7YLPvtpO0Xss56yt">
+<input type="hidden" name="csrfmiddlewaretoken" value="Ic7fE3QVwSqkqK7WowAccyRiPvbRWeM4fj0pAQBMdAwWV4Eqoy7upBUlrn9glCdh">
                 <table  class='appttable space' border="1"> 
                 <caption class='formcaption' >Please fill out form </caption>
                 <caption class='formcaption'> Select appointment date with Madeleine Salon de Coiffure</caption>
