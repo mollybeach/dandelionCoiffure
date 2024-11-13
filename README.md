@@ -66,7 +66,8 @@ psql -v DB_ADMIN_EMAIL=your@email.com -v DB_ADMIN_PASSWORD=yourpassword -v DB_AD
 To set up the PostgreSQL database for the Madeleine Salon de Coiffure booking system:
 
 # Create the database
-````
+
+```
 brew list | grep postgresql
 postgres --version
 brew install postgresql@14

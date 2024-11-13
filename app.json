@@ -1,25 +1,65 @@
 {
-  "name": "Start on Heroku: Python",
-  "description": "A barebones Python app, which can easily be deployed to Heroku.",
+  "name": "Dandelion Coiffure",
+  "description": "A Django salon appointment application",
   "image": "heroku/python",
-  "repository": "https://github.com/heroku/python-getting-started",
-  "keywords": ["python", "django" ],
-  "addons": [ "heroku-postgresql" ],
+  "repository": "https://github.com/mollybeach/dandelionCoiffure",
+  "keywords": ["python", "django", "salon"],
+  "addons": ["heroku-postgresql"],
   "env": {
     "SECRET_KEY": {
       "description": "The secret key for the Django application.",
       "generator": "secret"
+    },
+    "DJANGO_ENV": {
+      "description": "The environment the app is running in",
+      "value": "development"
     }
   },
   "environments": {
-    "test": {
+    "development": {
       "scripts": {
-        "test-setup": "python manage.py collectstatic --noinput",
-        "test": "python manage.py test",
         "start": "python manage.py runserver",
         "migrate": "python manage.py migrate",
-        "shell": "python manage.py shell"
+        "shell": "python manage.py shell",
+        "test": "python manage.py test"
+      },
+      "env": {
+        "DEBUG": "True",
+        "DJANGO_ENV": "development"
       }
+    },
+    "github-pages": {
+      "scripts": {
+        "build": "python manage.py collectstatic --noinput && python manage.py distill-local docs/ --force",
+        "start": "python -m http.server --directory docs/"
+      },
+      "env": {
+        "DEBUG": "False",
+        "DJANGO_ENV": "github-pages"
+      }
+    },
+    "heroku": {
+      "scripts": {
+        "postdeploy": "python manage.py migrate",
+        "start": "gunicorn salonproject.wsgi",
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      },
+      "env": {
+        "DEBUG": "False",
+        "DJANGO_ENV": "heroku"
+      }
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
     }
   }
 }
