@@ -7,8 +7,8 @@ def get_none():
 
 urlpatterns = [
     distill_path('', views.index, name='index', distill_func=get_none),
-    distill_path('about', views.about, name='about', distill_func=get_none),
-    distill_path('contact', views.contact, name='contact', distill_func=get_none),
+    distill_path('about.html', views.about, name='about', distill_func=get_none),
+    distill_path('contact.html', views.contact, name='contact', distill_func=get_none),
     distill_path('clients', views.clients, name='clients', distill_func=get_none),
     distill_path('register', views.register, name='register', distill_func=get_none),
     distill_path('login', views.login, name='login', distill_func=get_none),
