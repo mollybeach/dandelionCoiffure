@@ -53,10 +53,10 @@ main{
                     <img class='header__img' src="https://res.cloudinary.com/storagemanagementcontainer/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" />
                 </a></li>
                 <div class="header__links">
-                    <li class="header__link"><a href="/about">About</a></li>
+                    <li class="header__link"><a href="/about.html">About</a></li>
                     <li class="header__link"><a href="/clients">Clients</a></li>
                     <li class="header__link"><a href="/calendar">Book</a></li>
-                    <li class="header__link"><a href="/contact">Contact Us</a></li>
+                    <li class="header__link"><a href="/contact.html">Contact Us</a></li>
                     
                         <li class="header__link"><a href="/register">Create Account</a></li>
                         <li><a href="/login" class="header__link">Login</a></li>
@@ -81,7 +81,7 @@ main{
 
 
       <form  class=""method='POST' action="login">
-      <input type="hidden" name="csrfmiddlewaretoken" value="9pElt5k3r3le7Ue5ajDoZN8gtlj5Ms3AxiRVDo4YlYpRZFq2LapXvQupTdQHET2y">
+      <input type="hidden" name="csrfmiddlewaretoken" value="MOpJs3AqXq2DOyEuryzGQONxL4Gfi8PPxHLImKVz30k7MYax3kJD4NcbnJ0nRQ4W">
       <h1 class='form-header'>LOGIN</h1>
       <br>
         <divclass="form-input"  class="input-block">
