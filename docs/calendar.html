@@ -1,0 +1,599 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Madeleine Salon de Coiffure Schedule Calendar  </title>
+            <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' >
+            <link href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610464/jquery-ui.min_vcocc8.css"  rel="stylesheet"  >
+            <link rel="stylesheet" href="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627775345/calender_x3yfqn.css" />
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+.maincenter{
+border-radius: 20px;
+border: 25px solid  #E0C9C1;
+margin:1% 0;
+padding:2%;
+}
+.header{
+    margin-bottom:0px;}
+td,
+th,
+table {
+    border: none;
+    padding: 0;
+}
+.username {
+    margin: 0;
+    margin-top: 2%;
+    width:20%;
+    border-radius: 15px;
+    background: #ebeef5;
+}
+input.username{
+    width: 95%;
+      background: #ebeef5;
+}
+td.username{
+    background-color: #909fbb;
+    color: #fafafa;
+    border-radius: 15px;
+}
+
+.apptable {
+    border: none;
+}
+ul.nav__sidenav.nav--right {
+    background-color: #ebc3c2;
+    min-height: 410px;
+    border-radius: 20px;
+    border: 25px solid #ebc3c2;
+}
+header {
+    background-color: #ebc3c2;
+    min-height: 410px;
+    border-radius: 20px;
+    border: 25px solid #ebc3c2;
+}
+
+
+@media all and (max-width: 411px) and (min-width: 0px) {
+    form {
+        margin: 1%;
+    }
+}
+    
+
+a:link {
+    font-weight: bold;
+}
+a:hover {
+    color: #534f4f;
+}
+.fc-content{
+    background-color: #909fbb;
+    color: #fafafa;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 1px solid #909fbb;
+    background: #909fbb;
+
+}
+.fc-event{
+    border: 1px solid #909fbb;
+    background-color: #909fbb;
+}
+.fc-state-default {
+    background-color: #ebeef5;
+    background-image: none;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+     */
+font-weight: bold;
+    padding: 0 1%;
+    color:#2f343e;
+
+}
+.fc-state-active{
+    background-color: #9b9b9b;
+    color: #fafafa;
+
+}
+.formcaption{
+    font-weight: bold;
+    font-size: 20px;
+    color:#9b9b9b;
+}
+
+.td.fc-highlight {
+    background:  #ebeef5;
+}
+.fc-unthemed .fc-today {
+    background: #ebeef5;
+    color: black;
+}
+a.fc-more{
+    color:#2f343e;
+    font-wight: bold;
+    font-size: 1rem;
+}
+.fc td, .fc th {
+    border-style: solid;
+    border-width: 3px;
+    border-color: antiquewhite;
+    /*padding: 2%; remove padding 0*/
+    /*border-radius: 5px;
+    vertical-align: top;
+    /*border-collapse: separate;*/
+}
+
+.fc table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: seperate; 
+    border-spacing: 0;
+    font-size: 1em;
+}
+.fc-state-default {
+    background-repeat: repeat-x;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #333;
+    text-shadow: none;
+}
+.fc td.fc-today {
+    border-style: solid;
+}
+td, th, table {
+    border: none;
+    border-collapse: separate;
+    border-radius: 10px;
+}
+
+.fc-state-default {
+    border: 5px;
+    border-radius: 20px;
+    background-color: #ebc3c2;
+}
+/*****CUSTIMIZE THIS PER SIZE*****/
+.fc-toolbar button {
+    position: relative;
+    width: 5%
+    height: auto;
+}
+.fc {
+    direction: ltr;
+    text-align: center; /* center the text in event */
+}
+.fc table{
+    border-collapse: unset;
+}
+
+@media all and (max-width: 599px) and (min-width: 0px) {
+    .getemailform {
+        width: 90%;
+    }
+    #footer-newsletter {
+        margin: auto;
+    }
+    #footer-social {
+        margin-top: 20px;
+    }
+    .fc-toolbar button {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+}
+.fc-state-active {
+    background: #9b9b9b;
+    color: #EbC3c2;
+}
+.fc-slats .fc-minor td {
+    border-top-style: solid;
+}
+.space{
+    padding: 3.5%;
+}
+.appttable{
+    /*padding:12%;*/
+    margin-left: 5%;
+}
+.messagesweb{
+    color: #909FBB;
+    font-size: 18px;
+    background-color: #EBC3C2;
+    width: 100%;
+}
+.inputplaceholder{
+    opacity: 0.5;
+}
+
+ 
+</style>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script src="https://res.cloudinary.com/madeleinesalondecoiffure/raw/upload/v1627610374/jquerydatepicker_tgymdk.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
+        <script>
+
+/*=================================================================================================*/
+/*========================================VANILLA JS===================================================*/
+/*=================================================================================================*/
+// remove border if the selected date is today's date
+function todayEqualActive(){
+  setTimeout(function(){
+    if($(".ui-datepicker-current-day").hasClass("ui-datepicker-today")){
+      $(".ui-datepicker-today")
+        .children(".ui-state-default")
+        .css("border-bottom", "0");
+    }
+    else{
+      $(".ui-datepicker-today")
+        .children(".ui-state-default")
+        .css("border-bottom", "2px solid rgba(53,60,66,0.5)");
+    }
+  }, 20);
+}
+/******************SMOOTH PAGE LOADING***********/
+        const links = document.querySelectorAll(".page-header ul a");
+
+        for (const link of links) {
+            link.addEventListener("click", clickHandler);
+        }
+        function clickHandler(e) {
+            e.preventDefault();
+            const href = this.getAttribute("href");
+            document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+        };
+
+/*****************************GET JSON FROM VIEWS.PY ***************************/
+        function getUsers(response) {
+            let Json = JSON.parse(response)
+            textlist = ""
+            for (let i = 0; i < Json.length; i++) {
+            textlist += "<input type='radio'  name='user' id=" + Json[i].pk + ">" + Json[i].fields['firstname'] + " " + Json[i].fields['lastname'] + "<br>"
+            }
+            /*  $('#firstname').val("firstname")
+            $('#lastname').val("lastname")
+            $('#email').val("email")
+            $('#service').val("service")
+            $('telephone').val("telephone")
+            $('#appointmentdate').val("appointmentdate")
+            $('time').val("time")*/
+            if (textlist == "")
+                $("#userlist").html("No users available, add one below please")
+            else
+                $("#userlist").html(textlist)
+            }    
+            $("#userlist").ready(function() {
+            $.ajax({
+                url: 'users/',
+                type: 'GET',
+                success: getUsers,
+            });
+        });
+
+/*************************EVENTS LIST*****************************/
+
+        let resultStr = JSON.parse("{{result|escapejs}}");
+        let resultObj = JSON.parse(resultStr);
+        let events = [];  
+        for (let i = 0; i < resultObj.length; i++) {
+            let event = resultObj[i];
+            let obj = {
+                "id": event.pk,
+                "title": event.fields["firstname"] + " " + event.fields["lastname"] + " " + event.fields["service"],
+                //"start": event.fields["telephone"] ,
+               // "end": event.fields["appointmentdate"] 
+               // "allDay": false,
+               // start:  '2010-01-01T14:30:00',
+               //convert appointmentdateTime back to dateTime floatformat
+               // start: moment(event.fields["appointmentdateTime"]).format('YYYY-MM-DDTHH:mm:ss')
+              // "start":   event.fields["appointmentdate"]+"T"+event.fields["time"] ,
+              //convert appointmentdateTime back to dateTime format to be read by fullcalendar
+                start: moment(event.fields["time"]).format('YYYY-MM-DDTHH:mm:ss')
+              //"start":   event.fields["appointmentdate"]
+               //end:  events.fields[appointmentdate] + (event.fields["telephone"]+30)
+               //add 2 hours to the start time value  and make it my end time and create another obj.value called end that has the saame date just2 hours add to time 
+            }
+            events.push(obj);
+        }
+    console.log(events);
+
+/*****************************CURRENT TIME***************************/
+
+        let currentDate = new Date();
+        let month = currentDate.getMonth() + 1;
+        let year = currentDate.getFullYear();
+        let day = currentDate.getDate();
+        let hours = currentDate.getHours();
+        let minutes = currentDate.getMinutes();
+        let seconds = currentDate.getSeconds();
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var center;
+        let ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        let strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+        $('#currentTime').html(strTime);
+
+/*============================================================================================================*/
+/*========================================END OF VANILLA JS===================================================*/
+/*===========================================================================================================*/
+
+/*==========================================================================================================*/
+/*========================================JQUERY============================================================*/
+/*=========================================================================================================*/
+
+
+
+/************************CALENDAR**********************/
+
+    $(document).ready(function() {
+        $("#calendar").fullCalendar({
+            /*********CALENDAR HEADERS*********/
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+                editable: true,
+                navLinks: true,
+                selectable: true,
+                eventLimit: true,
+                selectMirror: true,
+                events: events,
+                allDaySlot: false,
+                selectHelper: true,
+            
+ /*when i click on the full calendar day click the jquery timepicker will be shown*/
+ // on day click the timepicker will render and the time will be set to the timepicker input
+
+            /*when i click on the full calendar day click the jquery timepicker will be shown*/
+        
+        dayClick: function(date, jsEvent, view) {
+            if(view.name == 'month' || view.name == 'agendaWeek') {
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
+            $('#calendar').fullCalendar('gotoDate', date);      
+            }
+            let justtheday = moment(date).format('YYYY-MM-DD');
+            let justthetime = moment(date).format('HH:mm:ss');
+            $("#appointmentdate").val(justtheday);
+            $("#time").val(justthetime);
+        },
+   
+        eventClick: function(calEvent, jsEvent, view) {
+               {% if user.is_authenticated%}
+            if (confirm("Are you sure you want to delete the event: "+ calEvent.title +  "  ?" )){
+            // your deletion code
+            $.ajax({
+                    type: 'DELETE',
+                    url: '/userremoved/',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        'pk':  calEvent.id
+                    }),
+                    success: getUsers
+                });
+            }
+            return false;
+         
+                {% else%}
+        alert('Clicked on: ' + calEvent.title + '  Sorry Madeleine is unavailable during this time please select another time slot ');
+        
+    {% endif %}
+       }
+    
+    }); 
+
+/*************************END OF CALENDAR*******************/
+/****************************ADD *********************/
+
+            $("#add").on("click", function () {
+            let firstname = $('input[name=firstname]').val()
+            let lastname = $("input[name=lastname]").val()
+            let email = $("input[name=email]").val()
+            let service = $("input[name=service]").val()
+            let telephone = $("input[name=telephone]").val()
+            let appointmentdate = $("input[name=appointmentdate]").val()
+            let time = $("input[name=time]").val()
+            let appointmentdateTime = moment(appointmentdate+"T"+time, "YYYY-MM-DDTHH:mm").format("YYYY-MM-DDTHH:mm:ss");
+            $.ajax({
+                type: "POST",
+                url: '/useradded/',
+                dataType: 'json',
+                data: JSON.stringify({
+                    'firstname': firstname,
+                    'lastname': lastname,
+                    'email': email,
+                    'service': service,
+                    'telephone': telephone,
+                    'appointmentdate': appointmentdate,
+                    'time': appointmentdateTime,
+                    
+                }),
+                success: getUsers
+            });
+            events.push({
+                title: service,
+                date: appointmentdate,
+                allDay: true,     
+                });
+            $("#calendar").fullCalendar("renderEvent", events[events.length - 1], true);
+            });
+
+    });
+
+/**************************SELECT TIME *********************/
+
+
+/*======================================================================================================*/
+/*========================================END OF JQUERY===================================================*/
+/*=======================================================================================================*/
+
+</script>
+    </head>
+    <body class='container'>
+        <!-- HEADER NAV -->
+        <header class="header">
+        <nav class="header__nav">
+            <ul class="nav__sidenav nav--right">
+            <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
+            <div class="header__links">
+            <li class="header__link"><a href="about" class="header__linking">About</a></li>
+            <li class="header__link"><a href="clients" class="header__linking">Clients</a></li>
+            <li class="header__link"><a href="calendar" class="header__linking">Book</a></li>
+            <li class="header__link"><a href="contact" class="header__linking">Contact Us</a></li>
+{% if user.is_authenticated%}
+            <li class="header__link"><a href="profile"class="header__linking" >My Profile</a></li>
+            <li class="header__link"><a href="logout" class="header__linking">Logout</a></li>
+{% else%}
+            <li class="header__link"><a href="register" class="header__linking">Create Account</a></li>
+            <li><a href="login" class="header__link" class="header__linking">Login</a></li>
+{% endif %}
+            <li class="header__link hide-3"><a href="calendar" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+            </div>
+            </ul>
+        </nav>
+    </header>
+    <main class='maincenter'>
+        <!-- MAIN-
+        <section class='maincenter'>
+        <center > ->
+            <h1 class='greeting-calendar'>Select date for Appointment with Madeleine Salon de Coiffure</h1>
+            <h2>Please complete form</h2><br/> -->
+            
+
+<!-- APPOINTMENT FORM-->
+        <form >
+        <br>
+        <br>
+{% csrf_token %}
+                <table  class='appttable space' border="1"> 
+                <caption class='formcaption' >Please fill out form </caption>
+                <caption class='formcaption'> Select appointment date with Madeleine Salon de Coiffure</caption>
+                <tbody class='apptbody space'>
+                <!---  <div id='userlist' class='apptform '> </div>-->
+                    <!-- FIRST NAME -->
+                    <tr class='space'>
+                    <td  class='username space'>First Name</td><td> <input  id='firstname'class='username inputplaceholder'  type="text" placeholder=" First Name " required autocomplete='off' name="firstname" /></td>
+                    </tr>
+                    <!-- LAST NAME -->
+                    <tr class='space'>  
+                    <td  class='username space'>Last Name</td><td> <input id='lastname' class='username inputplaceholder'  type="text" placeholder=" Last Name " required autocomplete='off' name="lastname"/></td>
+                    </tr> 
+                    <!-- SERVICE NAME -->
+                    <tr class='space'>  
+                    <td  class='username space'>Service Requested</td><td> <input id='service' class='username inputplaceholder'  type="text"   placeholder=" Service " required autocomplete='off' name="service"/></td>
+                    </tr>
+                    <!-- EMAIL -->
+                    <tr class='space'>
+                    <td  class='username space'>Email</td><td> <input id='email' class='username inputplaceholder'   type="text" placeholder=" Email "  required autocomplete='off' name="email"/></td>
+                    </tr>
+                    <!-- TELEPHONE -->
+                    <tr class='space'>
+                    <td  class='username space'>Telephone</td><td> <input id='telephone' class='username inputplaceholder'  type="text"  placeholder=" Phone Number " required autocomplete='off' name="telephone"/></td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <br><br><br>
+                    <div class='formcaption'> Please select date and time from calendar</div> <br><br>
+                    <div id="calendar"> </div> <br><br>
+                    <!-- APPOINTMENT DATE -->
+                        <table  class='appttable space' border="1"> 
+                    <tr class='space'>
+                    <td  class='username space'>Appointment Date</td><td> <input  id='appointmentdate'class='username inputplaceholder'  type="text" placeholder=" Appointment Date" required autocomplete='off' name="appointmentdate" /></td>
+                    </tr>
+                    <br>
+                    <!-- TIME -->
+                    <tr class='space'>
+                    <td  class='username space'>Appointment Time</td><td> <input id='time' class='username inputplaceholder'   type="text"  placeholder=" Time " required autocomplete='off' name="time"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="submit" name="add" id='add' value="Add Appointment" style="float:right" class="btn"/>
+                <br><br>
+    <!--  
+ {% if messages%}
+{% for message in messages%}
+<h1 class="messageweb"> {{message}} </h1>
+{% endfor%}
+{% endif%}--> 
+
+            <!-- <input  id='details' type="button"  value="View Appoinment" class="btn"/>-->
+            <!--- <input type="button" name="update" id='update' value="Modify Appointment" class="btn"/> -->
+                <br>
+            <!---   <input type="button" name="delete" id='delete' value="Delete Appointment" class="btn"/>-->
+        </form>
+  
+    <br><br><br> 
+    </main>
+<!--FOOTER-->
+        <footer id="footer">
+                <div id="footer-utility">
+                    <div class="footer__chat">
+                        <ul class="footer__ul"><h3 class="footer__left">À propos de nous</h3>
+                            <li class="footer__li"><a class="footer__a" href="#">Politique de confidentialité</a></li>
+                            <li class="footer__li"><a class="footer__a" href="#">Termes et conditions</a></li>
+                            <li class="footer__li"> <img class="footer__chat-img-icon footer__li" width="18" height="14" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469462241/msg_jn0whe.svg" href="#" />Chat</li>
+                            <li class="footer__li"> <img class="footer__chat-img-icon footer__li" width="15" height="15" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469462243/phone_zfj4ey.svg" href="#" />1-253-306-3470</li>
+                        </ul>
+                    </div>
+                    <div class="footer__partition"></div>
+                    <div class="footer__about">
+                        <ul class="footer__ul">
+                            <h3 class="footer__left">Madeleine Dupont</h3>
+                            <li class="footer__li"><a class="footer__a" href="#">madeleinesalondecoiffure@gmail.com</a></li>
+                            <li class="footer__li"><a class="footer__a" href="#">© 2021, Madeleine Salon de Coiffure</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__partition"></div>
+                    <div class="footer__card">
+                        <ul class="footer__ul">
+                            <h3 class="footer__left">À propos de nous</h3>
+                            <li class="footer__li"><a class="footer__a" href="#">Politique de confidentialité</a></li>
+                            <li class="footer__li"><a class="footer__a" href="#">Termes et conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="footer__a" class="" href="/"><img class='footer__logo' src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627668880/skeletoncrest_t9zecb.svg" alt="" /></a>
+                <div id="footer-newsletter-social">
+                    <div id="footer-newsletter">
+                        <h3 class="footer__center">Get more deals with Madeleine</h3>
+                        <div class='footer__enter'>
+                            <input type="text" placeholder="Enter email address" class="getemailform"/>
+                            <input class="enteremailbutton" type="submit" value="Sign Up" />
+                        </div>
+                    </div>
+                    <br><br>
+                    <div id="footer-social">
+                        <a class="footer__a" href="https://www.facebook.com/madeleine.beach.3" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669349/facebook_eknuzn_drzww6.svg" alt="facebook" /></a>
+                        <a class="footer__a" href="https://twitter.com/madecoiffure" target="_blank"> <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669267/twitter_nfohqw_wdseyj.svg" alt="twitter" /></a> 
+                        <a class="footer__a" href="https://pin.it/5qgAohs" target="_blank"> <img width="34" height="34" src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/pinterest_vtom0c.svg" alt="pintrest" /></a > 
+                        <a class="footer__a" href="https://www.instagram.com/madeleinebeachh/" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627669343/instagram_u4wt1i_br0ox6.svg" alt="instagram"/> </a>
+                        <a class="footer__a" href="http://youtube.com/madeleinesalondecoiffure" target="_blank" > <img width="34" height="34" src="https://res.cloudinary.com/madeleinesalondecoiffure/image/upload/v1627677813/youtubeicon_u5ks3w.svg" alt="youtube" /></a>
+                    </div>
+                </div>       
+                <div class="footer__border"></div>
+                <div id="footer-copyright">
+                    <div class="footer__law">
+                    <ul class="footer__ul">
+                        <li class="footer__li footer__copy"> © 2021 Madeleine Salon de Coiffure.</li>
+                        <li class="footer__li footer__copy"> Privacy Policy | Terms + Conditions | Sitemap</li>
+                        <li class=" footer__li footer__copy"> Washington | Transparency in Supply Chains Act</li>
+                    </ul>
+                    </div>
+                </div>
+                <br><br>
+                        
+
+                </footer>
+                <!-- </center>
+</section> -->
+    </body>
+</html>
