@@ -59,7 +59,7 @@ form{
     </header>
 <main class='mainsection'>
     <form  class=""method='POST' action="register">
-    <input type="hidden" name="csrfmiddlewaretoken" value="vTpVlGS8LDLNzmy0SvXHapeMti3INiOMkcZiAJH7ZCHeSqi5ia4RAIrOzSmNeNmq">
+    <input type="hidden" name="csrfmiddlewaretoken" value="GME5CHQGV4LS2uHeWufi9L63MfJdzNgd5DyH8IN1aADIOvTFR4EkXEKhGAYwMUG4">
         <h1 class='form-header'>Create Account</h1>
       <br>
         <div  class="input-block">
