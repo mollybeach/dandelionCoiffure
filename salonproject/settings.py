@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'salonapp',
+    'django_distill',
 ]
 
 MIDDLEWARE = [
