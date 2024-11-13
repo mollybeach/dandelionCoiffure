@@ -44,27 +44,33 @@ main{
     <!--BODY-->
   <body class="container ">
     <!-- HEADER NAV -->
-    <header class="header">
-      <nav class="header__nav">
-            <ul class="nav__sidenav nav--right">
-          <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/storagemanagementcontainer/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
-            <div class="header__links">
-          <li class="header__link"><a href="about" >About</a></li>
-          <li class="header__link"><a href="clients" >Clients</a></li>
-          <li class="header__link"><a href="calendar" >Book</a></li>
-          <li class="header__link"><a href="contact" >Contact Us</a></li>
+<header class="header">
+    <nav class="header__nav">
+        <ul class="nav__sidenav nav--right">
+            
+                <!-- Heroku URLs -->
+                <li><a href="/" class="header__logo">
+                    <img class='header__img' src="https://res.cloudinary.com/storagemanagementcontainer/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" />
+                </a></li>
+                <div class="header__links">
+                    <li class="header__link"><a href="/about">About</a></li>
+                    <li class="header__link"><a href="/clients">Clients</a></li>
+                    <li class="header__link"><a href="/calendar">Book</a></li>
+                    <li class="header__link"><a href="/contact">Contact Us</a></li>
+                    
+                        <li class="header__link"><a href="/register">Create Account</a></li>
+                        <li><a href="/login" class="header__link">Login</a></li>
+                    
+                    <li class="header__link hide-3"><a href="/calendar" id="nav-bag"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+                </div>
+            
 
-          <li class="header__link"><a href="register" >Create Account</a></li>
-          <li><a href="login" class="header__link">Login</a></li>
-
-          <li class="header__link hide-3"><a href="#" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
-        </div>
-
-        <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
-
+            
+                <p class="header__welcome hide-3">Bonjour! Welcome to Madeleine Salon de Coiffure</p>
+            
         </ul>
-      </nav>
-  </header>
+    </nav>
+</header> 
   <br>
   <br>
   <!--MAIN-->
@@ -75,7 +81,7 @@ main{
 
 
       <form  class=""method='POST' action="login">
-      <input type="hidden" name="csrfmiddlewaretoken" value="8zdATNiUvxIrAlkatiIqqL4hn139H9SyLTSjjsAZu8150k6f71E2zaE6SC2GXgZr">
+      <input type="hidden" name="csrfmiddlewaretoken" value="4I7TB3xQQTwHbGBwYdd6PtIk8o4uMq0uqqBnMUUXNhFMLpuQDe69L4HWEK0qHjVt">
       <h1 class='form-header'>LOGIN</h1>
       <br>
         <divclass="form-input"  class="input-block">
