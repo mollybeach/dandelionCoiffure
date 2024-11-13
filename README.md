@@ -188,7 +188,6 @@ Key features:
 - Price and duration tracking for services
 - Contact information for clients
 
-
 # Project Structure
 
 ```
