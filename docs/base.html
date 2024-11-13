@@ -7,18 +7,18 @@
                     <img class='header__img' src="https://res.cloudinary.com/storagemanagementcontainer/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" />
                 </a></li>
                 <div class="header__links">
-                    <li class="header__link"><a href="about.html">About</a></li>
-                    <li class="header__link"><a href="clients.html">Clients</a></li>
-                    <li class="header__link"><a href="calendar.html">Book</a></li>
-                    <li class="header__link"><a href="contact.html">Contact Us</a></li>
+                    <li class="header__link"><a href="/dandelionCoiffure/about.html">About</a></li>
+                    <li class="header__link"><a href="/dandelionCoiffure/clients.html">Clients</a></li>
+                    <li class="header__link"><a href="/dandelionCoiffure/calendar.html">Book</a></li>
+                    <li class="header__link"><a href="/dandelionCoiffure/contact.html">Contact Us</a></li>
                     {% if user.is_authenticated %}
-                        <li class="header__link"><a href="profile.html">My Profile</a></li>
-                        <li class="header__link"><a href="logout.html">Logout</a></li>
+                        <li class="header__link"><a href="/dandelionCoiffure/profile.html">My Profile</a></li>
+                        <li class="header__link"><a href="/dandelionCoiffure/logout.html">Logout</a></li>
                     {% else %}
-                        <li class="header__link"><a href="register.html">Create Account</a></li>
-                        <li><a href="login.html" class="header__link">Login</a></li>
+                        <li class="header__link"><a href="/dandelionCoiffure/register.html">Create Account</a></li>
+                        <li><a href="/dandelionCoiffure/login.html" class="header__link">Login</a></li>
                     {% endif %}
-                    <li class="header__link hide-3"><a href="calendar.html" id="nav-bag"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
+                    <li class="header__link hide-3"><a href="/dandelionCoiffure/calendar.html" id="nav-bag"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
                 </div>
 
             {% elif settings.ENVIRONMENT == 'development' %}
