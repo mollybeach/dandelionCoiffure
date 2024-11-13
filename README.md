@@ -1,4 +1,4 @@
- Dandelion Salon Application
+# Dandelion Salon Application
 
 A web application for managing salon appointments and services.
 
