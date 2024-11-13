@@ -4,8 +4,12 @@ A web application for managing salon appointments and services. Made with Django
 
 ## Features
 
+<<<<<<< HEAD
 - Make appointments online
 - Create user accounts with email
+=======
+- Make appointments 
+- Create user accounts with email online
 - View hair styles and services
 - Online payment processing
 - Admin dashboard for salon management

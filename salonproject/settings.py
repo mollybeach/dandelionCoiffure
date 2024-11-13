@@ -16,39 +16,50 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Determine the environment
+ENVIRONMENT = os.environ.get('DJANGO_ENV', 'development')
+
 # Load environment variables from .env file
 load_dotenv()
 
-# Django Application Settings
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
-SECRET_KEY = os.getenv('SECRET_KEY')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
-DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
+# Base settings that apply to all environments
+SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 
-# Deployment Status
-IS_DEPLOYED = os.getenv('IS_DEPLOYED', 'False') == 'True'
-
-# Database Configuration
-if IS_DEPLOYED:
-    # Use Heroku database configuration
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.getenv('DATABASE_URL'),
-            conn_max_age=int(os.getenv('DB_CONN_MAX_AGE', '600'))
-        )
-    }
-else:
-    # Use local database configuration
+# Environment-specific settings
+if ENVIRONMENT == 'development':  # localhost
+    DEBUG = True
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USER'),
             'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST', 'localhost'),
-            'PORT': os.getenv('DB_PORT', '5432'),
+            'HOST': 'localhost',
+            'PORT': '5432',
         }
     }
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+elif ENVIRONMENT == 'github-pages':
+    DEBUG = False
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    STATIC_GENERATION = True
+    ALLOWED_HOSTS = ['mollybeach.github.io']  # Replace with your GitHub username
+
+elif ENVIRONMENT == 'heroku':
+    DEBUG = False
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL'),
+            conn_max_age=int(os.getenv('DB_CONN_MAX_AGE', '600'))
+        )
+    }
+    ALLOWED_HOSTS = ['.herokuapp.com']
 
 # Static Files Configuration
 STATIC_URL = '/static/'
@@ -97,6 +108,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'salonapp',
+    'django_distill',
 ]
 
 MIDDLEWARE = [

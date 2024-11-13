@@ -7,148 +7,71 @@ from django.db import connection
 from django.contrib import messages
 from salonapp.models import Users, Payment
 import calendar
-from  calendar import HTMLCalendar
+from calendar import HTMLCalendar
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template import RequestContext, loader
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
-#import models 
 from salonapp import models
 from json import dumps
 import json
 from django.core import serializers
 
+# Static views suitable for `django-distill` rendering
 def index(request):
-    return render(request, 'users/index.html')
-appname = 'Users'
-
+    return render(request, 'index.html')
 @csrf_exempt
-def calendar(request):
-    eventdata = serializers.serialize('json', Users.objects.all())
-    result = dumps(eventdata)
-    return render(request, 'calendar.html', {'result': result})
-
-@csrf_exempt
-def get(request):
-    context= serializers.serialize('json', Users.objects.all())
-    return JsonResponse(context, safe=False)
-
-            
-@csrf_exempt
-def post_user(request):
-    if request.method == 'POST':
-        rp = json.loads(request.body.decode('utf-8'))
-        user = Users(firstname=rp['firstname'],lastname=rp['lastname'],email=rp['email'],service=rp['service'],telephone=rp['telephone'],appointmentdate=rp['appointmentdate'],time=rp['time'])
-        user.save()
-        context = serializers.serialize('json', Users.objects.all())
-        subjectforclient="Appointment with MadeleineSalonDeCoiffure on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'  has been scheduled sucessfully!   '"
-        subjectforhairdresser="Client Appointment with ' "+user.firstname+ "' ' "+user.lastname+ "' on  '" + user.appointmentdate+ "'  for  '" + user.service+ "'"
-        messageforclient="Thank you for scheduling an appointment with Madeleine for this date  '" + user.appointmentdate+ "' "
-        messageforhairdresser="You are scheduled with' "+user.firstname+ "' ' "+user.lastname+ "'  for  '" + user.appointmentdate+ "' please make sure to follow up with your client at either' "+user.email+ "' or  ' "+user.telephone+ "' "
-        try:
-                messages.success(request,  subjectforclient+ "' please check you email for conformation  '")
-                send_mail(subjectforclient, messageforclient, user.email, [user.email])
-                send_mail(subjectforhairdresser, messageforhairdresser, user.email, ['madeleinesalondecoiffure@gmail.com'])
-        except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return JsonResponse(context, safe=False)
-    else:
-        return render(request, 'calendar.html')
-
-@csrf_exempt
-def delete_user(request):
-    rp=json.loads(request.body.decode('utf-8'))
-    Users.objects.get(pk=rp['pk']).delete()
-    return get(request)
-
-@csrf_exempt
-def update_user(request):
-    rp=json.loads(request.body.decode('utf-8'))
-    field = Users.objects.get(pk=rp['pk'])
-    field.firstname=rp['firstname']
-    field.lastname=rp['lastname']
-    field.email=rp['email']
-    field.service=rp['service']
-    field.telephone=rp['telephone']
-    field.appointmentdate=rp['appointmentdate']
-    field.time=rp['time']
-    field.save()
-    return get(request)
-@csrf_exempt
-def register(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        password2 = request.POST['password2']
-        if password == password2:
-            if User.objects.filter(email=email).exists():
-                messages.info(request, 'Email already used')
-                return redirect('register')
-            elif User.objects.filter(username=username).exists():
-                messages.info(request, 'Username already used')
-                return redirect('register')
-            else: 
-               # user = User.objects.request.POST(username = request.POST['username'],email=request.POST['email'])
-                info = User.objects.create_user(username=username, email=email, password=password)
-                info.save();
-                subjectfornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
-                subjectforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.username+ "'  for  '" + info.email+ "'"
-                messagefornewuser="Thank you for creating an account with MadeleineSalonDeCoiffure  '" + info.username+ "'  for  '" + info.email+ "'"
-                messageforhairdressernewuser="A new client has created an account with MadeleineSalonDeCoiffure: '" + info.username+ "'  for  '" + info.email+ "'"
-                try:
-                        send_mail(subjectfornewuser, messagefornewuser, info.email, [info.email])
-                        send_mail(subjectforhairdressernewuser, messageforhairdressernewuser, info.email, ['madeleinesalondecoiffure@gmail.com'])
-                        messages.success(request, 'Account successfully created check your email for conformation')
-                except BadHeaderError:
-                    return HttpResponse('Invalid header found.')
-                return redirect('login')
-        else:
-            messages.info(request, 'Passwords do not match')
-            return redirect('register.html')
-    else: 
-        return render(request, 'register.html')
-
-@csrf_exempt
-def login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = auth.authenticate(username=username, password=password)
-        if user is not None: #check if user None that means is not register
-            auth.login(request, user)
-            return redirect('/')
-        else:
-            messages.info(request, 'User does not exist please create an account')
-            return redirect('register')
-    else:
-        messages.success(request, 'Logging in!')
-        return render(request, 'login.html', )
-
-@csrf_exempt
-def logout(request):
-    messages.success(request, 'Logging out')
-    auth.logout(request)
-    return redirect('/')
-
-@csrf_exempt
-def profile(request):
-    messages.success(request, 'Signed in!')
-    userprofile = {'user': request.user}
-    return render(request, 'profile.html', userprofile)
-
-@csrf_exempt
-def clients(request):
-    return render(request, 'clients.html')
+def about(request):
+    return render(request, 'about.html')
 
 @csrf_exempt
 def contact(request):
     return render(request, 'contact.html')
 
 @csrf_exempt
-def about(request):
-    return render(request, 'about.html')
+def clients(request):
+    return render(request, 'clients.html')
+
+@csrf_exempt
+def register(request):
+    return render(request, 'register.html')
+
+@csrf_exempt
+def login(request):
+    return render(request, 'login.html')
+
+@csrf_exempt
+def profile(request):
+    userprofile = {'user': request.user}
+    return render(request, 'profile.html', userprofile)
+
+@csrf_exempt
+def calendar(request):
+    if settings.ENVIRONMENT == 'github-pages':
+        # Static sample data for GitHub Pages
+        sample_data = [
+            {
+                "model": "salonapp.users",
+                "pk": 1,
+                "fields": {
+                    "firstname": "Sample",
+                    "lastname": "Client",
+                    "email": "sample@email.com",
+                    "service": "Haircut",
+                    "telephone": "123-456-7890",
+                    "appointmentdate": "2024-03-20",
+                    "time": "10:00"
+                }
+            }
+        ]
+        result = dumps(sample_data)
+    else:
+        # Normal database query for local/Heroku
+        eventdata = serializers.serialize('json', Users.objects.all())
+        result = dumps(eventdata)
+    
+    return render(request, 'calendar.html', {'result': result})
 
 @csrf_exempt
 def payment(request):
@@ -156,13 +79,68 @@ def payment(request):
     result = dumps(billingdata)
     return render(request, 'payment.html', {'result': result})
 
+# Dynamic views not suitable for static rendering
+@csrf_exempt
+def get(request):
+    context = serializers.serialize('json', Users.objects.all())
+    return JsonResponse(context, safe=False)
 
+@csrf_exempt
+def post_user(request):
+    if request.method == 'POST':
+        rp = json.loads(request.body.decode('utf-8'))
+        user = Users(
+            firstname=rp['firstname'],
+            lastname=rp['lastname'],
+            email=rp['email'],
+            service=rp['service'],
+            telephone=rp['telephone'],
+            appointmentdate=rp['appointmentdate'],
+            time=rp['time']
+        )
+        user.save()
+        context = serializers.serialize('json', Users.objects.all())
 
+        # Email notifications
+        subject_for_client = f"Appointment with MadeleineSalonDeCoiffure on {user.appointmentdate} for {user.service} has been scheduled successfully!"
+        subject_for_hairdresser = f"Client Appointment with {user.firstname} {user.lastname} on {user.appointmentdate} for {user.service}"
+        message_for_client = f"Thank you for scheduling an appointment with Madeleine for this date {user.appointmentdate}."
+        message_for_hairdresser = f"You are scheduled with {user.firstname} {user.lastname} for {user.appointmentdate}. Please follow up with the client at {user.email} or {user.telephone}."
 
+        try:
+            messages.success(request, f"{subject_for_client}. Please check your email for confirmation.")
+            send_mail(subject_for_client, message_for_client, user.email, [user.email])
+            send_mail(subject_for_hairdresser, message_for_hairdresser, user.email, ['madeleinesalondecoiffure@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
 
+        return JsonResponse(context, safe=False)
+    else:
+        return render(request, 'calendar.html')
 
+@csrf_exempt
+def delete_user(request):
+    rp = json.loads(request.body.decode('utf-8'))
+    Users.objects.get(pk=rp['pk']).delete()
+    return get(request)
 
+@csrf_exempt
+def update_user(request):
+    rp = json.loads(request.body.decode('utf-8'))
+    user = Users.objects.get(pk=rp['pk'])
+    user.firstname = rp['firstname']
+    user.lastname = rp['lastname']
+    user.email = rp['email']
+    user.service = rp['service']
+    user.telephone = rp['telephone']
+    user.appointmentdate = rp['appointmentdate']
+    user.time = rp['time']
+    user.save()
+    return get(request)
 
-        
-
+@csrf_exempt
+def logout(request):
+    messages.success(request, 'Logging out')
+    auth.logout(request)
+    return redirect('/')
 
