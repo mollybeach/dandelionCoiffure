@@ -67,6 +67,7 @@ To set up the PostgreSQL database for the Madeleine Salon de Coiffure booking sy
 
 
 # Create the database
+````
 brew list | grep postgresql
 postgres --version
 brew install postgresql@14
@@ -78,6 +79,7 @@ psql -l
 psql salon_app
 touch schema.sql
 code schema.sql
+```
 psql salon_app < schema.sql // After adding the below to the schema.sql file run this command
 
 Add the following to the schema.sql file:
