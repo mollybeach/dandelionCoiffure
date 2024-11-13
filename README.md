@@ -1,6 +1,6 @@
 # Dandelion Salon Application
 
-A web application for managing salon appointments and services.
+A web application for managing salon appointments and services. Made with Django.
 
 ## Features
 
