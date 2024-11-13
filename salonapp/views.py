@@ -48,8 +48,29 @@ def profile(request):
 
 @csrf_exempt
 def calendar(request):
-    eventdata = serializers.serialize('json', Users.objects.all())
-    result = dumps(eventdata)
+    if settings.ENVIRONMENT == 'github-pages':
+        # Static sample data for GitHub Pages
+        sample_data = [
+            {
+                "model": "salonapp.users",
+                "pk": 1,
+                "fields": {
+                    "firstname": "Sample",
+                    "lastname": "Client",
+                    "email": "sample@email.com",
+                    "service": "Haircut",
+                    "telephone": "123-456-7890",
+                    "appointmentdate": "2024-03-20",
+                    "time": "10:00"
+                }
+            }
+        ]
+        result = dumps(sample_data)
+    else:
+        # Normal database query for local/Heroku
+        eventdata = serializers.serialize('json', Users.objects.all())
+        result = dumps(eventdata)
+    
     return render(request, 'calendar.html', {'result': result})
 
 @csrf_exempt

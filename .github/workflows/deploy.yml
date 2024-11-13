@@ -26,6 +26,7 @@ jobs:
         run: |
           python manage.py collectstatic --noinput
         env:
+          DJANGO_ENV: "github-pages"
           SECRET_KEY: "dummy-secret-key-for-build"
           DEBUG: "False"
           ALLOWED_HOSTS: "mollybeach.github.io,localhost,127.0.0.1"
@@ -39,6 +40,7 @@ jobs:
         run: |
           python manage.py distill-local docs/ --force
         env:
+          DJANGO_ENV: "github-pages"
           SECRET_KEY: "dummy-secret-key-for-build"
           DEBUG: "False"
           ALLOWED_HOSTS: "mollybeach.github.io,localhost,127.0.0.1"

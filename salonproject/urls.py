@@ -3,10 +3,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from salonapp import views  # Add this import
+#from salonapp import views  # Add this import
 
-def get_index():
-    return None
+#def get_index():
+#    return None
 
 urlpatterns = [
     path('admin/', admin.site.urls),
