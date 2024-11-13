@@ -9,23 +9,83 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 import dj_database_url
-import django_heroku
 import psycopg2
 from pathlib import Path
+from dotenv import load_dotenv
 #import cloudinary
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+# Load environment variables from .env file
+load_dotenv()
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$(8+_2x(nyg_g_9exjv)xa!3qiy+1++x3zsgntzu$bkjy!!rfx'
+# Django Application Settings
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Deployment Status
+IS_DEPLOYED = os.getenv('IS_DEPLOYED', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+# Database Configuration
+if IS_DEPLOYED:
+    # Use Heroku database configuration
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL'),
+            conn_max_age=int(os.getenv('DB_CONN_MAX_AGE', '600'))
+        )
+    }
+else:
+    # Use local database configuration
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+        }
+    }
+
+# Static Files Configuration
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'salonapp/static'),
+]
+
+# Media Files Configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Whitenoise configuration for static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Internationalization
+LANGUAGE_CODE = os.getenv('LANGUAGE_CODE', 'en-us')
+TIME_ZONE = os.getenv('TIME_ZONE', 'UTC')
+USE_I18N = os.getenv('USE_I18N', 'True') == 'True'
+USE_L10N = os.getenv('USE_L10N', 'True') == 'True'
+USE_TZ = os.getenv('USE_TZ', 'True') == 'True'
+
+# Email Configuration
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+
+# Cloudinary Configuration (if needed)
+CLOUDINARY_CLOUD_NAME = os.getenv('CLOUDINARY_CLOUD_NAME')
+CLOUDINARY_API_KEY = os.getenv('CLOUDINARY_API_KEY')
+CLOUDINARY_API_SECRET = os.getenv('CLOUDINARY_API_SECRET')
+
+# Message Storage
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Application definition
 
@@ -41,6 +101,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,33 +129,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'salonproject.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-#HEROKU DATABASE 
-#HEROKU_POSTGRESQL_MAROON_URL
-DATABASE_URL='postgres://kcephsxhxheiob:d004979b53e452efde56c82adfcec829b73544fd151b38afa7f1bb49969dc6a3@ec2-3-226-134-153.compute-1.amazonaws.com:5432/d3saqmno8kra55'
-DATABASES = {'default': dj_database_url.config(os.environ.get('DATABASE_URL'))
-}
-
-#LOCAL POSTGRES PSQL DATABASE 
-'''
-DATABASES = {
-'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'salon_db',
-        'USER' : 'postgres',
-        'PASSWORD' : 'jeannette487547',
-        'HOST' : 'localhost',
-        'PORT' : '5432'
-    }
-}'''
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-
-#get data from heroku
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -149,19 +183,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "madeleinesalondecoiffure@gmail.com"
-EMAIL_HOST_PASSWORD = 'Moselle1'
-EMAIL_PORT = '587'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-django_heroku.settings(locals())
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-#cloudinary://784459254455196:888jgqkxGPBr5HPIUsNPBerqnQ8@madeleinesalondecoiffure
-#cloudinary.config( 
- # cloud_name = "madeleinesalondecoiffure", 
-  #api_key = "784459254455196", 
-  #api_secret = "888jgqkxGPBr5HPIUsNPBerqnQ8" 
-#)
