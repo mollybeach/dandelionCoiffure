@@ -440,27 +440,7 @@ function todayEqualActive(){
     </head>
     <body class='container'>
         <!-- HEADER NAV -->
-        <header class="header">
-        <nav class="header__nav">
-            <ul class="nav__sidenav nav--right">
-            <li><a href="/" class="header__logo"> <img   class='header__img' src="https://res.cloudinary.com/storagemanagementcontainer/image/upload/v1627668649/verticalheadcrest_zegh6d.svg" alt="" /></a></li>
-            <div class="header__links">
-            <li class="header__link"><a href="about" class="header__linking">About</a></li>
-            <li class="header__link"><a href="clients" class="header__linking">Clients</a></li>
-            <li class="header__link"><a href="calendar" class="header__linking">Book</a></li>
-            <li class="header__link"><a href="contact" class="header__linking">Contact Us</a></li>
-{% if user.is_authenticated%}
-            <li class="header__link"><a href="profile"class="header__linking" >My Profile</a></li>
-            <li class="header__link"><a href="logout" class="header__linking">Logout</a></li>
-{% else%}
-            <li class="header__link"><a href="register" class="header__linking">Create Account</a></li>
-            <li><a href="login" class="header__link" class="header__linking">Login</a></li>
-{% endif %}
-            <li class="header__link hide-3"><a href="calendar" id="nav-bag" ><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715814/shopping_bag_cuw7pb.svg" alt="shopping" /></a></li>
-            </div>
-            </ul>
-        </nav>
-    </header>
+       {% include 'base.html' %}
     <main class='maincenter'>
         <!-- MAIN-
         <section class='maincenter'>
