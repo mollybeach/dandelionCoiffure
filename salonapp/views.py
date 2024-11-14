@@ -18,7 +18,25 @@ from json import dumps
 import json
 from django.core import serializers
 
-# Static views suitable for `django-distill` rendering
+# These views are distilled to static HTML files in /docs:
+# - index.html
+# - about.html
+# - contact.html
+# - clients.html
+# - register.html
+# - login.html
+# - profile.html
+# - calendar.html
+# - payment.html
+
+# These endpoints remain dynamic (not distilled):
+# - /logout
+# - /users/
+# - /userupdated/
+# - /useradded/
+# - /userremoved/
+
+@csrf_exempt
 def index(request):
     return render(request, 'index.html')
 @csrf_exempt
